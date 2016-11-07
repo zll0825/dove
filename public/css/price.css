@@ -1,0 +1,52 @@
+.sellList{width: 954px;overflow: hidden;}
+.benefit{background:#757575;height: 36px;line-height: 36px;color:#fff;padding-left: 10px;font-size: 18px;position: relative;}
+.benefit .more{position: absolute;right: 7px;top: 0px;font-size: 16px;color:#fff;}
+.benefit .more:hover{color:#ffb933;}
+.bedoveList{padding-top: 15px;overflow: hidden;width: 964px;}
+.bedoveList li{width: 210px;padding:10px;background:#fff;float: left;margin:0 11px 18px 0;}
+.bedoveList .pink img{height: 134px;}
+.pink{display: block;background:#efe8e8;}
+.name{display: block;color:#000;font-weight: bold;height: 24px;overflow: hidden;}
+.hot,.origin{font-size: 12px;display: block;height: 18px;overflow: hidden;}
+.primecost{font-size: 12px;color:#666;display: block;}
+.price{font-size: 12px;font-weight: bold;display: block;}
+.price em{font-size: 14px;}
+.buy{display: block;width: 100%;height: 22px;line-height: 22px;background:#4b4b4b;color:#fff;font-weight: bold;border-radius: 5px;text-align: center;letter-spacing: 1px;position: relative;}
+.buy:hover{background:#c53e38;color:#fff;}
+.car:hover{background:#EB7F00;}
+.buy:active {top: 1px;}
+.sellRight{background:#fff;padding:23px 15px;}
+.sellRight .bid{height: 32px;line-height: 32px;}
+.sellRight li{padding-top: 21px;}
+.wall{padding:50px 0 26px;}
+
+.pledge{width: 200px;border-top: 3px solid #4b4b4b;padding:18px 15px;}
+.pleTop{border-left: 4px solid #025d2a;font-size: 20px;font-weight: bold;height: 56px;line-height: 24px;padding-left: 6px;}
+.pleTop div{font-size: 12px;font-weight: normal;display: block;line-height: 15px;}
+.pleTop span{display: block;}
+.pleMiddle{padding:24px 0 24px 10px;font-size: 16px;font-weight: bold;border-bottom: 2px solid #c7c7c7;}
+.pleMiddle a{display: inline-block;width: 50%;}
+.pleMiddle a:hover{color:#ff7200;}
+.pleBottom{padding-top: 6px;}
+.pleBottom li{padding-top: 18px;}
+.pleBottom li span{display: block;line-height: 20px;height: 20px;overflow: hidden;}
+.dove{margin-left: -5px;font-weight: bold;}
+.pleBottom .bid{color:#666;height:26px;line-height: 26px;}
+.recImg{text-align: center;display: block;}
+.recName{display: block;font-weight: bold;font-size: 16px;color:#000;margin-top: 10px;height: 24px;overflow: hidden;}
+.recOrigin{display: block;height: 24px;overflow: hidden;}
+.recHot{display: block;color:#999;}
+@media all and (max-width:750px){
+    html,body,.section,.highest,.header{max-width: 750px;min-width: 320px;width:100%;}
+    .gray,.aside,.sellList,.bedoveList,.doveInfo,.score{width: 100%;}
+    .bedoveList li,.recommend li{width: 49%;margin:0 1% 10px 0;box-sizing: border-box;}
+    .recommend ul{width: 100%;margin-left: 0;}
+    .companyInfo{width:100%;box-sizing: border-box;height:auto;border-left: 0 none;}
+    .companyInfo span{width: 92%;}  
+    .periods{padding-left: 5px;margin-top: 5px;font-size: 14px;height: 20px;line-height: 20px;font-weight: normal;overflow: hidden;}
+    .remaining{line-height: 20px;height: 20px;overflow: hidden;font-weight: normal;padding:0px 0 0 5px;text-align: left;font-size: 14px;clear:both;}
+    .sale{margin-bottom: 3px;font-weight: normal;padding:0px 0 0 5px;clear:both;text-align: left;height: 20px;overflow: hidden;font-size: 14px;}
+    .sale span{display:inline;margin-left: 4px;}
+    .character{font-size: 14px;font-weight: normal;height: 50px;line-height: 22px;padding-top: 2px;}
+    .character span{display: block;} 
+}

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" type="text/css" href="css/base.css" />
+	<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="css/public.css" />
+	<link rel="stylesheet" type="text/css" href="css/system.css" />
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/swiper-3.4.0.jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.pagination.js"></script>
+    <!-- <script type="text/javascript" src="js/respond.js"></script> -->
+	<title>鸽子上传保证金</title>
+</head>
+<body>
+<!-- header/start -->
+	<div class="header">
+		<div class="headerTop">
+			<div class="highest">
+				<div class="fl connection">
+					<i class="iconfont tel">&#xe651;</i><span class="conLink1">010-89256988</span><i class="iconfont">&#xe731;</i><span>010-89256988</span>
+				</div>
+				<div class="fr topnav">
+					<a href="javascript:;">交易流程</a>|
+					<a href="javascript:;">收藏本站</a>|
+					<a href="javascript:;">帮助中心</a>
+				</div>
+			</div>
+		</div>
+		<h1 class="logo"><a href="javascript:;"><img src="img/logo.png" alt="长城鸽业"></a></h1>
+		<div class="higher"></div>
+		<div class="nav">
+            <div class="navbar">
+                <div class="swiper-container" id="nav">
+                    <ul class="navlist swiper-wrapper">
+                        <li class="swiper-slide"><a href="javascript:;">首页</a></li>
+                        <li class="swiper-slide"><a href="javascript:;">在线拍卖</a></li>
+                        <li class="swiper-slide"><a href="javascript:;">定价展销</a></li>
+                        <li class="swiper-slide"><a href="javascript:;">长城铭哥</a></li>
+                        <li class="swiper-slide"><a href="javascript:;">赛鸽资讯</a></li>
+                        <li class="swiper-slide"><a href="javascript:;">鸽友之家</a></li>
+                    </ul>
+                </div>
+                <div class="section user">
+                    <div class="logReg">
+                        <a href="javascript:;">登录</a>
+                        <a href="javascript:;">注册</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+	<!-- header/end -->
+	<div class="content section clearfix">
+		<!-- public usercenter ／ start -->
+		<div class="fl userCenter">
+			<h2 class="userTitle">个人中心</h2>
+			<ul class="userList">
+				<li class="current"><a href="upload.html"><i class="iconfont">&#xe6e1;</i>用户信息</a></li>
+                <li><a href="mybid.html"><i class="iconfont">&#xe606;</i>我的竞拍</a></li>
+                <li><a href="mybuy.html"><i class="iconfont">&#xe64e;</i>我的购买</a></li>
+                <li><a href="system.html"><i class="iconfont">&#xe619;</i>消息中心</a></li>
+			</ul>
+		</div>
+		<!-- public usercenter ／ end -->
+		<div class="fr upload">
+			<h2 class="source">基本资料</h2>
+			<div class="primary clearfix">
+				<a href="javascript:;" class="fl avatar"><img src="img/avatar.png" /></a>
+				<div class="fl primInfo">
+					<div class="phoneNumber"><strong>手机号：</strong>12345678908</div>
+                    <div class="userName"><strong>用户名：</strong><input type="text" class="inpName" value="仙人掌" readonly="readonly" /><a href="javascript:;" class="green change1">修改</a><a href="javascript:;" class="red nameChan">确定</a></div>
+                    <div class="prompt"></div>
+                    <div class="userPwd getCode"><strong>验证码：</strong><input type="text" class="codetest" /><span class="get">获取验证码</span></div>
+                    <div class="prompt"></div>
+                    <div class="userPwd originPwd"><strong>密<em>码</em>：</strong><input type="password" value="******" readonly="readonly" class="inpPwd" /><a href="javascript:;" class="green change2">修改</a><a href="javascript:;" class="red pwdChan">确定</a></div>
+                    <div class="prompt"></div>
+				</div>
+			</div>
+			<div class="assure">
+				<h3 class="cert">保证金认证</h3>
+				<div class="photo clearfix">
+					<div class="rect fl"><img src="img/zhanwei.png" /></div><!-- 上传的图片摆放位置 -->
+					<div class="explain fl">
+						<div class="wordIntro">认证说明：<span>请上传身份证正面照片</span></div>
+						<span class="sub fileinput-button">
+                            <span>点击上传</span>
+                            <input id="" type="file" name="files[]" data-url="" multiple="" accept="image/png, image/gif, image/jpg, image/jpeg">
+                        </span>
+					</div>
+				</div>
+				<div class="photo clearfix">
+					<div class="rect fl"><img src="img/zhanwei.png" /></div><!-- 上传的图片摆放位置 -->
+					<div class="explain fl">
+						<div class="wordIntro">认证说明：<span>请上传打印凭证图片，管理员确认后，给予认证通过</span></div>
+						<span class="sub fileinput-button">
+                            <span>点击上传</span>
+                            <input id="" type="file" name="files[]" data-url="" multiple="" accept="image/png, image/gif, image/jpg, image/jpeg">
+                        </span>
+					</div>
+				</div>
+				<button class="certain">确认提交</button>
+			</div>
+		</div>
+	</div>
+    <div class="gray">
+        <div class="section footer">
+            <div class="fl gLogo"><img src="img/g_logo.png" height="68" width="171" /></div>
+            <div class="fl companyInfo">
+                <span class="fleft"><i class="iconfont">&#xe6e1;</i><b>联系人：</b>邵先生</span>
+                <span class="fright"><i class="iconfont">&#xe608;</i><b>Email：</b>greatwallccgy@126.com</span>
+                <span class="fleft"><i class="iconfont">&#xe651;</i><b>电话：</b>010-89256988&nbsp;&nbsp;13611691900</span>
+                <span class="fright"><i class="iconfont">&#xe6b8;</i><b>网址：</b>http://ccgy.ag188.com</span>
+                <span class="fleft"><i class="iconfont">&#xe731;</i><b>传真：</b>010-89256988</span>
+                <span class="fright"><i class="iconfont">&#xe652;</i><b>地址：</b>北京市大兴区庞各庄镇常各庄村南1000米 邮政编码：100041</span>
+            </div>
+        </div>
+        <div class="lowest">
+            <p class="character">www.chinaxinge.com<span>&nbsp;中国信鸽信息网&nbsp;爱鸽商城铭鸽展厅</span></p>
+        </div>
+    </div>
+
+</body>
+</html>
+<script type="text/javascript">
+	$(function(){
+        var textWidth = function(text){ 
+            var sensor = $('<pre>'+ text +'</pre>').css({display: 'none'}); 
+            $('body').append(sensor); 
+            var width = sensor.width()+20;
+            sensor.remove(); 
+            return width;
+        };
+        $('.change1').click(function() {
+            $('.inpName').removeAttr('readonly').css('border', '1px solid #ccc');
+            $(this).hide();
+            $('.nameChan').show();
+        });
+        $('.nameChan').click(function() {
+            if($('.inpName').val() == ''){
+                $(this).parent().next('.prompt').html('请输入用户名');
+            }else if($('.inpName').val().length > 16){
+                $(this).parent().next('.prompt').html('用户名不能超过16个字哦~');
+            }else{
+                $(this).parent().next('.prompt').html('');
+                $('.inpName').attr('readonly', 'readonly').css('border', 'none');
+                $(this).hide();
+                $('.inpName').width(textWidth($('.inpName').val()));
+                $('.change1').show();
+            }
+        });
+        $('.codetest').blur(function() {
+            if($('.codetest').val()==''){
+                $(this).parent().next('.prompt').html('验证码不能为空哦~');
+            }else{
+                $(this).parent().next('.prompt').html('');
+            }
+        });
+        $('.change2').click(function() {
+            $(this).hide();
+            $('.getCode').show();
+            $('.inpPwd').removeAttr('readonly').css('border', '1px solid #ccc');
+            $('.pwdChan').show();
+        });
+        $('.pwdChan').click(function() {
+            if($('.inpPwd').val() == ''){
+                $(this).parent().next('.prompt').html('密码不能为空哦~');
+            }else{
+                $(this).parent().next('.prompt').html('');
+                $('.inpPwd').attr('readonly', 'readonly').css('border', 'none');
+                $(this).hide();
+                $('.getCode').hide();
+                $('.change2').show();
+            }
+        });
+		
+        $("#Pagination").pagination("15");
+        $('#nav li').click(function(event) {
+            var ind = $(this).index();
+            var win = $(window).width();
+            var move = ind * 125;
+            var minus = 750 - win;
+            if(move > minus){
+                move = minus;
+            }
+            $(this).addClass('cur').siblings().removeClass('cur');
+            $('#nav ul').css('transform', 'translate3d(-'+move+'px, 0px, 0px)');
+        });
+        var lunboSwiper = new Swiper('.aside .swiper-container',{
+			pagination: '.swiper-pagination',
+		    loop:true,
+		    autoplay : 2000,
+		    grabCursor: true,
+		    paginationClickable: true
+		})
+        var navSwiper = new Swiper('.nav .swiper-container',{
+            slidesPerView: 'auto',
+            freeMode: true
+        })
+        
+    })
+</script>

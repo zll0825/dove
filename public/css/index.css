@@ -1,0 +1,122 @@
+.main{margin-top: 42px;}
+.notice{width: 236px;border: 1px solid #d8d8d8;}
+.asideTop{overflow: hidden;}
+.noteTitle{background:#4b4b4b;height: 36px;line-height: 36px;color:#fff;}
+.noteTitle i{-webkit-text-stroke-width: 0px;margin:0 12px 0 15px;}
+.noteTitle span{font-size: 12px;}
+.calendar{margin:0 4px 0 15px;}
+.notelist{padding:6px 10px;}
+.notelist li{background:url(../img/dot.jpg) no-repeat 1px 13px;height: 30px;line-height: 30px;padding-left: 16px;}
+.major a{color:#b70c04;}
+.more{display: block;text-align: right;height: 22px;font-weight: bold;}
+.more:hover{text-decoration: underline;}
+
+.banner{position: relative;height: 230px;width: 715px;display: block;}
+.lunbo{position: relative;overflow: hidden;max-width: 750px;margin:0 auto;display: block;}
+.lunboCon{width: 999em;overflow: hidden;}
+.conImg{ float:left; overflow:hidden; min-width:320px; max-width:750px;}
+.conImg img{margin:0 auto;}
+.lunbo .yuandian{ position:absolute; bottom:0.5rem; text-align:center; width:100%;text-align: center;}
+.yuandian span{display:inline-block;width: 9px;height: 9px;border-radius: 30px;background:#fff;margin:0 0px 0 7px;cursor:pointer;}
+.yuandian span.swiper-pagination-bullet-active{ background:#6b6b6b;}
+
+.isTitle{border-bottom: 4px solid #757575;height: 39px;}
+.under{width: 190px;height: 69px;background:#fff;margin: -33px auto 0;font-size: 24px;text-align: center;}
+.under span{font-size: 14px;display: block;}
+.auctionH4{background:#4b4b4b;height: 36px;line-height: 36px;}
+.auctionH4 a{font-size: 18px;color:#fff;margin-left: 10px;}
+.auctionList{border: 1px solid #d8d8d8;border-top: 0 none;border-bottom: 0 none;}
+.auctionList li{border-bottom: 1px solid #d8d8d8;}
+.auctionList li:nth-child(odd){background:#fff;}
+.auctionList li:nth-child(even){background:#6b6b6b;}
+.auctionList li:nth-child(even) a{color:#fff;}
+.auctionList li:nth-child(even) a:hover{color:#ffb933;}
+.aucLink{display: block;position: relative;overflow: hidden;}
+.auctionImg{float: left;border-right: 1px solid #d8d8d8;background:#fff;width: 162px;height:118px;position: relative;}
+.auctionImg img{height:100%;}
+.auctionImg:before,.auctionImg:after{border: solid transparent; content: ' '; height: 0; left: 100%;top: 50%; position: absolute; width: 0;}
+.auctionImg:after {border-width: 8px; border-left-color: #fff; margin-top: -8px;}
+.auctionImg:before {border-width: 10px; border-left-color: #d8d8d8; margin-top: -10px;}
+/*.auctionRight{padding-left: 10px;}*/
+.periods,.sale,.remaining{font-size: 16px;font-weight: bold;float: left;}
+.sale span{font-size: 14px;display: block;}
+.periods{padding-left: 14px;}
+.periods,.remaining{line-height: 118px;}
+.sale{padding: 35px 96px 0 60px;text-align: center;}
+.pledge{width: 200px;border-top: 3px solid #4b4b4b;background:#eee;padding:18px 15px;}
+.pleTop{border-left: 4px solid #025d2a;font-size: 20px;font-weight: bold;height: 56px;line-height: 24px;padding-left: 6px;}
+.pleTop div{font-size: 12px;font-weight: normal;display: block;line-height: 15px;}
+.pleTop span{display: block;}
+.pleMiddle{padding:24px 0 24px 10px;font-size: 16px;font-weight: bold;border-bottom: 2px solid #c7c7c7;}
+.pleMiddle a{display: inline-block;width: 50%;}
+.pleMiddle a:hover{color:#ff7200;}
+.pleBottom{padding-top: 6px;}
+.pleBottom li{padding-top: 18px;}
+.pleBottom li span{display: block;line-height: 20px;height: 20px;overflow: hidden;}
+.dove{margin-left: -5px;font-weight: bold;}
+.pleBottom .bid{color:#666;height:26px;line-height: 26px;}
+.line{height:60px;border-bottom: 4px solid #757575;}
+.onsale h4{width: 240px;background:#fff;margin:-30px auto 0;text-align: center;font-size: 24px;height:80px;}
+.onsale h4 span{display: block;font-size: 14px;}
+.sellList{width: 954px;overflow: hidden;}
+.benefit{background:#757575;height: 36px;line-height: 36px;color:#fff;padding-left: 10px;font-size: 18px;position: relative;}
+.benefit .more{position: absolute;right: 7px;top: 0px;font-size: 16px;color:#fff;}
+.benefit .more:hover{color:#ffb933;}
+.bedoveList{padding-top: 15px;overflow: hidden;width: 964px;}
+.bedoveList li{width: 210px;padding:10px;background:#fff;float: left;margin:0 11px 18px 0;}
+.bedoveList .pink img{height: 134px;}
+.pink{display: block;background:#efe8e8;}
+.name{display: block;color:#000;font-weight: bold;height: 24px;overflow: hidden;}
+.hot,.origin{font-size: 12px;display: block;height: 18px;overflow: hidden;}
+.primecost{font-size: 12px;color:#666;display: block;}
+.price{font-size: 12px;font-weight: bold;display: block;}
+.price em{font-size: 14px;}
+.buy{display: block;width: 100%;height: 22px;line-height: 22px;background:#4b4b4b;color:#fff;font-weight: bold;border-radius: 5px;text-align: center;letter-spacing: 1px;position: relative;}
+.buy:hover{background:#c53e38;color:#fff;}
+.buy:active {top: 1px;}
+.sellRight{background:#fff;padding:23px 15px;}
+.sellRight .bid{height: 32px;line-height: 32px;}
+.sellRight li{padding-top: 21px;}
+.wall{padding:50px 0 26px;}
+/*.recommend{overflow: hidden;}*/
+.recommend ul{padding-top: 24px;overflow: hidden;width: 1228px;margin-left: -14px;}
+.recommend li{width: 216px;background:#fff;text-align: center;padding-bottom: 14px;float: left;margin:0 14px 24px 15px;}
+.recommend li:hover{box-shadow: 0 0 15px #999;}
+.recImg{display: block;}
+.recName{display: block;font-weight: bold;font-size: 16px;color:#000;margin-top: 10px;height: 24px;overflow: hidden;}
+.recOrigin{display: block;height: 24px;overflow: hidden;}
+.recHot{display: block;color:#999;}
+.information{padding:50px 0;}
+.doveInfo{width: 418px;}
+.infoTitle{border-bottom: 1px dashed #69af88;}
+.litTitle{font-size: 18px;font-weight: bold;border-bottom: 3px solid #025d2a;color:#025d2a;}
+.infoTitle{position: relative;}
+.infoTitle .more{position: absolute;right: 0;top: 2px;font-size: 16px;font-weight: bold;}
+.doveInfo ul,.score ul{padding-top: 12px;}
+.doveInfo li,.score li{height: 30px;line-height: 30px;background:url(../img/dot.jpg) no-repeat 10px center;padding-left: 25px;overflow: hidden;width:100%;box-sizing: border-box;}
+.doveInfo li a,.score li a{display: block;overflow: hidden;float: left;width:50%;}
+.score li a{width: 50%;}
+.doveInfo .time,.score .person{float: right;font-size: 12px;color:#666;width:48%;text-align: right;margin-right: 1%;}
+.score{width: 636px;}
+.score .litTitle{color:#333;}
+.score .person{font-size: 14px;}
+/**/
+@media all and (max-width:750px){
+    html,body,.section,.highest,.header{max-width: 750px;min-width: 320px;width:100%;}
+    .banner{width: 100%;height:auto;}
+    .gray,.aside,.sellList,.bedoveList,.doveInfo,.score{width: 100%;}
+    .notice{width: 100%;box-sizing: border-box;}
+    .conImg img{margin:0 auto;width: 25rem;}
+    .onsale h4,.under{width: 11rem;}
+    .auctionImg:before, .auctionImg:after{display: none;}
+    .auctionImg{width: 32%;height:auto;max-height: 88px;}
+    .auctionRight{width: 66%;box-sizing: border-box;}
+    .bedoveList li,.recommend li{width: 49%;margin:0 1% 10px 0;box-sizing: border-box;}
+    .recommend ul{width: 100%;margin-left: 0;}
+    
+    .periods{padding-left: 5px;margin-top: 5px;font-size: 14px;height: 20px;line-height: 20px;font-weight: normal;overflow: hidden;}
+    .remaining{line-height: 20px;height: 20px;overflow: hidden;font-weight: normal;padding:0px 0 0 5px;text-align: left;font-size: 14px;clear:both;}
+    .sale{margin-bottom: 3px;font-weight: normal;padding:0px 0 0 5px;clear:both;text-align: left;height: 20px;overflow: hidden;font-size: 14px;}
+    .sale span{display:inline;margin-left: 4px;}
+    
+}

@@ -1,0 +1,144 @@
+.section{width: 1200px;margin: 0 auto;}
+.headerTop{box-shadow: 0 3px 21px #acbbbf;position: relative;}
+.highest{height: 44px;line-height: 44px;width: 1200px;margin: 0 auto;}
+.connection{font-size: 12px;}
+.connection i{color: #004f19;margin-right: 8px;font-size: 14px;}
+.connection .tel{float: left;margin:2px 6px 0 0;}
+.conLink1{margin-right: 25px;}
+.topnav{padding-right: 10px;}
+.topnav a{margin: 0 15px;}
+.clear{clear: both;}
+.logo{position: relative;top: -18px;}
+.logo a{display: block;width: 320px;margin:0 auto;}
+.logo img{}
+.higher{width: 100%;height: 232px;background: #ccc;margin-top: -99px;background:url(../img/banner.png) no-repeat center top;}
+.higher img{display: none;}
+.nav{background:url(../img/bg.png) repeat-x;width: 100%;height: 38px;}
+.navbar{width: 1200px;margin:0 auto;}
+.navlist{overflow: hidden;}
+.navlist li{float: left;width: 125px;line-height: 38px;text-align: center;font-weight: bold;background:url(../img/line.jpg) no-repeat right top;}
+.navlist li a{color:#707070;display: block;}
+.navlist .cur{background:#4b4b4b;}
+.navlist .cur a,.navlist .cur a:hover{color:#fff;}
+.user{position: relative;top: -38px;}
+.logReg{line-height: 38px;font-size: 16px;font-weight: bold;position: absolute;right: 0;}
+.logReg a{margin-right: 48px;color:#797979;}
+.logReg a:hover,.navlist li a:hover{color:#b70c04;}
+.hideUser{line-height: 38px;font-size: 16px;font-weight: bold;position: absolute;right: 0;display: block;}
+.hideUser a{margin-right: 48px;}
+.footer{padding:50px 0 45px;overflow: hidden;}
+.gLogo{width: 315px;}
+.gLogo img{margin: 0 auto;width:auto;}
+.companyInfo{width: 847px;overflow: hidden;border-left: 1px solid #004514;padding-left: 23px;height: 77px;}
+.companyInfo span{display: block;float: left;line-height: 26px;}
+.companyInfo span i{margin-right: 17px;color:#004514;}
+.fleft{width: 45%;}
+.fright{width: 55%;}
+.lowest{background:#4b4b4b;}
+.character{text-align: center;font-weight: bold;color:#fff;font-size: 16px;height: 40px;line-height: 40px;letter-spacing: 1px;}
+.red{color:#b70c04;}
+.green{color:#40a02b;}
+.orange{color:#ffb933;}
+.botLine{border-top: 1px solid #ddd;}
+.gray{background:#eee;}
+.mt8{margin-top: 8px;}
+.mt6{margin-top: 6px;}
+.f18{font-size: 18px;}
+.f20{font-size: 20px;}
+.f24{font-size: 24px;}
+.ptb25{padding: 25px 0 7px;}
+.mtBlank{margin-top: 12px;}
+#nav{display: none;}
+#nav ul{width: 750px;}
+/*user center*/
+.content{margin-top: 42px;margin-bottom: 50px;}
+.userCenter{width: 230px;}
+.userTitle{background: #6b6b6b;height: 46px;line-height: 46px;text-align: center;color: #fff;font-size: 20px;border-radius: 5px 5px 0 0;}
+.userList{font-size: 16px;border: 1px solid #6b6b6b;border-top: none;padding-bottom: 145px;}
+.userList li{background: #f7f6f4;height: 48px;line-height: 48px;text-align: center;border-bottom: 1px solid #e6e2de;}
+.userList li a{color: #787878;display: block;}
+.userList .current{background: #fff;}
+.userList i{margin-right: 10px;font-size: 20px;}
+@media (min-width: 400px) {
+html, body, textarea, button, input, select {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+}
+@media all and (max-width: 540px) {
+html, body, textarea, button, input, select {
+    font-size: 22px;
+}
+}
+@media all and (max-width: 480px) {
+html, body, textarea, button, input, select {
+    font-size: 20px;
+}
+}
+ @media all and (max-width: 420px) {
+html, body, textarea, button, input, select {
+    font-size: 18px;
+}
+}
+ @media all and (max-width: 380px) {
+html, body, textarea, button, input, select {
+    font-size: 16px;
+}
+}
+@media all and (max-width: 320px) {
+html, body, textarea, button, input, select {
+    font-size: 14px;
+}
+}
+@media all and (max-width: 260px) {
+html, body, textarea, button, input, select {
+    font-size: 12px;
+}
+}
+@media all and (max-width:750px){
+    html,body,.section,.highest,.header,.navbar{max-width: 750px;min-width: 320px;width:100%;}
+    #nav{display: block;}
+    .navbar{display: none;}
+    .connection{display: none;}
+    .highest{background:#fff;}
+    .logo{position: absolute;top: 38px;left: 0;width: 100%;}
+    .logo a{width: 12rem;margin:0 auto;}
+    .logo img{width: 12rem;}
+    .nav #nav{max-width: 750px;min-width: 320px;width:100%;display: block;overflow: hidden;}
+    .pledge{display: none;}
+    .gLogo{width: 100%;}
+    .companyInfo{width:100%;box-sizing: border-box;height:auto;border-left: 0 none;}
+    .companyInfo span{width: 92%;}  
+    .character{font-size: 14px;font-weight: normal;height: 50px;line-height: 22px;padding-top: 2px;}
+    .character span{display: block;} 
+    .user{top: 0;}
+    .bedoveList li .pink img{height: auto;}
+    .mtBlank{margin-top: 42px;}
+    .pages{text-align: center;}
+    .pages .oh{float:none;display: inline-block;}
+    .page-sum{display: none;}
+
+    .userCenter{width: 100%;}
+    .userList{padding-bottom: 0;border-top: 1px solid #6b6b6b;}
+    .userTitle{display: none;}
+
+    .higher{height:auto;}
+    .higher img{display: block;margin:0 auto;width: 100%;}
+}
+/*page*/
+.pages #Pagination .pagination {height: 40px; text-align: right; font-family: \u5b8b\u4f53,Arial; }
+.pages #Pagination .pagination a, .pages #Pagination .pagination span {float: left; display: inline; padding: 4px 6px; border: 1px solid #e6e6e6; border-right: none; background: #f6f6f6; color: #666666; font-family: \u5b8b\u4f53,Arial; font-size: 14px; cursor: pointer; }
+.pages #Pagination .pagination .current {background: #e3643d; color: #fff; }
+.pages #Pagination .pagination .prev, .pages #Pagination .pagination .next {float: left; padding: 4px 6px; border: 1px solid #e6e6e6; background: #f6f6f6; color: #666666; cursor: pointer; }
+.pages #Pagination .pagination .prev {border-right: none; }
+.pages #Pagination .pagination .pagination-break {padding: 4px 5px; border: none; border-left: 1px solid #e6e6e6; background: none; cursor: default; }
+.pages .searchPage {float: left; padding: 8px 0; }
+.pages .page-sum {padding: 4px 6px; color: #999999; font-family: \u5b8b\u4f53,Arial; font-size: 14px; float: left;line-height: 23px;}
+.pages .searchPage .page-go {padding: 8px 0; color: #999999; font-family: \u5b8b\u4f53,Arial; font-size: 14px; padding: 10px 0\9; *padding: 6px 0; }
+.pages .searchPage .page-go input {width: 21px; height: 20px; margin: 0 5px; padding-left: 5px; border: 1px solid #e4e4e4; }
+.pages .searchPage .page-btn {margin: 9px 0 5px 5px; padding: 2px 5px; background: #ffac59; border-radius: 2px; color: #ffffff; font-family: Arial, 'Microsoft YaHei'; font-size: 14px; text-decoration: none; }
+#Pagination{float: left;}
+.pages{overflow: hidden;}
+.oh{overflow: hidden;float: right;}
+
+

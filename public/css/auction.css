@@ -1,0 +1,184 @@
+.main{margin-top: 42px;}
+.notice{width: 236px;border: 1px solid #d8d8d8;}
+.asideTop{overflow: hidden;height: 300px;}
+.noteTitle{background:#4b4b4b;height: 36px;line-height: 36px;color:#fff;}
+.noteTitle i{-webkit-text-stroke-width: 0px;margin:0 12px 0 15px;}
+.noteTitle span{font-size: 12px;}
+.calendar{margin:0 4px 0 15px;}
+.notelist{padding:2px 10px;}
+.notelist li{background:url(../img/dot.jpg) no-repeat 1px 13px;height: 30px;line-height: 30px;padding-left: 16px;}
+.major a{color:#b70c04;}
+.more{display: block;text-align: right;height: 22px;font-weight: bold;}
+.more:hover{text-decoration: underline;}
+
+.flowsheet{width: 725px;}
+.procedure{display: block;position: relative;}
+.procedure img{width:auto;margin: 0 auto;}
+.procedure a{display: block;position: absolute;}
+.first{top: 23px;left: 60px;width: 128px;height: 50px;}
+.second{top: 103px;left: 223px;width: 142px;height: 56px;}
+.third{top: 23px;right: 200px;width: 128px;height: 50px;}
+.forth{top: 38px;right: 60px;width: 105px;height: 105px;border-radius: 50%;}
+.desciption span{display: none;padding:0px 25px;}
+.desciption span:first-child{display: block;}
+
+.member{width: 235px;border: 1px solid #d8d8d8;}
+.noteTitle .online{text-align: center;font-size: 20px;display: block;}
+.userNav{padding:20px 30px;overflow: hidden;display: block;}
+.userNav a{display: block;width: 100%;text-align: center;line-height: 35px;font-size: 20px;letter-spacing: 3px;}
+.userNav a i{margin-right: 12px;font-size: 20px;}
+.onlineDove{padding:30px;}
+.username,.password{margin-bottom: 5px;}
+.username input,.password input{width: 112px;height: 20px;border: 1px solid #d8d8d8;padding-left: 5px;font-size: 12px;}
+.password label em{display: inline-block;width: 2em;text-align: right;}
+.prompt2,.prompt1{height: 20px;color:#f00;margin-bottom: 5px;}
+.doveLogin{overflow: hidden;}
+.doveLogin button{display: block;width: 68px;height: 20px;text-align: center;line-height: 20px;border: 0 none;background:none;color:#fff;position: relative;}
+.doveLogin button:active{top:1px;}
+.doveLogin .login{background:#bc2f2b;float:left;}
+.doveLogin .register{background:#4b4b4b;float: right;}
+
+.remit{padding:14px 9px;border-top: 1px dashed #d8d8d8;overflow: hidden;}
+.remit a{color:#4b4b4b;display: block;background:#ffc934;width: 100px;height: 30px;font-weight: bold;line-height: 30px;text-align: center;}
+.regMem{float: left;}
+.remittance{float: right;}
+.consult{text-align: right;margin:-3px 10px 2px 0;}
+
+.auctionH4{background:#4b4b4b;height: 36px;line-height: 36px;}
+.auctionH4 a{font-size: 18px;color:#fff;margin-left: 10px;}
+.auctionList{border: 1px solid #d8d8d8;border-top: 0 none;border-bottom: 0 none;}
+.auctionList li{border-bottom: 1px solid #d8d8d8;}
+.auctionList li:nth-child(odd){background:#fff;}
+.auctionList li:nth-child(even){background:#6b6b6b;}
+.auctionList li:nth-child(even) a{color:#fff;}
+.auctionList li:nth-child(even) a:hover{color:#ffb933;}
+.aucLink{display: block;position: relative;overflow: hidden;}
+.auctionImg{float: left;border-right: 1px solid #d8d8d8;background:#fff;width: 162px;height:118px;position: relative;}
+.auctionImg img{height:100%;}
+.auctionImg:before,.auctionImg:after{border: solid transparent; content: ' '; height: 0; left: 100%;top: 50%; position: absolute; width: 0;}
+.auctionImg:after {border-width: 8px; border-left-color: #fff; margin-top: -8px;}
+.auctionImg:before {border-width: 10px; border-left-color: #d8d8d8; margin-top: -10px;}
+.auctionRight{width: 1035px;}
+.periods,.sale,.remaining{font-size: 16px;font-weight: bold;float: left;text-align: center;}
+.sale span{font-size: 14px;display: block;}
+.periods{width: 50%;}
+.remaining{width: 25%;}
+.periods,.remaining{line-height: 118px;}
+.sale{width: 25%;padding-top: 35px;}
+
+.doveaucList{padding: 80px 0;}
+.auctionBar{border-bottom: 7px solid #4b4b4b;}
+.auctionBar a{padding:0 20px;display: inline-block;height: 40px;line-height: 40px;font-weight: bold;font-size: 18px;border: 2px solid #6b6b6b;border-radius: 5px 5px 0 0;border-bottom: none;}
+.auctionBar .cur{background:#4b4b4b;color:#fff;border-color:#4b4b4b;}
+.stroeTitle{border-top: 2px solid #d8d8d8;height: 34px;line-height: 34px;background:#ccc;font-weight: bold;}
+.stroeTitle span{display: block;float: left;text-align: center;}
+.w1{width: 162px;}
+.w2{width: 150px;}
+.w3{width: 190px;}
+.w4{width: 200px;}
+.w5{width: 168px;}
+.w6{width: 200px;}
+.w7{width: 126px;}
+.storeUl{border: 1px solid #d8d8d8;border-bottom: none;}
+.storeUl li{border-bottom: 1px solid #d8d8d8;}
+.storeUl li:nth-child(even){background:#ccc;}
+.storeUl a{display: block;overflow: hidden;height: 118px;}
+.storeUl a span{float: left;text-align: center;font-weight: bold;display: block;}
+.storeUl .w1{border-right: 1px solid #d8d8d8;background:#fff;width: 162px;height:118px;position: relative;}
+.storeUl img{height:100%;}
+.storeUl .w1:before,.storeUl .w1:after{border: solid transparent; content: ' '; height: 0; left: 100%;top: 50%; position: absolute; width: 0;}
+.storeUl .w1:after {border-width: 8px; border-left-color: #fff; margin-top: -8px;}
+.storeUl .w1:before {border-width: 10px; border-left-color: #d8d8d8; margin-top: -10px;}
+.storeUl .w6{line-height: 20px;padding-top: 38px;}
+.storeUl .w2,.storeUl .w4,.storeUl .w5,.storeUl .w7{line-height: 118px;}
+.storeUl .w3{display: table;height: 118px;}
+.storeUl .w3 em{display: table-cell;vertical-align: middle;}
+.storeUl .noWei{font-weight: normal;display: block;line-height: 20px;}
+
+/*auction theme*/
+.theme{width: 950px;}
+.line{height:12px;border-bottom: 4px solid #757575;}
+.topicTitle{text-align: center;margin-top: -24px;}
+.topicTitle span{padding:0 20px;font-size: 24px;background:#fff;}
+.instruction{background:#fdfdfc;padding:35px;border: 2px solid #6b6b6b;}
+.instruction h3{text-align: center;font-size: 20px;}
+.instruction p{margin-top: 25px;font-size: 16px;text-align: justify;line-height: 28px;}
+.storeInfo{border: 2px solid #6b6b6b;margin-top: 35px;}
+.storeInfo dl{overflow: hidden;}
+.storeInfo dt,.storeInfo dd{float: left;height: 50px;line-height: 50px;font-size: 16px;}
+.storeInfo dt{width: 18%;text-align: center;border-right: 1px solid #6b6b6b;box-sizing: border-box;}
+.storeInfo dd{width: 30%;padding-left: 2%;box-sizing: border-box;}
+.bdr{border-right: 1px solid #6b6b6b;font-weight: bold;}
+.bdr a{font-weight: normal;}
+.newtopic{width: 230px;}
+.newtopic h3{height: 40px;line-height: 40px;text-align: center;font-size: 24px;color: #fff;background: #757575;}
+.latest{border: 2px solid #757575;padding: 15px;}
+.latest li{height: 36px;line-height: 36px;overflow: hidden;}
+/**/
+.goods{margin-top: 42px;}
+.goodsTitle{height: 34px;line-height: 34px;background: #757575;}
+.goodsTitle span{padding-left: 20px;font-size: 18px;color: #fff;}
+.goodsCon{border: 1px solid #6b6b6b;padding: 20px;}
+.goodsCon dl{overflow: hidden;}
+.goodsCon dt{float: left;height: 56px;line-height: 56px;border-bottom: 1px dashed #6b6b6b;width: 55%;}
+.goodsCon dd{float: left;height: 56px;line-height: 56px;border-bottom: 1px dashed #6b6b6b;width: 45%;}
+.goodsCon .addPrice{width: 100%;}
+.goodsCon .moreDet{width: 100%;border-bottom: none;height: auto;line-height: 24px;padding-top: 15px;}
+.process{background: #757575;padding-left: 20px;height: 34px;line-height: 34px;font-size: 18px;color: #fff;}
+.process span{font-weight: normal;}
+.buyerInfo{margin: 50px auto;}
+.buyer{overflow: hidden;}
+.buyer span{display: block;float: left;width: 25%;text-align: center;font-size: 20px;background: #c8c8c8;height: 32px;line-height: 32px;border-right: 1px solid #757575;box-sizing: border-box;}
+.buyerList{border-bottom: 1px solid #757575;}
+.buyerList li{height: 48px;line-height: 48px;border-bottom: 1px dashed #a4a4a4;}
+.buyerList li a{display: block;overflow: hidden;font-weight: bold;}
+.buyerList li a span{display: block;float: left;width: 25%;text-align: center;border-right: 1px solid #757575;box-sizing: border-box;}
+.wd1{border-left: 1px solid #757575;}
+.buyerList li .wd1{font-weight: normal;}
+.buyerList li:last-child{border-bottom: none;}
+.mybid{width: 320px;height: 55px;display: block;margin: 50px auto;color: #fff;font-size: 30px;text-align: center;line-height: 55px;font-weight: bold;background: #c53e38;border-radius: 5px}
+.transferCon{padding: 20px;font-size: 18px;font-weight: bold;border: 1px solid #757575;border-top: none;}
+.special{margin-top: 15px;}
+.imgIntro{display: block;}
+.imgIntro img{width: auto;margin: 0 auto;}
+@media all and (max-width:750px){
+    html,body,.section,.highest,.header{max-width: 750px;min-width: 320px;width:100%;}
+    .auctionImg:before, .auctionImg:after{display: none;}
+    .auctionImg{width: 32%;height:auto;max-height: 88px;}
+    .auctionRight{width: 66%;box-sizing: border-box;}
+    .periods{padding-left: 5px;margin-top: 5px;font-size: 14px;height: 20px;line-height: 20px;font-weight: normal;overflow: hidden;width: 100%;box-sizing: border-box;}
+    .remaining{line-height: 20px;height: 20px;overflow: hidden;font-weight: normal;padding:0px 0 0 5px;text-align: left;font-size: 14px;clear:both;width: 100%;box-sizing: border-box;}
+    .sale{margin-bottom: 3px;font-weight: normal;padding:0px 0 0 5px;clear:both;text-align: left;height: 20px;overflow: hidden;font-size: 14px;width: 100%;box-sizing: border-box;}
+    .sale span{display:inline;margin-left: 4px;}
+
+    .notice{width: 100%;box-sizing: border-box;}
+    .flowsheet{width: 100%;}
+    .asideTop{height:auto;}
+    .member{width: 100%;box-sizing: border-box;}
+    .desciption span{display: block;font-size: 12px;}
+
+    .auctionBar{overflow: hidden;}
+    .auctionBar a{width: 20%;font-size: 14px;font-weight: normal;float: left;padding:0;box-sizing: border-box;border-width: 1px;height: 26px;line-height: 26px;text-align: center;}
+    .table{width: 1200px;}
+    #table{overflow: hidden;}
+    .stroeTitle,.storeList{width: 1200px;}
+    .proceNum a{display: none;}
+    .doveaucList{padding:20px 0 0;}
+
+    .username input, .password input{width:calc(100% - 6em - 7px);}
+    .doveLogin button{width: 48%;height: 26px;line-height: 26px;}
+    .remit{padding:14px 30px;}
+    .remit a{width: 48%;}
+
+    .instruction{padding: 15px;}
+    .instruction p{margin-top: 10px;}
+    .theme{width: 100%;}
+    .newtopic{width: 100%;}
+    .storeInfo{margin-bottom: 10px;margin-top:10px;border-bottom-width: 1px;}
+    .storeInfo dt{width: 28%;font-size: 14px;border-bottom: 1px solid #6b6b6b;}
+    .storeInfo dd{width: 72%;font-size: 14px;border-bottom: 1px solid #6b6b6b;}
+    .bdr{border-right: none;}
+
+    .goodsCon dt,.goodsCon dd{width: 100%;}
+    .mybid{margin: 15px auto;width: 95%;}
+}
