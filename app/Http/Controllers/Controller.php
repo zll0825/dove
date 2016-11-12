@@ -8,37 +8,73 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Dove;
 use App\News;
+use App\Order;
+use App\Buy;
+use App\Auction;
 
 abstract class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    //获取资讯
+    protected  function _getContent($label,$number){
+        $data = News::where('NewsLabel', $label)->take($number)->get();
+        return $data;
+    }
 
     //获取鸽子详情
     protected function _getDoveInfo($id){
         $data = Dove::where('DoveID', $id)->first();
         return $data;
     }
-
     //获取竞拍鸽子详情
     protected function _getAuctionDoveInfo($id){
         $data = Dove::join('T_D_AUCTION','T_D_DOVEINFO.DoveID','=','T_D_AUCTION.DoveID')->where('T_D_DOVEINFO.DoveID', $id)->first();
         return $data;
     }
 
-    //获取资讯
-    protected  function _getContent($categoryid,$number){
-        $data = News::where('CategoryID', $categoryid)->take($number)->get();
+    protected function getAuctionInfo($id){
+        $data = Auction::join('T_D_THEMEAUCTION','T_D_AUCTION.AuctionID','=','T_D_THEMEAUCTION.AuctionID')->join('T_D_DOVEINFO','T_D_DOVEINFO.DoveID','=','T_D_AUCTION.DoveID')->join('T_D_THEME','T_D_THEME.ThemeID','=','T_D_THEMEAUCTION.ThemeID')->where('T_D_AUCTION.AuctionID', $id)->get();
         return $data;
     }
 
-    //获取最新
-    protected  function _getNew($type, $number){
-        $data = Dove::join('T_D_AUCTION','T_D_DOVEINFO.DoveID','=','T_D_AUCTION.DoveID')->where('T_D_DOVEINFO.SaleType',$type)->orderBy('T_D_DOVEINFO.updated_at', 'desc')->take($number)->get();
+    protected function getAuctionProcess($id){
+        $data = Buy::join('users','users.userid','=','T_U_BUY.UserID')->where('AuctionID',$id)->orderBy('BuyID','desc')->get();
         return $data;
     }
 
-    protected  function _getHot($type, $number){
-        $data = Dove::join('T_D_AUCTION','T_D_DOVEINFO.DoveID','=','T_D_AUCTION.DoveID')->where('T_D_DOVEINFO.SaleType',$type)->orderBy('T_D_DOVEINFO.ViewCount', 'desc')->take($number)->get();
+    protected function getHighPrice($id){
+        $data = Buy::where(['AuctionID'=>$id,'Status'=>1])->pluck('Offer');
+        $data = @$data?$data:0;
+        return $data;
+    }
+
+    //获取出价次数
+    protected function getBuyCount($id){
+        $count = Buy::where('AuctionID', $id)->count();
+        return $count;
+    }
+
+    protected function getSaleOrder(){
+        $data = Order::join('users','T_U_ORDER.UserID','=','users.userid')
+            ->join('T_D_DOVEINFO', 'T_D_DOVEINFO.DoveID', '=', 'T_U_ORDER.DoveID')
+            ->where(['PayFlag'=>3,'OrderType'=>0])
+            ->orderBy('OrderID','desc')
+            ->take(8)
+            ->get();
+        return $data;
+    }
+
+    protected function getAuctionOrder(){
+        $data = Order::join('users','T_U_ORDER.UserID','=','users.userid')
+            ->join('T_D_AUCTION','T_D_AUCTION.AuctionID','=','T_U_ORDER.AuctionID')
+            ->join('T_D_THEMEAUCTION', 'T_D_AUCTION.AuctionID', '=', 'T_D_THEMEAUCTION.AuctionID')
+            ->join('T_D_THEME', 'T_D_THEME.ThemeID', '=', 'T_D_THEMEAUCTION.ThemeID')
+            ->join('T_D_DOVEINFO', 'T_D_DOVEINFO.DoveID', '=', 'T_D_AUCTION.DoveID')
+            ->where(['PayFlag'=>3,'OrderType'=>1])
+            ->orderBy('OrderID','desc')
+            ->take(8)
+            ->get();
         return $data;
     }
 
@@ -55,7 +91,7 @@ abstract class Controller extends BaseController
         $req = new \AlibabaAliqinFcSmsNumSendRequest;
         $req->setExtend("");//暂时不填
         $req->setSmsType("normal");//默认可用
-        $req->setSmsFreeSignName("注册验证");//设置短信免费符号名(需在阿里认证中有记录的)
+        $req->setSmsFreeSignName("长城鸽业");//设置短信免费符号名(需在阿里认证中有记录的)
         $req->setSmsParam("{\"code\":\"{$message}\"}");//设置短信参数
         $req->setRecNum($mobile);//设置接受手机号
         if($action == 'register'){

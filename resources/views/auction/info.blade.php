@@ -11,20 +11,20 @@
             <h2 class="goodsTitle"><span>商品信息</span></h2>
             <div class="goodsCon">
                 <dl>
-                    <dt>商品编号：<strong>463711</strong></dt>
+                    <dt>商品编号：<strong>{{$auction->DoveNumber}}</strong></dt>
                     <dd>数量：<strong>1羽</strong></dd>
-                    <dt>开拍时间：<strong>2016-10-31 22:00:00</strong></dt>
-                    <dd>结拍时间：<strong class="red f24">2016-11-10 22:00:00</strong></dd>
-                    <dt>当前时间：<strong class="red f24">2016-11-01 09:00:00</strong></dt>
+                    <dt>开拍时间：<strong>{{$auction->StartTime}}</strong></dt>
+                    <dd>结拍时间：<strong class="red f24">{{$auction->EndTime}}</strong></dd>
+                    <dt>当前时间：<strong class="red f24">{{date('Y-m-d H:i:s', time())}}</strong></dt>
                     <dd>血统书：查看大图</dd>
-                    <dt class="addPrice">加价幅度：<strong>200元</strong></dt>
-                    <dd class="moreDet"><span>详细介绍：</span>BELG2002-2326224雄，功勋老种鸽，子代、孙代发挥多羽，适合300-700公里坚难赛事，好鸽子，不多介绍。鸽子中大体型，质量高级，体质极佳，状态良好，春季仍能正常作育子代，偶尔出现无精，特价商品，换地不保作育，不提供血统书，介意勿拍，谢谢！BELG2002-2326224雄，功勋老种鸽，子代、孙代发挥多羽，适合300-700公里坚难赛事，好鸽子，不多介绍。鸽子中大体型，质量高级，体质极佳，状态良好，春季仍能正常作育子代，偶尔出现无精，特价商品，换地不保作育、</dd>
+                    <dt class="addPrice">加价幅度：<strong>{{$auction->AddPrice}}元</strong></dt>
+                    <dd class="moreDet"><span>详细介绍：</span>{!!$auction->DoveIntro!!}</dd>
                 </dl>
             </div>
         </div>
     </div> 
     <div class="section buyerInfo">
-        <h3 class="process">竞标过程<span>（共4次出价）</span></h3>
+        <h3 class="process">竞标过程<span>（共{{$auction->OfferCount}}次出价）</span></h3>
         <div class="swiper-container" id="table">
             <div class="swiper-wrapper table">
                 <div class="swiper-slide">
@@ -36,20 +36,22 @@
                     </div>
                     <div class="buyerList">
                         <ul>
+                            @foreach($processs as $process)
                             <li>
                                 <a href="javascript:;">
-                                    <span class="wd1">ab198</span>
-                                    <span class="wd2">¥ <em class="red">290</em>元</span>
-                                    <span class="wd3">2016-11-01 12:01:21</span>
-                                    <span class="wd4">领先</span>
+                                    <span class="wd1">{{$process->username}}</span>
+                                    <span class="wd2">¥ <em class="red">{{$process->Offer}}</em>元</span>
+                                    <span class="wd3">{{$process->created_at}}</span>
+                                    <span class="wd4">@if($process->Status == 0)出局@elseif($process->Status == 1)领先@endif</span>
                                 </a>
                             </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <a href="javascript:;" class="mybid">我要竞拍</a>
+        <a href="javascript:;" class="mybid" id="iwillauction">我要竞拍</a>
         <div class="transfer">
             <h3 class="process">运输及特别提示</h3>
             <div class="transferCon">
@@ -102,6 +104,60 @@
             slidesPerView: 'auto',
             freeMode: true
         })
+
+
     })
+    @if(Request::user())
+
+    $('#iwillauction').click(function(){
+        layer.open({
+            type: 1,
+            class: 'offerprice',
+//            area: ['500px'], //宽高
+            content: "<div class='inps'><div>请输入价格：<input type='number' id='offer'/></div><div>加价幅度：<span id='addprice'>{{$auction->AddPrice}}</span></div><div>当前最高出价：<span id='highprice'>{{$highprice}}</span></div></div>",
+            btn: ['确定','取消'], btn1:function(){
+                var offer = $('#offer').val() ? parseInt($('#offer').val()) : '';
+                var addprice = parseInt($('#addprice').html());
+                var highprice = parseInt($('#highprice').html());
+                if(offer == '' || offer <= (addprice+highprice)){
+                    layer.msg('请正确出价，至少等于当前最高价加上最少加价幅度！');
+                    return false;
+                }else {
+                    $.ajax({
+                        url: "{{url('/offerprice')}}",
+                        type: "POST",
+                        dataType: "json",
+                        data: { 'userid' : "{{Request::user()->userid}}", "auctionid" : "{{$auction->AuctionID}}", "offer" : offer, "_token" : "{{csrf_token()}}"},
+                        error: function(){
+                            layer.alert('异常，请刷新重试！');
+                        },
+                        success: function(json){
+                            if(json.status_code == "200"){
+                                layer.confirm('出价成功', {
+                                    btn: ['确定'] //按钮
+                                }, function(){
+                                    window.location.reload();
+                                });
+                            }else if(json.status_code == "409"){
+                                layer.alert('出价失败，请稍候重试！');
+                            }
+                        }
+                    })
+                }
+            }, close:function(){
+
+            }});
+    });
+    @else
+        $('#iwillauction').click(function(){
+            layer.open({
+                type: 2,
+                closeBtn: 1,
+                title: null,
+                area: ['300px','332px'],
+                content: "{{url('/register')}}",
+            });
+        })
+    @endif
 </script>
 @endsection('js')

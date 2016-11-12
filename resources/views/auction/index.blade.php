@@ -14,12 +14,9 @@
                     <h2 class="noteTitle"><i class="iconfont">&#xe617;</i>公告<span class="calendar">2016年10月20日</span><span>星期四</span></h2>
                     <div class="notelist">
                         <ul>
-                            <li class="major"><a href="javascript:;">航空运费变更通知</a></li>
-                            <li class="major"><a href="javascript:;">航空运费变更通知</a></li>
-                            <li><a href="javascript:;">第二百五十八期发货时间定为春</a></li>
-                            <li><a href="javascript:;">第二百五十八期发货时间定为春</a></li>
-                            <li><a href="javascript:;">第二百五十八期发货时间定为春</a></li>
-                            <li><a href="javascript:;">第二百五十八期发货时间定为春</a></li>
+                            @foreach($notices as $notice)
+                                <li class="major"><a href="{{url('/news/'.$notice->NewsID)}}">{{$notice->NewsTitle}}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -44,13 +41,13 @@
                     <h2 class="noteTitle"><span class="online">在线拍鸽会员登录</span></h2>
                     @if(!Request::user())
                     <div class="onlineDove">
-                        <p class="username"><label for="" class="red">会员名：</label><input type="text" /></p>
+                        <p class="username"><label for="" class="red">手机号：</label><input type="text" id="phonenumber"/></p>
                         <div class="prompt1"></div>
-                        <p class="password"><label for="" class="red">密<em>码</em>：</label><input type="password" /></p>
+                        <p class="password"><label for="" class="red">密<em>码</em>：</label><input type="password" id="password"/></p>
                         <div class="prompt2"></div>
                         <div class="doveLogin">
                             <button class="login">登录</button>
-                            <button class="register">注册</button>
+                            <button class="register" id="zhuce">注册</button>
                         </div>
                     </div>
                     @else
@@ -75,46 +72,18 @@
                     <h4 class="auctionH4"><a href="javascript:;">拍卖列表</a></h4>
                     <div class="auctionList">
                         <ul>
+                            @foreach($auctions as $auction)
                             <li>
-                                <a href="javascript:;" class="aucLink">
+                                <a href="{{url('/auction/'.$auction->AuctionID)}}" class="aucLink">
                                     <span class="auctionImg"><img src="/img/zhanwei.png" /></span>
                                     <div class="auctionRight fl clearfix">
-                                        <span class="periods">中国长城鸽业—网络拍卖2016秋季网拍26期&nbsp;&nbsp;总第109期</span>
-                                        <div class="sale">10月27日结拍<span>出价：<strong class="red">25</strong> 次</span></div>
-                                        <span class="remaining">剩&nbsp;<strong class="red">5</strong>&nbsp;天</span>
+                                        <span class="periods">{{$auction->ThemeName}}</span>
+                                        <div class="sale">{{$auction->EndTime}}结拍<span>出价：<strong class="red">{{$auction->OfferCount}}</strong> 次</span></div>
+                                        <span class="remaining">剩&nbsp;<strong class="red">{{$auction->EndDays}}</strong>&nbsp;天</span>
                                     </div>
                                 </a>
                             </li>
-                            <li>
-                                <a href="javascript:;" class="aucLink">
-                                    <span class="auctionImg"><img src="/img/zhanwei.png" /></span>
-                                    <div class="auctionRight fl clearfix">
-                                        <span class="periods">中国长城鸽业—网络拍卖2016秋季网拍26期&nbsp;&nbsp;总第109期</span>
-                                        <div class="sale">10月27日结拍<span>出价：<strong class="orange">25</strong> 次</span></div>
-                                        <span class="remaining">剩&nbsp;<strong class="orange">5</strong>&nbsp;天</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:;" class="aucLink">
-                                    <span class="auctionImg"><img src="/img/zhanwei.png" /></span>
-                                    <div class="auctionRight fl clearfix">
-                                        <span class="periods">中国长城鸽业—网络拍卖2016秋季网拍26期&nbsp;&nbsp;总第109期</span>
-                                        <div class="sale">10月27日结拍<span>出价：<strong class="red">25</strong> 次</span></div>
-                                        <span class="remaining">剩&nbsp;<strong class="red">5</strong>&nbsp;天</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:;" class="aucLink">
-                                    <span class="auctionImg"><img src="/img/zhanwei.png" /></span>
-                                    <div class="auctionRight fl clearfix">
-                                        <span class="periods">中国长城鸽业—网络拍卖2016秋季网拍26期&nbsp;&nbsp;总第109期</span>
-                                        <div class="sale">10月27日结拍<span>出价：<strong class="orange">25</strong> 次</span></div>
-                                        <span class="remaining">剩&nbsp;<strong class="orange">5</strong>&nbsp;天</span>
-                                    </div>
-                                </a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -147,29 +116,19 @@
                         <div class="storeList">
                             <div class="storeCon">
                                 <ul class="storeUl">
+                                    @foreach($latests as $latest)
                                     <li>
-                                        <a href="javascript:;">
+                                        <a href="{{url('/auction/'.$latest->AuctionID)}}">
                                             <span class="w1"><img src="/img/zhanwei.png" /></span>
-                                            <span class="w2">43758</span>
-                                            <span class="w3"><em>【年青超級克拉克】</em></span>
-                                            <span class="w4 red f18">290</span>
-                                            <span class="w5 red f18">290</span>
-                                            <span class="w6">共 0 次出价<em class="noWei">浏览：25次</em></span>
-                                            <span class="w7">剩 <em class="f18">5</em> 天</span>
+                                            <span class="w2">{{$latest->DoveNumber}}</span>
+                                            <span class="w3"><em>{{$latest->DoveName}}</em></span>
+                                            <span class="w4 red f18">{{$latest->StartPrice}}</span>
+                                            <span class="w5 red f18">{{$latest->HighPrice}}</span>
+                                            <span class="w6">共 {{$latest->OfferCount}} 次出价<em class="noWei">浏览：{{$latest->ViewCount}}次</em></span>
+                                            <span class="w7">剩 <em class="f18">{{$latest->EndDays}}</em> 天</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <span class="w1"><img src="/img/zhanwei.png" /></span>
-                                            <span class="w2">43758</span>
-                                            <span class="w3"><em>【年青超級克拉克】</em></span>
-                                            <span class="w4 red f18">290</span>
-                                            <span class="w5 red f18">290</span>
-                                            <span class="w6">共 0 次出价<em class="noWei">浏览：25次</em></span>
-                                            <span class="w7">剩 <em class="f18">5</em> 天</span>
-                                        </a>
-                                    </li>
-                                </ul>
+                                    @endforeach
                             </div>
                         </div>
                     </div>
@@ -215,6 +174,52 @@
             slidesPerView: 'auto',
             freeMode: true
         })
+    })
+    $('#zhuce').click(function(){
+        layer.open({
+            type: 2,
+            closeBtn: 1,
+            title: null,
+            area: ['300px','435px'],
+            content: "{{url('/register')}}",
+
+        });
+    })
+    $('#denglu').click(function(){
+        var phonenumber = $("#phonenumber").val();
+        if(!(/^1[3|4|5|7|8]\d{9}$/.test(phonenumber))||$(this).val==''){
+            $('.prompt1').html('手机号或用户名不能为空或者输入错误！');
+            return false;
+        }else{
+            $('.prompt1').html('');
+        }
+        var password = $("#password").val();
+        if(!(/^[a-zA-Z0-9_-]{6,18}$/).test(password)){
+            $('.prompt2').html('密码只能输入6-18位的数字或者字母!');
+            return false;
+        }else{
+            $('.prompt2').html('');
+        }
+
+        $(this).val('登录中...');
+        $.ajax({
+            url:"{{url('/auth/login')}}",
+            type:"POST",
+            data:"phonenumber=" + phonenumber + "&password=" + password  + "&_token={{csrf_token()}}",
+            dataType:'json',
+            error:function(e){
+                layer.alert('帐号或者密码不正确！');
+            },
+            success:function(msg){
+                if(msg.status_code == "200"){
+                    var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                    parent.window.location.reload();
+                    parent.layer.close(index);
+                } else {
+                    layer.alert('帐号或者密码不正确！');
+                }
+            }
+        });
     })
 </script>
 @endsection('js')

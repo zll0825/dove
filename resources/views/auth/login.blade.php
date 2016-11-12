@@ -33,48 +33,31 @@
         </div>
     </div>
     <script type="text/javascript">
-        $(function(){
-//            $('.userInp').blur(function() {
-//                var phonetext = $(this).val();
-//                if(!(/^1[3|4|5|7|8]\d{9}$/.test(phonetext))||$(this).val==''){
-//                    $('.prompt1').html('手机号或用户名不能为空或者输入错误！');
-//                }else{
-//                    $('.prompt1').html('');
-//                }
-//            });
-//
-//            $('.pwdInp').blur(function() {
-//                var pwdtext = $(this).val();
-//                if(!(/^[a-zA-Z0-9_-]{6,18}$/).test(pwdtext)){
-//                    $('.prompt2').html('密码只能输入6-18位的数字或者字母!');
-//                }else{
-//                    $('.prompt2').html('');
-//                }
-//            });
-//
-//            $('.btnLog').click(function() {
-//                var phonetext = $('.userInp').val();
-//                var pwdtext = $('.pwdInp').val();
-//                $(this).html('登录中');
-//            });
-        })
-
-
 
         $('#pub').click(function(){
             var phonenumber = $(".userInp").val();
+            if(!(/^1[3|4|5|7|8]\d{9}$/.test(phonenumber))||$(this).val==''){
+                $('.prompt1').html('手机号或用户名不能为空或者输入错误！');
+                return false;
+            }else{
+                $('.prompt1').html('');
+            }
             var password = $(".pwdInp").val();
+            if(!(/^[a-zA-Z0-9_-]{6,18}$/).test(password)){
+                $('.prompt2').html('密码只能输入6-18位的数字或者字母!');
+                return false;
+            }else{
+                $('.prompt2').html('');
+            }
 
-            // $(this).prop('disabled',true);
             $(this).val('登录中...');
             $.ajax({
-                url:"http://dove.com/auth/login",
-                // url:"http://api.ziyawang.com/v1/auth/login",
+                url:"{{url('/auth/login')}}",
                 type:"POST",
                 data:"phonenumber=" + phonenumber + "&password=" + password  + "&_token={{csrf_token()}}",
                 dataType:'json',
                 error:function(e){
-                    alert('登录异常，请稍后重试！');
+                    layer.alert('帐号或者密码不正确！');
                 },
                 success:function(msg){
                     if(msg.status_code == "200"){
@@ -82,7 +65,7 @@
                         parent.window.location.reload();
                         parent.layer.close(index);
                     } else {
-                        alert('帐号或者密码不正确');
+                        layer.alert('帐号或者密码不正确！');
                     }
                 }
             });
@@ -95,7 +78,7 @@
                 closeBtn: 1,
                 title: null,
                 area: ['300px','435px'],
-                content: 'http://dove.com/register', 
+                content: '{{url('/register')}}',
             }); 
             parent.layer.close(index);
         })

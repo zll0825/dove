@@ -13,8 +13,8 @@
                 <ul class="bedoveList">
                     @foreach($doves as $dove)
                     <li>
-                        <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                        <a href="javascript:;" class="name mt8">{{$dove->DoveName}}</a>
+                        <a href="{{url('/sale/'.$dove->DoveID)}}" class="pink"><img src="/img/zhanwei.png" /></a>
+                        <a href="{{url('/sale/'.$dove->DoveID)}}" class="name mt8">{{$dove->DoveName}}</a>
                         <span class="origin">北京李记种赛鸽中心</span>
                         <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：{{$dove->ViewCount}}</span>
                         <span class="primecost">原价：<s>10000</s>元</span>
@@ -37,13 +37,9 @@
                 </div>
                 <div class="pleBottom">
                     <ul>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
+                        @foreach($latestsales as $latestsale)
+                            <li><a href="{{url('/sale/'.$latestsale->DoveID)}}"><span class="dove">{{$latestsale->DoveName}}</span><span class="bid">已被（{{substr_replace('*',$latestsales->username,1)}}）得标</span></a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

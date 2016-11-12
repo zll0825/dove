@@ -12,27 +12,26 @@
             <h2 class="proTitle"><span>特价两周&nbsp;&nbsp;{{$dove->DoveName}}</span></h2>
             <div class="proImg">
                 <img src="/img/zhanwei2.png" />
-                <img src="/img/desktop.jpg" />
             </div>
             <div class="feature">
                 <h3 class="h20">信鸽特征</h3>
                 <dl class="featureCon">
                     <dt><b>编<em>号</em>：</b>{{$dove->DoveNumber}}</dt>
-                    <dd><b>环<em>号</em>：</b>B11-6167246</dd>
-                    <dt><b>鸽<em>名</em>：</b>利奥.贺尔曼斯盖兰托斯直子X欧元直女</dt>
-                    <dd><b>性<em>别</em>：</b>雌</dd>
-                    <dt><b>羽<em>色</em>：</b>雨点</dt>
-                    <dd><b>目<em>录</em>：</b>利奥.赫尔曼斯 原舍种鸽</dd>
-                    <dt><b>眼<em>砂</em>：</b>砂眼</dt>
+                    <dd><b>环<em>号</em>：</b>{{$dove->DoveRing}}</dd>
+                    <dt><b>鸽<em>名</em>：</b>{{$dove->DoveName}}</dt>
+                    <dd><b>性<em>别</em>：</b>{{$dove->DoveSex}}</dd>
+                    <dt><b>羽<em>色</em>：</b>{{$dove->DoveColor}}</dt>
+                    <dd><b>目<em>录</em>：</b>{{$dove->DoveIndex}}</dd>
+                    <dt><b>眼<em>砂</em>：</b>{{$dove->DoveEye}}</dt>
                     <dd><b>人<em>气</em>：</b><strong class="red f20">{{$dove->ViewCount}}</strong>次</dd>
                     <dt><b>数<em>量</em>：</b><strong class="green f20">1</strong></dt>
-                    <dd><b>血<em>统</em>：</b>利奥.贺尔曼斯</dd>
-                    <dt><b>价<em>格</em>：</b>￥<strong class="red f24">20,000</strong></dt>
+                    <dd><b>血<em>统</em>：</b>{{$dove->DoveBlood}}</dd>
+                    <dt><b>价<em>格</em>：</b>￥<strong class="red f24">{{$dove->OriginPrice}}</strong></dt>
                     <dd><b>会员价：</b>￥<strong class="red f24">{{$dove->DovePrice}}</strong></dd>
                 </dl>
                 <div class="btnBox">
-                    <a href="javascript:;" class="btnCar"><span><i class="iconfont">&#xe689;</i>加入购物车</span></a>
-                    <a href="javascript:;" class="btnBuy"><span><i class="iconfont">&#xe622;</i>立即购买</span></a>
+                    <a href="javascript:;" class="btnCar" id="addcart"><span><i class="iconfont">&#xe689;</i>加入购物车</span></a>
+                    <a href="javascript:;" class="btnBuy" id="buynow"><span><i class="iconfont">&#xe622;</i>立即购买</span></a>
                 </div>
             </div>
             <div class="introduce">
@@ -254,8 +253,66 @@
             freeMode: true
         })
 
-
-        
     })
+    @if(Request::user())
+
+    $('#addcart').click(function(){
+        layer.confirm('确定加入购物车吗？', {icon: 3, title:'提示'}, function(index){
+            $.ajax({
+                url: "{{url('/addcart')}}",
+                type: "POST",
+                dataType: "json",
+                data: { 'userid' : "{{Request::user()->userid}}", "doveid" : "{{$doveid}}", "_token" : "{{csrf_token()}}"},
+                error: function(){
+                    layer.alert('异常，请刷新重试！');
+                },
+                success: function(json){
+                    if(json.status_code == "200"){
+                        layer.alert('加入购物车成功！');
+                    }else if(json.status_code == "409"){
+                        layer.alert('加入购物车失败，请稍候重试！');
+                    }else if(json.status_code == "404"){
+                        layer.alert('您已经购买过了，请到个人中心查看！');
+                    }
+                }
+            })
+            layer.close(index);
+        });
+    })
+
+    $('#buynow').click(function(){
+        layer.confirm('确定购买吗？', {icon: 3, title:'提示'}, function(index){
+            $.ajax({
+                url: "{{url('/purchase')}}",
+                type: "POST",
+                dataType: "json",
+                data: { 'userid' : "{{Request::user()->userid}}", "doveid" : "{{$doveid}}", "_token" : "{{csrf_token()}}"},
+                error: function(){
+                    layer.alert('异常，请刷新重试！');
+                },
+                success: function(json){
+                    if(json.status_code == "200"){
+                        layer.alert('购买成功，请及时付款，并且到个人中心上传付款凭证！');
+                    }else if(json.status_code == "409"){
+                        layer.alert('购买失败，请稍候重试！');
+                    }else if(json.status_code == "404"){
+                        layer.alert('您已经购买过了，请到个人中心查看！');
+                    }
+                }
+            })
+            layer.close(index);
+        });
+    })
+    @else
+        $('#buynow,#addcart').click(function(){
+            layer.open({
+                type: 2,
+                closeBtn: 1,
+                title: null,
+                area: ['300px','332px'],
+                content: "{{url('/register')}}",
+            });
+        })
+    @endif
 </script>
 @endsection('js')

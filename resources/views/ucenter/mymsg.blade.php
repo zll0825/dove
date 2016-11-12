@@ -20,30 +20,28 @@
 		</div>
 		<!-- public usercenter ／ end -->
 		<div class="fr system">
+			<div class="firstTitle">
+				<input class="all check check_all" type="checkbox" id="checkAll">
+				<button class="sign_read">标记所选为已读</button>
+				<button class="empty" id="delete">删除所选</button>
+				<span class="sys_time">时 间</span>
+			</div>
 			<ul>
-				<li class="firstTitle">
-					<span class="w30">信息日期</span><span class="w70">内容详情</span>
-				</li>
+				@foreach($messages as $message)
 				<li>
-					<span class="w30">2016-10-31 10:00:00</span>
-					<a href="javascript:;" class="w70">在实际成本好几个大扫除富商大贾房产税的后果出事故调查</a>
+					<div class="present">
+						<span class="td_check"><input type="checkbox" class="msgbox"></span>
+						<span class="td_email
+						@if($message->Status == 1)
+							read
+						@else
+						@endif"></span>
+						<span class="td_title" TextID="{{$message->TextID}}">{{$message->Title}}</span>
+						<span class="td_time">{{$message->created_at}}</span>
+					</div>
+					<div class="system_details">{{$message->Text}}</div>
 				</li>
-				<li>
-					<span class="w30">2016-10-31 10:00:00</span>
-					<a href="javascript:;" class="w70">在实际成本好几个大扫除富商大贾房产税的后果出事故调查</a>
-				</li>
-				<li>
-					<span class="w30">2016-10-31 10:00:00</span>
-					<a href="javascript:;" class="w70">在实际成本好几个大扫除富商大贾房产税的后果出事故调查</a>
-				</li>
-				<li>
-					<span class="w30">2016-10-31 10:00:00</span>
-					<a href="javascript:;" class="w70">在实际成本好几个大扫除富商大贾房产税的后果出事故调查</a>
-				</li>
-				<li>
-					<span class="w30">2016-10-31 10:00:00</span>
-					<a href="javascript:;" class="w70">在实际成本好几个大扫除富商大贾房产税的后果出事故调查</a>
-				</li>
+				@endforeach
 			</ul>
 		</div>
 	</div>
@@ -52,7 +50,59 @@
 @section('js')
 <script type="text/javascript">
 	$(function(){
-        $("#Pagination").pagination("15");
+		$('.td_title').click(function() {
+			var TextID = $(this).attr('TextID');
+			if(!$(this).hasClass('read')){
+				$.ajax({
+					url: "{{url('/readmsg')}}",
+					type: 'POST',
+					data: {'TextID':TextID,'userid':"{{Request::user()->userid}}"},
+					dataType: 'json',
+					success: function(msg){
+						// console.log(msg);
+					}
+				});
+			}
+			$(this).prev().addClass('read');
+			$(this).parent().next().slideToggle('fast');
+		});
+
+		$('#delete').click(function(){
+			var check = $('.msgbox:checked');
+			var TextID = [];
+			for (var i = check.length - 1; i >= 0; i--) {
+				TextID[i] = check[i].value;
+			};
+
+			$.ajax({
+				url: "{{url('/delmsg')}}",
+				type: 'POST',
+				data: {'TextID':TextID,'userid':"{{Request::user()->userid}}"},
+				dataType: 'json',
+				success: function(msg){
+					// console.log(msg);
+					// for (var i = check.length - 1; i >= 0; i--) {
+					//     check[i].closest('li').remove();
+					// };
+					// var counts = $('#counts').html();
+					// counts = counts - check.length;
+					// $('#counts').html(counts);
+					window.location.reload();
+				}
+			});
+		})
+
+		$('#checkAll').click(function(){
+			var state = parseInt($(this).attr('state')); //0是全选1是取消
+			if(state == 0){
+				$(".msgbox").prop("checked", false);
+				$(this).attr('state', '1');
+			} else {
+				$(".msgbox").prop("checked", true);
+				$(this).attr('state', '0');
+			}
+		})
+
         $('#nav li').click(function(event) {
             var ind = $(this).index();
             var win = $(window).width();
@@ -77,4 +127,4 @@
         })
     })
 </script>
-@section('js')
+@endsection

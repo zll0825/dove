@@ -15,7 +15,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('/iconfont/iconfont.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('/css/public.css')}}" />
     <link rel="stylesheet" type="text/css" href="{{asset('/css/logreg.css')}}" />
-    <script type="text/javascript" src="{{asset('/js/jquery.min.js')}}"></script> 
+    <script type="text/javascript" src="{{asset('/js/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/org/layer/layer.js')}}"></script>
 </head>
 <body>
     <div class="canvas"><canvas id="myCanvas"></canvas></div>
@@ -93,20 +94,20 @@ $('.getVer').click(function(){
     }
 
     $.ajax({
-        url:"http://dove.com/smscode",
+        url:"{{url('/smscode')}}",
         type:"POST",
         data:"phonenumber=" + phonenumber + "&action=register&_token={{csrf_token()}}",
         dataType:"json",
         success:function(msg){
             if(msg.status_code == 405){
-                alert('号码已经注册！');
+                layer.alert('号码已经注册！');
             }
             if(msg.status_code == '503'){
-                alert('发送验证码失败，请稍候重试');
+                layer.alert('发送验证码失败，请稍候重试');
             }
             if(msg.status_code == 200){
                 $(".get_test").attr('disabled',true);
-                alert('发送验证码成功！');
+                layer.alert('发送验证码成功！');
                 time();
             }
         }
@@ -120,39 +121,39 @@ $('#pub').click(function(){
     var smscode = $(".verifyInp").val();
 
     if( phonenumber == '' || phonenumber.length != 11){
-        alert('请填写正确的手机号码！');
+        layer.alert('请填写正确的手机号码！');
         return false;
     }
 
     if( password == ''){
-        alert('请填写正确的密码！');
+        layer.alert('请填写正确的密码！');
         return false;
     }
 
     if( password.length < 6 ){
-        alert('密码长度为6-16位！')
+        layer.alert('密码长度为6-16位！')
         return false;
     }
 
     if(smscode == ''){
-        alert('请填写正确的验证码！')
+        layer.alert('请填写正确的验证码！')
         return false;
     }
 
     $(this).val('注册中...');
 
     $.ajax({
-        url:"http://dove.com/auth/register",
+        url:"{{url('/auth/register')}}",
         type:"POST",
         data:"phonenumber=" + phonenumber + "&username=" + username + "&password=" + password + "&smscode=" + smscode + "&_token={{csrf_token()}}" ,
         dataType:'json',
         error:function(e){
-            alert('注册异常，请刷新重试！');
+            layer.alert('注册异常，请刷新重试！');
         },
         success:function(msg){
             // console.log(msg);
             if(msg.status_code == '402'){
-                alert('验证码不正确，请稍后输入');
+                layer.alert('验证码不正确，请稍后输入');
                 $('#register').val('注册');
                 return false;
             } else if(msg.status_code == '200'){
@@ -172,7 +173,7 @@ $('#pub').click(function(){
                 closeBtn: 1,
                 title: null,
                 area: ['300px','332px'],
-                content: 'http://dove.com/login', 
+                content: "{{url('/login')}}",
             }); 
             parent.layer.close(index);
         })

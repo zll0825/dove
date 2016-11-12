@@ -22,181 +22,44 @@
 			<div class="swiper-container mb" id="table1">
                 <div class="swiper-wrapper table">
                     <div class="swiper-slide">
-                        <div class="buyTitle">未付款</div>
+                        <div class="buyTitle">购买记录</div>
                         <div class="bidList">
                             <ul class="bidUl">
+                                @foreach($orders as $order)
                                 <li>
                                     <a href="javascript:;" class="bidImg"><img src="/img/zhanwei.png" /></a>
                                     <a href="javascript:;" class="information fl">
-                                    	<span class="s1"><strong>亚军枭雄</strong></span>
-                                    	<span class="s2"><em>北京李记种赛鸽中心</em></span>
-                                    	<span class="red s3"><i class="iconfont">&#xe63b;</i>人气：365</span>
+                                    	<span class="s1"><strong>{{$order->DoveName}}</strong></span>
+                                    	<span class="s2"><em>{{$order->DoveIndex}}</em></span>
+                                    	<span class="red s3"><i class="iconfont">&#xe63b;</i>人气：{{$order->ViewCount}}</span>
                                     	<div class="cost fl">
-                                    		<span class="s4">原价：<s>10000</s>元</span>
-                                    		<strong>优惠价：<span class="red">8000</span>元</strong>
-                                    	</div>	
+                                    		<span class="s4">原价：<s>{{$order->OriginPrice}}</s>元</span>
+                                    		<strong>优惠价：<span class="red">{{$order->DovePrice}}</span>元</strong>
+                                    	</div>
                                     </a>
                                     <div class="payfor fl">
-                                    	<a href="javascript:;" class="nopay">立即购买</a>
-                                    	<span class="payInfo">已加入购物车</span>
+                                        @if($order->PayFlag == 0)
+                                            <a href="javascript:;" class="nopay">立即购买</a>
+                                            <span class="payInfo">已加入购物车</span>
+                                        @elseif($order->PayFlag == 1)
+                                            <a href="javascript:;" class="nopay upCer">上传付款凭证</a>
+                                        <span class="payInfo">已购买，未上传付款凭证</span>
+                                        @elseif($order->PayFlag == 2)
+                                            <span class="paying">确认付款中…</span>
+                                        @elseif($order->PayFlag == 3)
+                                            <a href="javascript:;" class="nopay payed">已付款，等待发货</a>
+                                        @elseif($order->PayFlag == 4)
+                                            <a href="javascript:;" class="nopay upCer">上传付款凭证</a>
+                                            <span class="payInfo">审核不通过，请重新上传付款凭证</span>
+                                        @elseif($order->PayFlag == 5)
+                                            <a href="javascript:;" class="nopay sure">确认收货</a>
+                                            <span class="payInfo had">已发货</span>
+                                        @elseif($order->PayFlag == 6)
+                                            <a href="javascript:;" class="nopay payed">已收货</a>
+                                        @endif
                                     </div>
                                 </li>
-                                <li>
-                                    <a href="javascript:;" class="bidImg"><img src="/img/zhanwei.png" /></a>
-                                    <a href="javascript:;" class="information fl">
-                                    	<span class="s1"><strong>亚军枭雄</strong></span>
-                                    	<span class="s2"><em>北京李记种赛鸽中心</em></span>
-                                    	<span class="red s3"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                                    	<div class="cost fl">
-                                    		<span class="s4">原价：<s>10000</s>元</span>
-                                    		<strong>优惠价：<span class="red">8000</span>元</strong>
-                                    	</div>	
-                                    </a>
-                                    <div class="payfor fl">
-                                    	<a href="javascript:;" class="nopay upCer">上传付款凭证</a>
-                                    	<span class="payInfo">已购买，未上传付款凭证</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-container mb" id="table2">
-                <div class="swiper-wrapper table">
-                    <div class="swiper-slide">
-                        <div class="buyTitle">确认付款</div>
-                        <div class="bidList">
-                            <ul class="bidUl">
-                                <li>
-                                    <a href="javascript:;" class="bidImg"><img src="/img/zhanwei.png" /></a>
-                                    <a href="javascript:;" class="information fl">
-                                    	<span class="s1"><strong>亚军枭雄</strong></span>
-                                    	<span class="s2"><em>北京李记种赛鸽中心</em></span>
-                                    	<span class="red s3"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                                    	<div class="cost fl">
-                                    		<span class="s4">原价：<s>10000</s>元</span>
-                                    		<strong>优惠价：<span class="red">8000</span>元</strong>
-                                    	</div>	
-                                    </a>
-                                    <div class="payfor fl">
-                                    	<span class="paying">确认付款中…</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="javascript:;" class="bidImg"><img src="/img/zhanwei.png" /></a>
-                                    <a href="javascript:;" class="information fl">
-                                    	<span class="s1"><strong>亚军枭雄</strong></span>
-                                    	<span class="s2"><em>北京李记种赛鸽中心</em></span>
-                                    	<span class="red s3"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                                    	<div class="cost fl">
-                                    		<span class="s4">原价：<s>10000</s>元</span>
-                                    		<strong>优惠价：<span class="red">8000</span>元</strong>
-                                    	</div>	
-                                    </a>
-                                    <div class="payfor fl">
-                                    	<span class="paying">确认付款中…</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-container mb" id="table3">
-                <div class="swiper-wrapper table">
-                    <div class="swiper-slide">
-                        <div class="buyTitle">已付款</div>
-                        <div class="bidList">
-                            <ul class="bidUl">
-                                <li>
-                                    <a href="javascript:;" class="bidImg"><img src="/img/zhanwei.png" /></a>
-                                    <a href="javascript:;" class="information fl">
-                                    	<span class="s1"><strong>亚军枭雄</strong></span>
-                                    	<span class="s2"><em>北京李记种赛鸽中心</em></span>
-                                    	<span class="red s3"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                                    	<div class="cost fl">
-                                    		<span class="s4">原价：<s>10000</s>元</span>
-                                    		<strong>优惠价：<span class="red">8000</span>元</strong>
-                                    	</div>	
-                                    </a>
-                                    <div class="payfor fl">
-                                    	<a href="javascript:;" class="nopay payed">已付款</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="javascript:;" class="bidImg"><img src="/img/zhanwei.png" /></a>
-                                    <a href="javascript:;" class="information fl">
-                                    	<span class="s1"><strong>亚军枭雄</strong></span>
-                                    	<span class="s2"><em>北京李记种赛鸽中心</em></span>
-                                    	<span class="red s3"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                                    	<div class="cost fl">
-                                    		<span class="s4">原价：<s>10000</s>元</span>
-                                    		<strong>优惠价：<span class="red">8000</span>元</strong>
-                                    	</div>	
-                                    </a>
-                                    <div class="payfor fl">
-                                    	<a href="javascript:;" class="nopay payed">已付款</a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-container" id="table4">
-                <div class="swiper-wrapper table">
-                    <div class="swiper-slide">
-                        <div class="buyTitle">已发货</div>
-                        <div class="bidList">
-                            <ul class="bidUl">
-                                <li>
-                                    <a href="javascript:;" class="bidImg"><img src="/img/zhanwei.png" /></a>
-                                    <a href="javascript:;" class="information fl">
-                                    	<span class="s1"><strong>亚军枭雄</strong></span>
-                                    	<span class="s2"><em>北京李记种赛鸽中心</em></span>
-                                    	<span class="red s3"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                                    	<div class="cost fl">
-                                    		<span class="s4">原价：<s>10000</s>元</span>
-                                    		<strong>优惠价：<span class="red">8000</span>元</strong>
-                                    	</div>	
-                                    </a>
-                                    <div class="payfor fl">
-                                    	<a href="javascript:;" class="nopay sure">确认收货</a>
-                                    	<span class="payInfo had">已发货</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="javascript:;" class="bidImg"><img src="/img/zhanwei.png" /></a>
-                                    <a href="javascript:;" class="information fl">
-                                    	<span class="s1"><strong>亚军枭雄</strong></span>
-                                    	<span class="s2"><em>北京李记种赛鸽中心</em></span>
-                                    	<span class="red s3"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                                    	<div class="cost fl">
-                                    		<span class="s4">原价：<s>10000</s>元</span>
-                                    		<strong>优惠价：<span class="red">8000</span>元</strong>
-                                    	</div>	
-                                    </a>
-                                    <div class="payfor fl">
-                                    	<a href="javascript:;" class="nopay sure">确认收货</a>
-                                    	<span class="payInfo had">已发货</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="javascript:;" class="bidImg"><img src="/img/zhanwei.png" /></a>
-                                    <a href="javascript:;" class="information fl">
-                                        <span class="s1"><strong>亚军枭雄</strong></span>
-                                        <span class="s2"><em>北京李记种赛鸽中心</em></span>
-                                        <span class="red s3"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                                        <div class="cost fl">
-                                            <span class="s4">原价：<s>10000</s>元</span>
-                                            <strong>优惠价：<span class="red">8000</span>元</strong>
-                                        </div>  
-                                    </a>
-                                    <div class="payfor fl">
-                                        <a href="javascript:;" class="nopay payed">已收货</a>
-                                    </div>
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -249,5 +112,7 @@
             freeMode: true
         })
     })
+
+
 </script>
-@section('js')
+@endsection('js')

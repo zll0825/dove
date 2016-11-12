@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableTHEMEAUTION extends Migration
+class CreateTableTHEMEAUCTION extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateTableTHEMEAUTION extends Migration
      */
     public function up()
     {
-        Schema::create('T_D_THEMEAUTION', function (Blueprint $table) {
+        Schema::create('T_D_THEMEAUCTION', function (Blueprint $table) {
             $table->increments('ID')->comment('主键');
             $table->integer('ThemeID')->comment('主题ID');
             $table->integer('AuctionID')->comment('鸽子竞拍ID');
@@ -27,6 +27,6 @@ class CreateTableTHEMEAUTION extends Migration
      */
     public function down()
     {
-        Schema::drop('T_D_THEMEAUTION');
+        Schema::drop('T_D_THEMEAUCTION');
     }
 }

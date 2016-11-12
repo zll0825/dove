@@ -15,9 +15,9 @@ class CreateTableBUY extends Migration
         Schema::create('T_U_BUY', function (Blueprint $table) {
             $table->increments('BuyID')->comment('主键');
             $table->integer('UserID')->comment('用户ID');
-            $table->integer('DoveID')->comment('鸽子ID');
+            $table->integer('AuctionID')->comment('竞拍鸽子ID');
             $table->integer('Offer')->comment('拍卖出价');
-            $table->integer('Status')->comment('拍卖状态，0：落后，1：领先');
+            $table->integer('Status')->comment('拍卖状态，0：落后，1：领先')->default(1);
             $table->timestamps();
         });
     }

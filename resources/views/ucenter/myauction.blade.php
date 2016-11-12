@@ -25,56 +25,29 @@
                         <div class="bidTitle">我的竞拍</div>
                         <div class="bidList">
                             <ul class="bidUl">
+                                @foreach($auctions as $auction)
                                 <li>
                                     <a href="javascript:;" class="bidImg"><img src="/img/zhanwei.png" /></a>
                                     <a href="javascript:;" class="commer">
-                                    	<span class="w2">商品名称：<strong>亚军枭雄</strong></span>
-                                        <span class="w3">编号：<strong>43758</strong></span>
-                                        <span class="w4">起拍价：<strong>2000</strong>元</span>
+                                    	<span class="w2">商品名称：<strong>{{$auction->DoveName}}</strong></span>
+                                        <span class="w3">编号：<strong>{{$auction->DoveNumber}}</strong></span>
+                                        <span class="w4">起拍价：<strong>{{$auction->StartPrice}}</strong>元</span>
                                     </a>
                                     <a href="javascript:;" class="prices">
-                                    	<span class="w5">当前价：<strong class="f18">2000</strong>元</span>
-                                        <span class="w6">我的出价：<strong class="red f18">4000</strong>元</span>
-                                        <span class="w7">结拍日期：2016-11-10</span>
+                                    	<span class="w5">当前价：<strong class="f18">{{$auction->EndPrice}}</strong>元</span>
+                                        <span class="w6">我的出价：<strong class="red f18">{{$auction->Offer}}</strong>元</span>
+                                        <span class="w7">结拍日期：{{$auction->EndTime}}</span>
                                     </a>
                                     <div class="state">
-                                    	<a href="javascript:;" class="goon">继续出价</a>
+                                        @if($auction->Status == 1)
+                                        <span class="bidState">状态：领先</span>
+                                        @else
+                                    	<a href="{{url('/auction/'.$auction->AuctionID)}}" class="goon">继续出价</a>
                                     	<span class="bidState">状态：出局</span>
+                                        @endif
                                     </div>
                                 </li>
-                                <li>
-                                    <a href="javascript:;" class="bidImg"><img src="/img/zhanwei.png" /></a>
-                                    <a href="javascript:;" class="commer">
-                                    	<span class="w2">商品名称：<strong>亚军枭雄</strong></span>
-                                        <span class="w3">编号：<strong>43758</strong></span>
-                                        <span class="w4">起拍价：<strong>2000</strong>元</span>
-                                    </a>
-                                    <a href="javascript:;" class="prices">
-                                    	<span class="w5">当前价：<strong class="f18">2000</strong>元</span>
-                                        <span class="w6">我的出价：<strong class="red f18">4000</strong>元</span>
-                                        <span class="w7">结拍日期：2016-11-10</span>
-                                    </a>
-                                    <div class="state">
-                                    	<a href="javascript:;" class="goon">继续出价</a>
-                                    	<span class="bidState">状态：领先</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="javascript:;" class="bidImg"><img src="/img/zhanwei.png" /></a>
-                                    <a href="javascript:;" class="commer">
-                                    	<span class="w2">商品名称：<strong>亚军枭雄</strong></span>
-                                        <span class="w3">编号：<strong>43758</strong></span>
-                                        <span class="w4">起拍价：<strong>2000</strong>元</span>
-                                    </a>
-                                    <a href="javascript:;" class="prices">
-                                    	<span class="w5">当前价：<strong class="f18">2000</strong>元</span>
-                                        <span class="w6">我的出价：<strong class="red f18">4000</strong>元</span>
-                                        <span class="w7">结拍日期：2016-11-10</span>
-                                    </a>
-                                    <div class="state">
-                                    	<a href="javascript:;" class="goon pay">已付款</a>
-                                    </div>
-                                </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

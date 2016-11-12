@@ -40,16 +40,16 @@ class HelpController extends Controller
         // 获取验证码
         $randNum = $this->_randStr(6, 'NUMBER');
 
-        // 验证码存入缓存 10 分钟
-        $expiresAt = 20;
-
-        Cache::put($phonenumber, $randNum, $expiresAt);
-
         // 发送验证码短信
         $res = $this->_sendSms($phonenumber, $randNum, $action);
 
         // 发送结果
         if ($res) {
+            // 验证码存入缓存 10 分钟
+            $expiresAt = 20;
+
+            Cache::put($phonenumber, $randNum, $expiresAt);
+
             return json_encode(['status_code' => '200', 'msg' => 'Send Sms Success']);
         } else {
             return json_encode(['status_code' => '503', 'msg' => 'Send Sms Error']);
@@ -81,7 +81,7 @@ class HelpController extends Controller
     public function upload(){
         error_reporting(E_ALL | E_STRICT);
         // $upload_handler = new \App\UploadHandler();
-        $upload_handler = new \App\UploadHandler(['upload_dir'=>dirname(base_path()).'/doveupload/images/', 'upload_url'=>dirname(base_path()).'/ziyaupload/images/user/']);
+        $upload_handler = new \App\UploadHandler(['upload_dir'=>base_path().'/public/uploads/images/', 'upload_url'=>'http://dove.zerdream.com/uploads/images/']);
     }
 
 

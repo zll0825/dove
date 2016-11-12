@@ -37,12 +37,9 @@
                 </div>
                 <div class="pleBottom">
                     <ul>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
+                        @foreach($latestsales as $latestsale)
+                            <li><a href="{{url('/sale/'.$latestsale->DoveID)}}"><span class="dove">{{$latestsale->DoveName}}</span><span class="bid">已被（{{substr_replace('*',$latestsales->username,1)}}）得标</span></a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

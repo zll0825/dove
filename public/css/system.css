@@ -1,11 +1,21 @@
 
 .system{width: 920px;border: 1px solid #6b6b6b;font-size: 16px;}
-.firstTitle{background: #a6a6a6;}
-.system li{border-bottom: 1px solid #a6a6a6;height: 48px;line-height: 48px;overflow: hidden;}
-.system li span,.system li a{padding-left: 20px;}
+.firstTitle{background: #d2d2d2;padding-left: 20px;line-height: 48px;border-bottom: 1px solid #a6a6a6;}
+.firstTitle button{padding:0 3px;margin-left: 6px;}
+.system li{border-bottom: 1px solid #a6a6a6;line-height: 48px;}
+/*.system li span,.system li a{padding-left: 20px;}*/
 .system li .w30{width: 30%;display: block;float: left;border-right: 1px solid #8e8e8e;box-sizing: border-box;}
 .system li .w70{width: 70%;display: block;float: left;box-sizing: border-box;}
 .system li:last-child{border-bottom: none;}
+.present{overflow: hidden;}
+.sys_time{float: right;margin-right: 22px;}
+.td_check{float: left;margin-left: 20px;}
+.td_email{width: 36px;background: url(../img/email.png) no-repeat 11px -30px;display: block;float: left;height: 48px;}
+.read{background-position: 11px 11px;}
+.td_title{float: left;cursor:pointer;height: 48px;overflow: hidden;white-space: nowrap;display: block;width: 58%;text-overflow: ellipsis;}
+.td_title:hover,.td_title:hover a{color:#b70c04;}
+.td_time{float: right;margin-right: 20px;}
+.system_details{padding-left: 46px;padding-bottom: 5px;display: none;line-height: 28px;font-size: 14px;}
 
 .mybid{width: 920px;}
 .bidTitle{font-size: 18px;margin-top: 15px;padding-left: 10px;margin-bottom: 4px;}
@@ -87,8 +97,7 @@
 .helpCon p:last-child{margin-bottom: 0;}
 @media all and (max-width:750px){
 	.system{width: 100%;box-sizing: border-box;}
-	.system li{height: auto;line-height: 22px;font-size: 14px;}
-	.system li span,.system li a{padding-left: 5px;}
+	.system li{line-height: 48px;font-size: 16px;}
 	.table{width: 920px;}
 	.mybid{width: 100%;overflow: hidden;}
 	.upload{width: 100%;}

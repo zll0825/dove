@@ -14,13 +14,10 @@
 					<h2 class="noteTitle"><i class="iconfont">&#xe617;</i>公告<span class="calendar">2016年10月20日</span><span>星期四</span></h2>
 					<div class="notelist">
 						<ul>
-							<li class="major"><a href="javascript:;">航空运费变更通知</a></li>
-							<li class="major"><a href="javascript:;">航空运费变更通知</a></li>
-							<li><a href="javascript:;">第二百五十八期发货时间定为春</a></li>
-							<li><a href="javascript:;">第二百五十八期发货时间定为春</a></li>
-							<li><a href="javascript:;">第二百五十八期发货时间定为春</a></li>
-                            <li><a href="javascript:;">第二百五十八期发货时间定为春</a></li>
-						</ul>
+                            @foreach($notices as $notice)
+                            <li class="major"><a href="{{url('/news/'.$notice->NewsID)}}">{{$notice->NewsTitle}}</a></li>
+                            @endforeach
+                        </ul>
 						<!-- <a href="javascript:;" class="more red">更多>></a> -->
 					</div>
 				</div>
@@ -44,26 +41,18 @@
                     <h4 class="auctionH4"><a href="javascript:;">点击进入拍卖列表</a></h4>
                     <div class="auctionList">
                         <ul>
+                            @foreach($auctions as $auction)
                             <li>
-                                <a href="javascript:;" class="aucLink">
+                                <a href="{{url('/auction/'.$auction->AuctionID)}}" class="aucLink">
                                     <span class="auctionImg"><img src="/img/zhanwei.png" /></span>
                                     <div class="auctionRight fl clearfix">
-                                        <span class="periods">中国长城鸽业—网络拍卖2016秋季网拍26期&nbsp;&nbsp;总第109期</span>
-                                        <div class="sale">10月27日结拍<span>出价：<strong class="red">25</strong> 次</span></div>
-                                        <span class="remaining">剩&nbsp;<strong class="red">5</strong>&nbsp;天</span>
+                                        <span class="periods">{{$auction->ThemeName}}</span>
+                                        <div class="sale">{{$auction->EndTime}}结拍<span>出价：<strong class="red">{{$auction->OfferCount}}</strong> 次</span></div>
+                                        <span class="remaining">剩&nbsp;<strong class="red">{{$auction->EndDays}}</strong>&nbsp;天</span>
                                     </div>
                                 </a>
                             </li>
-                            <li>
-                                <a href="javascript:;" class="aucLink">
-                                    <span class="auctionImg"><img src="/img/zhanwei.png" /></span>
-                                    <div class="auctionRight fl clearfix">
-                                        <span class="periods">中国长城鸽业—网络拍卖2016秋季网拍26期&nbsp;&nbsp;总第109期</span>
-                                        <div class="sale">10月27日结拍<span>出价：<strong class="orange">25</strong> 次</span></div>
-                                        <span class="remaining">剩&nbsp;<strong class="orange">5</strong>&nbsp;天</span>
-                                    </div>
-                                </a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -79,12 +68,9 @@
             </div>
             <div class="pleBottom">
                 <ul>
-                    <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                    <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                    <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                    <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                    <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                    <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
+                    @foreach($latestauctions as $latestauction)
+                    <li><a href="javascript:;"><span class="dove">{{$latestauction->DoveName}}</span><span class="bid">已被（{{substr_replace('*',$latestauction->username,1)}}）得标</span></a></li>
+                    @endforeach
                 </ul>
             </div>
 		</div>
@@ -100,78 +86,16 @@
             <div class="fl sellList">
                 <h5 class="benefit">优惠鸽最新推荐<a href="javascript:;" class="more">更多>></a></h5>
                 <ul class="bedoveList">
+                    @foreach($sales as $sale)
                     <li>
-                        <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                        <a href="javascript:;" class="name mt8">亚军枭雄</a>
-                        <span class="origin">北京李记种赛鸽中心</span>
-                        <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                        <span class="primecost">原价：<s>10000</s>元</span>
-                        <span class="price">优惠价：<em class="red">8000</em>元</span>
-                        <a href="javascript:;" class="buy mt6">在线购买</a>
+                        <a href="{{url('/sale/'.$sale->DoveID)}}" class="pink"><img src="/img/zhanwei.png" /></a>
+                        <a href="{{url('/sale/'.$sale->DoveID)}}" class="name mt8">{{$sale->DoveName}}</a>
+                        <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：{{$sale->ViewCount}}</span>
+                        <span class="primecost">原价：<s>{{$sale->OriginPrice}}</s>元</span>
+                        <span class="price">优惠价：<em class="red">{{$sale->DovePrice}}</em>元</span>
+                        <a href="{{url('/sale/'.$sale->DoveID)}}" class="buy mt6">在线购买</a>
                     </li>
-                    <li>
-                        <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                        <a href="javascript:;" class="name mt8">亚军枭雄</a>
-                        <span class="origin">北京李记种赛鸽中心</span>
-                        <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                        <span class="primecost">原价：<s>10000</s>元</span>
-                        <span class="price">优惠价：<em class="red">8000</em>元</span>
-                        <a href="javascript:;" class="buy mt6">在线购买</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                        <a href="javascript:;" class="name mt8">亚军枭雄</a>
-                        <span class="origin">北京李记种赛鸽中心</span>
-                        <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                        <span class="primecost">原价：<s>10000</s>元</span>
-                        <span class="price">优惠价：<em class="red">8000</em>元</span>
-                        <a href="javascript:;" class="buy mt6">在线购买</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                        <a href="javascript:;" class="name mt8">亚军枭雄</a>
-                        <span class="origin">北京李记种赛鸽中心</span>
-                        <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                        <span class="primecost">原价：<s>10000</s>元</span>
-                        <span class="price">优惠价：<em class="red">8000</em>元</span>
-                        <a href="javascript:;" class="buy mt6">在线购买</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                        <a href="javascript:;" class="name mt8">亚军枭雄</a>
-                        <span class="origin">北京李记种赛鸽中心</span>
-                        <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                        <span class="primecost">原价：<s>10000</s>元</span>
-                        <span class="price">优惠价：<em class="red">8000</em>元</span>
-                        <a href="javascript:;" class="buy mt6">在线购买</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                        <a href="javascript:;" class="name mt8">亚军枭雄</a>
-                        <span class="origin">北京李记种赛鸽中心</span>
-                        <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                        <span class="primecost">原价：<s>10000</s>元</span>
-                        <span class="price">优惠价：<em class="red">8000</em>元</span>
-                        <a href="javascript:;" class="buy mt6">在线购买</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                        <a href="javascript:;" class="name mt8">亚军枭雄</a>
-                        <span class="origin">北京李记种赛鸽中心</span>
-                        <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                        <span class="primecost">原价：<s>10000</s>元</span>
-                        <span class="price">优惠价：<em class="red">8000</em>元</span>
-                        <a href="javascript:;" class="buy mt6">在线购买</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                        <a href="javascript:;" class="name mt8">亚军枭雄</a>
-                        <span class="origin">北京李记种赛鸽中心</span>
-                        <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                        <span class="primecost">原价：<s>10000</s>元</span>
-                        <span class="price">优惠价：<em class="red">8000</em>元</span>
-                        <a href="javascript:;" class="buy mt6">在线购买</a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="fr pledge sellRight">
@@ -183,12 +107,9 @@
                 </div>
                 <div class="pleBottom">
                     <ul>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
-                        <li><a href="javascript:;"><span class="dove">【109期】年轻克拉克近血</span><span class="bid">已被（郑**）得标</span></a></li>
+                        @foreach($latestsales as $latestsale)
+                        <li><a href="{{url('/sale/'.$latestsale->DoveID)}}"><span class="dove">{{$latestsale->DoveName}}</span><span class="bid">已被（{{substr_replace('*',$latestsales->username,1)}}）得标</span></a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -205,46 +126,15 @@
             <h5 class="benefit">推荐铭鸽<a href="javascript:;" class="more">更多>></a></h5>
             <div class="recommend">
                 <ul>
+                    @foreach($recommends as $recommend)
                     <li>
-                        <a href="javascript:;" class="recImg">
+                        <a href="{{url('/show/'.$recommend->DoveID)}}" class="recImg">
                             <span class="pink"><img src="/img/zhanwei.png" height="134" width="200" /></span>
-                            <p class="recName" href="javascript:;">亚军枭雄</p>
-                            <p class="recOrigin">博翔阁</p>
-                            <p class="recHot">人气：1280</p>
+                            <p class="recName" href="javascript:;">{{$recommend->DoveName}}</p>
+                            <p class="recHot">人气：{{$recommend->ViewCount}}</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="javascript:;" class="recImg">
-                            <span class="pink"><img src="/img/zhanwei.png" height="134" width="200" /></span>
-                            <p class="recName" href="javascript:;">亚军枭雄</p>
-                            <p class="recOrigin">博翔阁</p>
-                            <p class="recHot">人气：1280</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="recImg">
-                            <span class="pink"><img src="/img/zhanwei.png" height="134" width="200" /></span>
-                            <p class="recName" href="javascript:;">亚军枭雄</p>
-                            <p class="recOrigin">博翔阁</p>
-                            <p class="recHot">人气：1280</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="recImg">
-                            <span class="pink"><img src="/img/zhanwei.png" height="134" width="200" /></span>
-                            <p class="recName" href="javascript:;">亚军枭雄</p>
-                            <p class="recOrigin">博翔阁</p>
-                            <p class="recHot">人气：1280</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="recImg">
-                            <span class="pink"><img src="/img/zhanwei.png" height="134" width="200" /></span>
-                            <p class="recName" href="javascript:;">亚军枭雄</p>
-                            <p class="recOrigin">博翔阁</p>
-                            <p class="recHot">人气：1280</p>
-                        </a>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
@@ -255,23 +145,17 @@
         <div class="fl doveInfo">
             <div class="infoTitle"><span class="litTitle">赛鸽资讯</span><a href="javascript:;" class="more">更多>></a></div>
             <ul>
-                <li><a href="javascript:;">398羽勇士出征宁镇杨嘉峪关2000公里超远程</a><span class="time">2016-10-26</span></li>
-                <li><a href="javascript:;">398羽勇士出征宁镇杨嘉峪关2000公里超远程</a><span class="time">2016-10-26</span></li>
-                <li><a href="javascript:;">398羽勇士出征宁镇杨嘉峪关2000公里超远程</a><span class="time">2016-10-26</span></li>
-                <li><a href="javascript:;">398羽勇士出征宁镇杨嘉峪关2000公里超远程</a><span class="time">2016-10-26</span></li>
-                <li><a href="javascript:;">398羽勇士出征宁镇杨嘉峪关2000公里超远程</a><span class="time">2016-10-26</span></li>
-                <li><a href="javascript:;">398羽勇士出征宁镇杨嘉峪关2000公里超远程</a><span class="time">2016-10-26</span></li>
+                @foreach($infomations as $infomation)
+                <li><a href="{{url('/news/'.$infomation->NewsID)}}">{{$infomation->NewsTitle}}</a><span class="time">{{$infomation->PublishTime}}</span></li>
+                @endforeach
             </ul>
         </div>
         <div class="fr score">
-            <div class="infoTitle"><span class="litTitle">长城鸽业及支援鸽友最新赛绩</span><a href="javascript:;" class="more">更多>></a></div>
+            <div class="infoTitle"><span class="litTitle">鸽友之家</span><a href="javascript:;" class="more">更多>></a></div>
             <ul>
-                <li><a href="javascript:;">2004年北京爱亚卡普预赛10名、14名、32名、决赛季军</a><span class="person">河北鸽友刘芳使翔</span></li>
-                <li><a href="javascript:;">2004年北京爱亚卡普预赛10名、14名、32名、决赛季军</a><span class="person">河北鸽友刘芳使翔</span></li>
-                <li><a href="javascript:;">2004年北京爱亚卡普预赛10名、14名、32名、决赛季军</a><span class="person">河北鸽友刘芳使翔</span></li>
-                <li><a href="javascript:;">2004年北京爱亚卡普预赛10名、14名、32名、决赛季军</a><span class="person">河北鸽友刘芳使翔</span></li>
-                <li><a href="javascript:;">2004年北京爱亚卡普预赛10名、14名、32名、决赛季军</a><span class="person">河北鸽友刘芳使翔</span></li>
-                <li><a href="javascript:;">2004年北京爱亚卡普预赛10名、14名、32名、决赛季军</a><span class="person">河北鸽友刘芳使翔</span></li>
+                @foreach($homes as $home)
+                    <li><a href="{{url('/home/'.$home->NewsID)}}">{{$home->NewsTitle}}</a><span class="time">{{$home->PublishTime}}</span></li>
+                @endforeach
             </ul>
         </div>
     </div>

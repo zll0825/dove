@@ -46,7 +46,7 @@
                     <li id="sale"><a href="{{url('/sale')}}">定价展销</a></li>
                     <li id="show"><a href="{{url('/show')}}">长城铭哥</a></li>
                     <li id="news"><a href="{{url('/news')}}">赛鸽资讯</a></li>
-                    <li id="ucenter"><a href="{{url('/ucenter/index')}}">鸽友之家</a></li>
+                    <li id="home"><a href="{{url('/home')}}">鸽友之家</a></li>
                 </ul>
             </div>
             <div class="swiper-container" id="nav">
@@ -56,7 +56,7 @@
                     <li class="swiper-slide" id="sale1"><a href="{{url('/sale')}}">定价展销</a></li>
                     <li class="swiper-slide" id="show1"><a href="{{url('/show')}}">长城铭哥</a></li>
                     <li class="swiper-slide" id="news1"><a href="{{url('/news')}}">赛鸽资讯</a></li>
-                    <li class="swiper-slide" id="ucenter1"><a href="{{url('/ucenter/index')}}">鸽友之家</a></li>
+                    <li class="swiper-slide" id="home1"><a href="{{url('/home')}}">鸽友之家</a></li>
                 </ul>
             </div>
             <div class="section user">
@@ -86,7 +86,7 @@
             </div>
         </div>
         <div class="lowest">
-            <p class="character">www.chinaxinge.com<span>&nbsp;中国信鸽信息网&nbsp;爱鸽商城铭鸽展厅</span></p>
+            <p class="character">dove.zerdream.com<span>&nbsp;长城鸽业&nbsp;版权所有</span></p>
         </div>
     </div>
 
@@ -101,13 +101,13 @@
         var sale = $('#sale');
         var show = $('#show');
         var news = $('#news');
-        var ucenter = $('#ucenter');
+        var home = $('#home');
         var index1 = $('#index1');
         var auction1 = $('#auction1');
         var sale1 = $('#sale1');
         var show1 = $('#show1');
         var news1 = $('#news1');
-        var ucenter1 = $('#ucenter1');
+        var home1 = $('#home1');
         if (Url.indexOf("auction") >= 0 && Url.indexOf("myauction") < 0) {
             auction.addClass("cur");
             auction1.addClass("cur");
@@ -120,10 +120,11 @@
         } else if (Url.indexOf("news") >= 0) {
             news.addClass("cur");
             news1.addClass("cur");
-        } else if (Url.indexOf("ucenter") >= 0) {
-            ucenter.addClass("cur");
-            ucenter1.addClass("cur");
+        } else if (Url.indexOf("home") >= 0) {
+            home.addClass("cur");
+            home1.addClass("cur");
         } else if (Url.indexOf("help") >= 0) {
+        } else if (Url.indexOf("ucenter") >= 0) {
         } else {
             index.addClass("cur");
             index1.addClass("cur");
@@ -152,7 +153,7 @@
                 closeBtn: 1,
                 title: null,
                 area: ['300px','332px'],
-                content: 'http://dove.com/login', 
+                content: "{{url('/login')}}",
             });   
         });
 
@@ -162,7 +163,7 @@
                 closeBtn: 1,
                 title: null,
                 area: ['300px','435px'],
-                content: 'http://dove.com/register', 
+                content: "{{url('/register')}}",
                 
             }); 
         });

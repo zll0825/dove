@@ -8,69 +8,27 @@
 @section('content')
     <div class="internews section clearfix">
         <div class="fl newsCenter">
-            <div class="bigTitle"><span>新闻中心</span></div>
+            <div class="bigTitle"><span>赛鸽资讯</span></div>
             <div class="listNews">
                 <ul>
+                    @if(!empty($newss))
+                    @foreach($newss as $news)
                     <li>
-                        <a href="javascript:;">
-                            <span class="newsImg fl"><img src="/img/zhanwei.png" /></span>
+                        <a href="{{url('/news/'.$news->NewsID)}}">
+                            <span class="newsImg fl"><img src="{{$news->NewsLabel}}" /></span>
                             <div class="newsCon fl">
-                                <h3>鸽子崖：一户人家的坚守</h3>
-                                <span class="publishTime">发表于：2016-7-1 10:03</span>
-                                <p class="summary">近两年来，温州面对2011年9月份以来受宏观经济环境和民间借贷风波影响，银行业不良贷款迅猛攀升的状况，通过“细、强、优、深、净”五化促进新常态下信用风险化解，有效遏制不良上升势头。据温 ...</p>
+                                <h3>{{$news->NewsTitle}}</h3>
+                                <span class="publishTime">发表于：{{$news->PublicTime}}</span>
+                                <p class="summary">{{$news->Brief}}</p>
                             </div>
                         </a>
                     </li>
+                    @endforeach
+                    @eles
                     <li>
-                        <a href="javascript:;">
-                            <span class="newsImg fl"><img src="/img/zhanwei.png" /></span>
-                            <div class="newsCon fl">
-                                <h3>鸽子崖：一户人家的坚守</h3>
-                                <span class="publishTime">发表于：2016-7-1 10:03</span>
-                                <p class="summary">近两年来，温州面对2011年9月份以来受宏观经济环境和民间借贷风波影响，银行业不良贷款迅猛攀升的状况，通过“细、强、优、深、净”五化促进新常态下信用风险化解，有效遏制不良上升势头。据温 ...</p>
-                            </div>
-                        </a>
+                        暂无新闻
                     </li>
-                    <li>
-                        <a href="javascript:;">
-                            <span class="newsImg fl"><img src="/img/zhanwei.png" /></span>
-                            <div class="newsCon fl">
-                                <h3>鸽子崖：一户人家的坚守</h3>
-                                <span class="publishTime">发表于：2016-7-1 10:03</span>
-                                <p class="summary">近两年来，温州面对2011年9月份以来受宏观经济环境和民间借贷风波影响，银行业不良贷款迅猛攀升的状况，通过“细、强、优、深、净”五化促进新常态下信用风险化解，有效遏制不良上升势头。据温 ...</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <span class="newsImg fl"><img src="/img/zhanwei.png" /></span>
-                            <div class="newsCon fl">
-                                <h3>鸽子崖：一户人家的坚守</h3>
-                                <span class="publishTime">发表于：2016-7-1 10:03</span>
-                                <p class="summary">近两年来，温州面对2011年9月份以来受宏观经济环境和民间借贷风波影响，银行业不良贷款迅猛攀升的状况，通过“细、强、优、深、净”五化促进新常态下信用风险化解，有效遏制不良上升势头。据温 ...</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <span class="newsImg fl"><img src="/img/zhanwei.png" /></span>
-                            <div class="newsCon fl">
-                                <h3>鸽子崖：一户人家的坚守</h3>
-                                <span class="publishTime">发表于：2016-7-1 10:03</span>
-                                <p class="summary">近两年来，温州面对2011年9月份以来受宏观经济环境和民间借贷风波影响，银行业不良贷款迅猛攀升的状况，通过“细、强、优、深、净”五化促进新常态下信用风险化解，有效遏制不良上升势头。据温 ...</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <span class="newsImg fl"><img src="/img/zhanwei.png" /></span>
-                            <div class="newsCon fl">
-                                <h3>鸽子崖：一户人家的坚守</h3>
-                                <span class="publishTime">发表于：2016-7-1 10:03</span>
-                                <p class="summary">近两年来，温州面对2011年9月份以来受宏观经济环境和民间借贷风波影响，银行业不良贷款迅猛攀升的状况，通过“细、强、优、深、净”五化促进新常态下信用风险化解，有效遏制不良上升势头。据温 ...</p>
-                            </div>
-                        </a>
-                    </li>
+                    @endif
                 </ul>
                 <div class="pages">
                     <div class="oh"><div id="Pagination"></div><span class="page-sum">共<strong class="allPage">15</strong>页</span></div>
@@ -79,22 +37,27 @@
         </div>
         <div class="fr about">
             <div class="headline">
-                <h2>鸽子新闻</h2>
+                <h2>鸽友之家</h2>
                 <span>THE DOVE NEWS</span>
             </div>
             <div class="press">
-                <a href="javascript:;" class="picNews">
-                    <span class="littleImg fl"><img src="/img/zhanwei.png" /></span>
+                <a href="{{url('/home/'.$home->NewsID)}}" class="picNews">
+                    <span class="littleImg fl"><img src="{{$home->NewsLogo}}" /></span>
                     <div class="fl littleNews">
-                        <h3>鸽子崖：一户人家的坚守</h3>
-                        <p class="summary">近两年来，温州面对2011年9月份以来受宏观经济环境和民间借贷风波影响，银行业不良贷</p>
+                        <h3>{{$home->NewsTitle}}</h3>
+                        <p class="summary">{{$home->NewsBrief}}</p>
                     </div>
                 </a>
                 <ul class="titleList">
-                    <li><a href="javascript:;">甘肃省成立丝绸之路大数据公司，三 ...</a></li>
-                    <li><a href="javascript:;">甘肃省成立丝绸之路大数据公司，三 ...</a></li>
-                    <li><a href="javascript:;">甘肃省成立丝绸之路大数据公司，三 ...</a></li>
-                    <li><a href="javascript:;">甘肃省成立丝绸之路大数据公司，三 ...</a></li>
+                    @if(!empty($homes))
+                    @foreach($homes as $hom)
+                    <li><a href="{{url('/news/'.$hom->NewsID)}}">{{$hom->NewsTitle}}</a></li>
+                    @endforeach
+                    @eles
+                        <li>
+                            暂无新闻
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>

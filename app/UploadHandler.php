@@ -1333,7 +1333,8 @@ class UploadHandler
                 foreach ($upload['tmp_name'] as $index => $value) {
                     $files[] = $this->handle_file_upload(
                         $upload['tmp_name'][$index],
-                        $file_name ? $file_name : $upload['name'][$index],
+                        $file_name ? time().mt_rand(1000,9999):time().mt_rand(1000,9999),
+                        //$file_name ? $file_name : $upload['name'][$index],
                         $size ? $size : $upload['size'][$index],
                         $upload['type'][$index],
                         $upload['error'][$index],

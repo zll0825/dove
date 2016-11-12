@@ -32,6 +32,10 @@ Route::get('/auction/{id}', 'AuctionController@info');
 Route::get('/news', 'NewsController@index');
 // 新闻详情
 Route::get('/news/{id}', 'NewsController@info');
+// 鸽友之家首页
+Route::get('/home', 'NewsController@homeIndex');
+// 鸽友之家详情
+Route::get('/home/{id}', 'NewsController@homeInfo');
 
 // 定价鸽子首页
 Route::get('/sale', 'DoveController@indexSale');
@@ -48,12 +52,16 @@ Route::get('/help', 'IndexController@help');
 Route::any('/ucenter/upload', 'HelpController@upload');//上传图片
 Route::post('/avatar/upload','HelpController@avatarUpload');
 
+//标记已读
+Route::post('/readmsg','UserController@readMessage');
+//标记已读
+Route::post('/delmsg','UserController@delMessage');
 
 //帮助路由
 //发送验证码(死)
 Route::post('/help/sms', 'HelpController@sms');
 //发送验证码（活）
-Route::post('/smscode', 'HelpController@sms');
+Route::post('/smscode', 'HelpController@sendSms');
 
 
 //需要登录后访问的路由
@@ -66,4 +74,23 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/ucenter/myorder', 'UserController@myorder');
     //系统消息
     Route::get('/ucenter/mymsg', 'UserController@mymsg');
+    //修改用户名
+    Route::post('/ucenter/chusername', 'UserController@chUserName');
+    //修改密码
+    Route::post('/ucenter/chpassword', 'UserController@chPWD');
+    //修改用户头像
+    Route::post('/ucenter/chuserpicture', 'UserController@chUserPicture');
+    //保证金身份证提交
+    Route::post('/ucenter/confirm', 'UserController@confirm');
+
+    //加入购物车
+    Route::post('/addcart', 'DoveController@addCart');
+    //购买
+    Route::post('/purchase', 'DoveController@purchase');
+    //上传付款图片
+    Route::post('/uploadpay', 'DoveController@uploadPay');
+    //竞拍
+    Route::post('/offerprice', 'DoveController@offerPrice');
+
+
 });
