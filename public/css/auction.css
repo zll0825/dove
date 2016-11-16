@@ -7,7 +7,7 @@
 .calendar{margin:0 4px 0 15px;}
 .notelist{padding:2px 10px;}
 .notelist li{background:url(../img/dot.jpg) no-repeat 1px 13px;height: 30px;line-height: 30px;padding-left: 16px;}
-.major a{color:#b70c04;}
+.major a{color:#b70c04;white-space: nowrap; overflow: hidden; display: block; text-overflow: ellipsis;}
 .more{display: block;text-align: right;height: 22px;font-weight: bold;}
 .more:hover{text-decoration: underline;}
 
@@ -141,6 +141,11 @@
 .special{margin-top: 15px;}
 .imgIntro{display: block;}
 .imgIntro img{width: auto;margin: 0 auto;}
+.inps div{padding: 10px 20px;}
+.inps input{border: 1px solid #eee;padding-left: 5px;height: 28px;width: 180px;}
+.layui-layer-btn .layui-layer-btn0{background: #ea7e00;border: none;}
+#addprice{color: #f00;}
+#highprice{color: #f00;font-weight: bold;}
 @media all and (max-width:750px){
     html,body,.section,.highest,.header{max-width: 750px;min-width: 320px;width:100%;}
     .auctionImg:before, .auctionImg:after{display: none;}

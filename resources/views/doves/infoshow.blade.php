@@ -11,8 +11,7 @@
             <div class="line"></div>
             <h2 class="proTitle"><span>特价两周&nbsp;&nbsp;,{{$dove->DoveName}}</span></h2>
             <div class="proImg">
-                <img src="/img/zhanwei2.png" />
-                <img src="/img/desktop.jpg" />
+                <img src="{{$dove->DovePicture}}" />
             </div>
             <div class="feature">
                 <h3 class="h20">信鸽特征</h3>
@@ -32,77 +31,22 @@
             <div class="introduce">
                 <h3 class="h20">详细介绍</h3>
                 <div class="introduceCon">
-                    {{$dove->DoveInfo}}
+                    {!!$dove->DoveIntro!!}
                 </div>
             </div>
             <div class="other">
                 <h3 class="h20">其他推荐</h3>
                 <div class="otherCon">
                     <ul class="bedoveList">
+                        @foreach($recommends as $recommend)
                         <li>
-                            <a href="javascript:;" class="recImg">
-                                <span class="pink"><img src="/img/zhanwei.png" height="134" width="200" /></span>
-                                <p class="recName" href="javascript:;">亚军枭雄</p>
-                                <p class="recOrigin">博翔阁</p>
-                                <p class="recHot">人气：1280</p>
+                            <a href="{{url('/show/'.$recommend->DoveID)}}" class="recImg">
+                                <span class="pink"><img src="{{$recommend->DovePicture}}" height="134" width="200" /></span>
+                                <p class="recName" href="{{url('/show/'.$recommend->DoveID)}}">{{$recommend->DoveName}}</p>
+                                <p class="recHot">人气：{{$recommend->ViewCount}}</p>
                             </a>
                         </li>
-                        <li>
-                            <a href="javascript:;" class="recImg">
-                                <span class="pink"><img src="/img/zhanwei.png" height="134" width="200" /></span>
-                                <p class="recName" href="javascript:;">亚军枭雄</p>
-                                <p class="recOrigin">博翔阁</p>
-                                <p class="recHot">人气：1280</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="recImg">
-                                <span class="pink"><img src="/img/zhanwei.png" height="134" width="200" /></span>
-                                <p class="recName" href="javascript:;">亚军枭雄</p>
-                                <p class="recOrigin">博翔阁</p>
-                                <p class="recHot">人气：1280</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="recImg">
-                                <span class="pink"><img src="/img/zhanwei.png" height="134" width="200" /></span>
-                                <p class="recName" href="javascript:;">亚军枭雄</p>
-                                <p class="recOrigin">博翔阁</p>
-                                <p class="recHot">人气：1280</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="recImg">
-                                <span class="pink"><img src="/img/zhanwei.png" height="134" width="200" /></span>
-                                <p class="recName" href="javascript:;">亚军枭雄</p>
-                                <p class="recOrigin">博翔阁</p>
-                                <p class="recHot">人气：1280</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="recImg">
-                                <span class="pink"><img src="/img/zhanwei.png" height="134" width="200" /></span>
-                                <p class="recName" href="javascript:;">亚军枭雄</p>
-                                <p class="recOrigin">博翔阁</p>
-                                <p class="recHot">人气：1280</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="recImg">
-                                <span class="pink"><img src="/img/zhanwei.png" height="134" width="200" /></span>
-                                <p class="recName" href="javascript:;">亚军枭雄</p>
-                                <p class="recOrigin">博翔阁</p>
-                                <p class="recHot">人气：1280</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="recImg">
-                                <span class="pink"><img src="/img/zhanwei.png" height="134" width="200" /></span>
-                                <p class="recName" href="javascript:;">亚军枭雄</p>
-                                <p class="recOrigin">博翔阁</p>
-                                <p class="recHot">人气：1280</p>
-                            </a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -116,88 +60,20 @@
                 <div class="tabCon2">
                     <div class="seniority">
                         <ul>
+                            @foreach($latests as $latest)
                             <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
+                                <a href="javascript:;"><span class="senName">{{$latest->DoveName}}</span><span class="heat"><strong class="red">{{$latest->ViewCount}}</strong><i class="iconfont">&#xe772;</i></span></a>
                             </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe607;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="seniority">
                         <ul>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe607;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
+                            @foreach($totals as $total)
+                                <li>
+                                    <a href="javascript:;"><span class="senName">{{$total->DoveName}}</span><span class="heat"><strong class="red">{{$total->ViewCount}}</strong><i class="iconfont">&#xe772;</i></span></a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

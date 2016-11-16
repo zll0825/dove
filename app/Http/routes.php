@@ -24,7 +24,7 @@ Route::get('/', 'IndexController@index');
 // 拍卖首页
 Route::get('/auction', 'AuctionController@index');
 // 拍卖专题介绍
-Route::get('/auction/intro', 'AuctionController@intro');
+Route::get('/auction/intro/{id}', 'AuctionController@intro');
 // 拍卖鸽子详情
 Route::get('/auction/{id}', 'AuctionController@info');
 
@@ -36,6 +36,8 @@ Route::get('/news/{id}', 'NewsController@info');
 Route::get('/home', 'NewsController@homeIndex');
 // 鸽友之家详情
 Route::get('/home/{id}', 'NewsController@homeInfo');
+// 通知详情
+Route::get('/notice/{id}', 'NewsController@noticeInfo');
 
 // 定价鸽子首页
 Route::get('/sale', 'DoveController@indexSale');
@@ -88,7 +90,9 @@ Route::group(['middleware'=>'auth'], function(){
     //购买
     Route::post('/purchase', 'DoveController@purchase');
     //上传付款图片
-    Route::post('/uploadpay', 'DoveController@uploadPay');
+    Route::post('/uploadpay', 'UserController@uploadPay');
+    //确认收获
+    Route::post('/receive', 'UserController@receive');
     //竞拍
     Route::post('/offerprice', 'DoveController@offerPrice');
 

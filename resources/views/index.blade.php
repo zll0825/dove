@@ -15,7 +15,7 @@
 					<div class="notelist">
 						<ul>
                             @foreach($notices as $notice)
-                            <li class="major"><a href="{{url('/news/'.$notice->NewsID)}}">{{$notice->NewsTitle}}</a></li>
+                            <li class="major"><a href="{{url('/notice/'.$notice->NewsID)}}">{{$notice->NewsTitle}}</a></li>
                             @endforeach
                         </ul>
 						<!-- <a href="javascript:;" class="more red">更多>></a> -->
@@ -43,7 +43,7 @@
                         <ul>
                             @foreach($auctions as $auction)
                             <li>
-                                <a href="{{url('/auction/'.$auction->AuctionID)}}" class="aucLink">
+                                <a href="{{url('/auction/intro/'.$auction->ThemeID)}}" class="aucLink">
                                     <span class="auctionImg"><img src="/img/zhanwei.png" /></span>
                                     <div class="auctionRight fl clearfix">
                                         <span class="periods">{{$auction->ThemeName}}</span>

@@ -25,7 +25,6 @@
                 </ul>
                 <div class="pages">
                     {!!$doves->render()!!}
-                    <div class="oh"><div id="Pagination"></div><span class="page-sum">共<strong class="allPage">15</strong>页</span></div>
                 </div>
             </div>
             <div class="fr pledge sellRight">

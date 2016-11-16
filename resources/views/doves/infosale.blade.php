@@ -11,7 +11,7 @@
             <div class="line"></div>
             <h2 class="proTitle"><span>特价两周&nbsp;&nbsp;{{$dove->DoveName}}</span></h2>
             <div class="proImg">
-                <img src="/img/zhanwei2.png" />
+                <img src="{{$dove->DovePicture}}" />
             </div>
             <div class="feature">
                 <h3 class="h20">信鸽特征</h3>
@@ -37,85 +37,23 @@
             <div class="introduce">
                 <h3 class="h20">详细介绍</h3>
                 <div class="introduceCon">
-                    {{$dove->DoveInfo}}
+                    {!!$dove->DoveIntro!!}
                 </div>
             </div>
             <div class="other">
                 <h3 class="h20">其他推荐</h3>
                 <div class="otherCon">
                     <ul class="bedoveList">
+                        @foreach($recommends as $recommend)
                         <li>
-                            <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                            <a href="javascript:;" class="name mt8">亚军枭雄</a>
-                            <span class="origin">北京李记种赛鸽中心</span>
-                            <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                            <span class="primecost">原价：<s>10000</s>元</span>
-                            <span class="price">优惠价：<em class="red">8000</em>元</span>
-                            <a href="javascript:;" class="buy mt6">在线购买</a>
+                            <a href="{{url('/slae/'.$recommend->DoveID)}}" class="pink"><img src="{{$recommend->DovePicture}}" /></a>
+                            <a href="{{url('/slae/'.$recommend->DoveID)}}" class="name mt8">{{$recommend->DoveName}}</a>
+                            <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：{{$recommend->ViewCount}}</span>
+                            <span class="primecost">原价：<s>{{$recommend->OriginPrice}}</s>元</span>
+                            <span class="price">优惠价：<em class="red">{{$recommend->DovePrice}}</em>元</span>
+                            <a href="{{url('/slae/'.$recommend->DoveID)}}" class="buy mt6">在线购买</a>
                         </li>
-                        <li>
-                            <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                            <a href="javascript:;" class="name mt8">亚军枭雄</a>
-                            <span class="origin">北京李记种赛鸽中心</span>
-                            <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                            <span class="primecost">原价：<s>10000</s>元</span>
-                            <span class="price">优惠价：<em class="red">8000</em>元</span>
-                            <a href="javascript:;" class="buy mt6">在线购买</a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                            <a href="javascript:;" class="name mt8">亚军枭雄</a>
-                            <span class="origin">北京李记种赛鸽中心</span>
-                            <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                            <span class="primecost">原价：<s>10000</s>元</span>
-                            <span class="price">优惠价：<em class="red">8000</em>元</span>
-                            <a href="javascript:;" class="buy mt6">在线购买</a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                            <a href="javascript:;" class="name mt8">亚军枭雄</a>
-                            <span class="origin">北京李记种赛鸽中心</span>
-                            <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                            <span class="primecost">原价：<s>10000</s>元</span>
-                            <span class="price">优惠价：<em class="red">8000</em>元</span>
-                            <a href="javascript:;" class="buy mt6">在线购买</a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                            <a href="javascript:;" class="name mt8">亚军枭雄</a>
-                            <span class="origin">北京李记种赛鸽中心</span>
-                            <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                            <span class="primecost">原价：<s>10000</s>元</span>
-                            <span class="price">优惠价：<em class="red">8000</em>元</span>
-                            <a href="javascript:;" class="buy mt6">在线购买</a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                            <a href="javascript:;" class="name mt8">亚军枭雄</a>
-                            <span class="origin">北京李记种赛鸽中心</span>
-                            <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                            <span class="primecost">原价：<s>10000</s>元</span>
-                            <span class="price">优惠价：<em class="red">8000</em>元</span>
-                            <a href="javascript:;" class="buy mt6">在线购买</a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                            <a href="javascript:;" class="name mt8">亚军枭雄</a>
-                            <span class="origin">北京李记种赛鸽中心</span>
-                            <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                            <span class="primecost">原价：<s>10000</s>元</span>
-                            <span class="price">优惠价：<em class="red">8000</em>元</span>
-                            <a href="javascript:;" class="buy mt6">在线购买</a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="pink"><img src="/img/zhanwei.png" /></a>
-                            <a href="javascript:;" class="name mt8">亚军枭雄</a>
-                            <span class="origin">北京李记种赛鸽中心</span>
-                            <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：365</span>
-                            <span class="primecost">原价：<s>10000</s>元</span>
-                            <span class="price">优惠价：<em class="red">8000</em>元</span>
-                            <a href="javascript:;" class="buy mt6">在线购买</a>
-                        </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -129,88 +67,20 @@
                 <div class="tabCon2">
                     <div class="seniority">
                         <ul>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe607;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
+                            @foreach($latests as $latest)
+                                <li>
+                                    <a href="javascript:;"><span class="senName">{{$latest->DoveName}}</span><span class="heat"><strong class="red">{{$latest->ViewCount}}</strong><i class="iconfont">&#xe772;</i></span></a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="seniority">
                         <ul>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe607;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
-                            <li>
-                                <a href="javascript:;"><span class="senName">宏金公棚三关鸽王</span><span class="heat"><strong class="red">157575</strong><i class="iconfont">&#xe772;</i></span></a>
-                            </li>
+                            @foreach($totals as $total)
+                                <li>
+                                    <a href="javascript:;"><span class="senName">{{$total->DoveName}}</span><span class="heat"><strong class="red">{{$total->ViewCount}}</strong><i class="iconfont">&#xe772;</i></span></a>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -310,7 +180,7 @@
                 closeBtn: 1,
                 title: null,
                 area: ['300px','332px'],
-                content: "{{url('/register')}}",
+                content: "{{url('/login')}}",
             });
         })
     @endif

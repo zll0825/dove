@@ -64,7 +64,7 @@
                 <p class="red special">特别说明：接鸽时间和地点是根据汽车、火车及飞机到达的时间和地点而确定，如果给您带来不便请谅解！</p>
             </div>
         </div>
-        <span class="imgIntro"><img src="/img/zhanwei2.png" /></span>
+        <span class="imgIntro"><img src="{{$auction->DovePicture}}" /></span>
     </div>
     @endsection('content')
 
@@ -155,7 +155,7 @@
                 closeBtn: 1,
                 title: null,
                 area: ['300px','332px'],
-                content: "{{url('/register')}}",
+                content: "{{url('/login')}}",
             });
         })
     @endif

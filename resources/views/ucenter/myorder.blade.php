@@ -26,7 +26,7 @@
                         <div class="bidList">
                             <ul class="bidUl">
                                 @foreach($orders as $order)
-                                <li>
+                                <li doveid="{{$order->DoveID}}" auctionid="{{$order->AuctionID}}">
                                     <a href="javascript:;" class="bidImg"><img src="/img/zhanwei.png" /></a>
                                     <a href="javascript:;" class="information fl">
                                     	<span class="s1"><strong>{{$order->DoveName}}</strong></span>
@@ -42,14 +42,14 @@
                                             <a href="javascript:;" class="nopay">立即购买</a>
                                             <span class="payInfo">已加入购物车</span>
                                         @elseif($order->PayFlag == 1)
-                                            <a href="javascript:;" class="nopay upCer">上传付款凭证</a>
+                                            <a href="javascript:;" class="nopay upCer">上传付款凭证<input class="uploadpay" type="file" name="files[]" data-url="{{url('/ucenter/upload')}}" multiple accept="image/png, image/gif, image/jpg, image/jpeg"></a>
                                         <span class="payInfo">已购买，未上传付款凭证</span>
                                         @elseif($order->PayFlag == 2)
                                             <span class="paying">确认付款中…</span>
                                         @elseif($order->PayFlag == 3)
                                             <a href="javascript:;" class="nopay payed">已付款，等待发货</a>
                                         @elseif($order->PayFlag == 4)
-                                            <a href="javascript:;" class="nopay upCer">上传付款凭证</a>
+                                            <a href="javascript:;" class="nopay upCer">上传付款凭证<input class="uploadpay" type="file" name="files[]" data-url="{{url('/ucenter/upload')}}" multiple accept="image/png, image/gif, image/jpg, image/jpeg"></a>
                                             <span class="payInfo">审核不通过，请重新上传付款凭证</span>
                                         @elseif($order->PayFlag == 5)
                                             <a href="javascript:;" class="nopay sure">确认收货</a>
@@ -70,9 +70,43 @@
 @endsection('content')
 
 @section('js')
+<script src="{{asset('/org/jqupload/js/jquery.ui.widget.js')}}"></script>
+<script src="{{asset('/org/jqupload/js/jquery.fileupload.js')}}"></script>
+<script src="{{asset('/org/jqupload/js/jquery.iframe-transport.js')}}"></script>
+<script src="{{asset('/org/jqupload/js/jquery.fileupload-process.js')}}"></script>
+<script src="{{asset('/org/jqupload/js/jquery.fileupload-validate.js')}}"></script>
 <script type="text/javascript">
 	$(function(){
-        $("#Pagination").pagination("15");
+        $('.upCer').click(function(){
+            var auctionid = $(this).parents('li').attr('auctionid');
+            var doveid = $(this).parents('li').attr('doveid');
+            var paydiv = $(this).parent('div');
+            $('.uploadpay').fileupload({
+                dataType: 'json',
+                maxFileSize: 1 * 1024 * 1024,
+                done: function (e, data) {
+                    $.each(data.result.files, function (index, file) {
+                        var paypicture = '/uploads/images/'+file.name;
+                        $.ajax({
+                            url: "{{url('/uploadpay')}}",
+                            data: {'paypicture': paypicture, 'userid': "{{Request::user()->userid}}",'auctionid': auctionid, 'doveid': doveid, '_token':"{{csrf_token()}}"},
+                            type: 'POST',
+                            dataType: 'json',
+                            success: function (msg) {
+                                var json = eval(msg);
+                                if (json.status_code == '409') {
+                                    layer.alert('保证金凭证上传失败，请刷新重试！');
+                                } else if (json.status_code == '200') {
+                                    layer.msg('保证金凭证上传成功！');
+                                    paydiv.html('<span class="paying">确认付款中…</span>')
+                                }
+                            }
+                        });
+                    });
+                }
+            });
+        })
+
         $('#nav li').click(function(event) {
             var ind = $(this).index();
             var win = $(window).width();
@@ -111,6 +145,27 @@
             slidesPerView: 'auto',
             freeMode: true
         })
+    })
+
+    $('.sure').click(function(){
+        var auctionid = $(this).parents('li').attr('auctionid');
+        var doveid = $(this).parents('li').attr('doveid');
+        var paydiv = $(this).parent('div');
+        $.ajax({
+            url: "{{url('/receive')}}",
+            data: {'auctionid': auctionid, 'doveid': doveid, 'userid': "{{Request::user()->userid}}", '_token':"{{csrf_token()}}"},
+            type: 'POST',
+            dataType: 'json',
+            success: function (msg) {
+                var json = eval(msg);
+                if (json.status_code == '200') {
+                    layer.alert('确认收货成功');
+                    paydiv.html('<a href="javascript:;" class="nopay payed">已收货</a>')
+                } else if (json.status_code == '409') {
+                    layer.msg('确认收货失败，请刷新重试！');
+                }
+            }
+        });
     })
 
 

@@ -122,11 +122,11 @@ html, body, textarea, button, input, select {
     .userList{padding-bottom: 0;border-top: 1px solid #6b6b6b;}
     .userTitle{display: none;}
 
-    .higher{height:auto;}
-    .higher img{display: block;margin:0 auto;width: 100%;}
+    .higher{height:auto;min-height:103px;background:none;margin-top:0;}
+    .higher img{display: block;margin:0 auto;width: 100%;min-height:103px;}
 }
 /*page*/
-.pages #Pagination .pagination {height: 40px; text-align: right; font-family: \u5b8b\u4f53,Arial; }
+/*.pages #Pagination .pagination {height: 40px; text-align: right; font-family: \u5b8b\u4f53,Arial; }
 .pages #Pagination .pagination a, .pages #Pagination .pagination span {float: left; display: inline; padding: 4px 6px; border: 1px solid #e6e6e6; border-right: none; background: #f6f6f6; color: #666666; font-family: \u5b8b\u4f53,Arial; font-size: 14px; cursor: pointer; }
 .pages #Pagination .pagination .current {background: #e3643d; color: #fff; }
 .pages #Pagination .pagination .prev, .pages #Pagination .pagination .next {float: left; padding: 4px 6px; border: 1px solid #e6e6e6; background: #f6f6f6; color: #666666; cursor: pointer; }
@@ -138,7 +138,9 @@ html, body, textarea, button, input, select {
 .pages .searchPage .page-go input {width: 21px; height: 20px; margin: 0 5px; padding-left: 5px; border: 1px solid #e4e4e4; }
 .pages .searchPage .page-btn {margin: 9px 0 5px 5px; padding: 2px 5px; background: #ffac59; border-radius: 2px; color: #ffffff; font-family: Arial, 'Microsoft YaHei'; font-size: 14px; text-decoration: none; }
 #Pagination{float: left;}
-.pages{overflow: hidden;}
+.pages{overflow: hidden;}*/
 .oh{overflow: hidden;float: right;}
-
+.pagination{text-align: center;}
+.pagination li{display: inline-block;padding: 2px 8px;border: 1px solid #ccc;}
+.pagination .active{background: #0f7d2f; color: #fff;border-color: #00631d;}
 

@@ -67,7 +67,8 @@
 .upload{width: 920px;}
 .source{font-size: 16px;margin: 15px 0 6px;padding-left: 20px;}
 .primary{border: 1px solid #6b6b6b;padding: 20px;}
-.avatar{border: 1px solid #ccc;}
+.avatar{border: 1px solid #ccc;position: relative;width: 120px;height: 120px;display: block;overflow: hidden;white-space: nowrap;vertical-align: middle;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
+.avatar img{width: 120px;height: 120px;}
 .primInfo{padding-left: 55px;}
 .userName{margin: 25px 0;}
 .userPwd em{display: inline-block;width: 2em;text-align: right;}
@@ -82,13 +83,14 @@
 .cert{font-size: 16px;background: #a6a6a6;height: 44px;line-height: 44px;padding-left: 20px;}
 .photo{padding: 20px;}
 .rect{width: 174px;height: 88px;background: #d9d9d9;border: 1px solid #ccc;overflow: hidden;}
-.rect img{width: 100%;height:auto;}
+.rect img{width: 100%;height:auto;max-height: 90px;}
 .explain{padding-left: 40px;}
 .wordIntro span{display: block;margin: 10px 0;}
 .sub{border: none;background: none;width: 80px;height: 24px;line-height: 24px;text-align: center;background: #eb7f00;color: #fff;border-radius: 5px;display: block;position: relative;overflow: hidden;}
 .sub input{position: absolute; top: 0; right: 0; margin: 0; opacity: 0; -ms-filter: 'alpha(opacity=0)'; font-size: 200px !important; direction: ltr; cursor: pointer;width:auto;height:auto;}
 .certain{display: block;background: none;border: none;width: 168px;height: 38px;line-height: 38px;text-align: center;color: #fff;background: #c53e38;border-radius: 5px;margin: 0 auto 20px;font-size: 20px;position: relative;}
 .certain:active {top: 1px;}
+#fileupload2{position: absolute; top: 0; right: 0; margin: 0; opacity: 0; -ms-filter: 'alpha(opacity=0)'; font-size: 200px !important; direction: ltr; cursor: pointer; width: auto; height: auto;}
 
 .help{width: 920px;}
 .helpTit{font-size: 16px;margin: 15px 0 6px;padding-left: 20px;}

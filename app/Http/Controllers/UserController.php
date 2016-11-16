@@ -134,26 +134,33 @@ class UserController extends Controller
         }
     }
 
-    public function payConfirm(Request $request){
+    public function uploadPay(Request $request){
         $user = User::where('userid',$request->userid)->first();
-        $user->PayPicture = $request->paypicture;
-        $user->PayFlag = 2;
-        $res = $user->save();
-        if($res){
-            return ['status_code'=>'200', 'msg'=>'付款凭证提交成功！'];
+        $order = Order::where(['UserID'=>$user->userid, 'DoveID'=>$request->doveid, 'AuctionID'=>$request->auctionid])->first();
+        if(!$order){
+            return ['status_code'=>'404', 'msg'=>'您还没买!'];
         } else {
-            return ['status_code'=>'409', 'msg'=>'提交失败！'];
+            $res = $order->update(['PayFlag'=>2,'PayPicture'=>$request->paypicture]);
+            if($res){
+                return ['status_code'=>'200', 'msg'=>'付款凭证上传成功'];
+            } else {
+                return ['status_code'=>'409', 'msg'=>'提交失败！'];
+            }
         }
     }
 
     public function receive(Request $request){
         $user = User::where('userid',$request->userid)->first();
-        $user->PayFlag = 2;
-        $res = $user->save();
-        if($res){
-            return ['status_code'=>'200', 'msg'=>'确认收获成功！'];
+        $order = Order::where(['UserID'=>$user->userid, 'DoveID'=>$request->doveid, 'AuctionID'=>$request->auctionid])->first();
+        if(!$order){
+            return ['status_code'=>'404', 'msg'=>'您还没买!'];
         } else {
-            return ['status_code'=>'409', 'msg'=>'提交失败！'];
+            $res = $order->update(['PayFlag'=>6]);
+            if($res){
+                return ['status_code'=>'200', 'msg'=>'付款凭证上传成功'];
+            } else {
+                return ['status_code'=>'409', 'msg'=>'提交失败！'];
+            }
         }
     }
 }

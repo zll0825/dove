@@ -7,7 +7,7 @@
 .calendar{margin:0 4px 0 15px;}
 .notelist{padding:6px 10px;}
 .notelist li{background:url(../img/dot.jpg) no-repeat 1px 13px;height: 30px;line-height: 30px;padding-left: 16px;}
-.major a{color:#b70c04;}
+.major a{color:#b70c04;white-space: nowrap; overflow: hidden; display: block; text-overflow: ellipsis;}
 .more{display: block;text-align: right;height: 22px;font-weight: bold;}
 .more:hover{text-decoration: underline;}
 
@@ -37,12 +37,13 @@
 .auctionImg:before,.auctionImg:after{border: solid transparent; content: ' '; height: 0; left: 100%;top: 50%; position: absolute; width: 0;}
 .auctionImg:after {border-width: 8px; border-left-color: #fff; margin-top: -8px;}
 .auctionImg:before {border-width: 10px; border-left-color: #d8d8d8; margin-top: -10px;}
-/*.auctionRight{padding-left: 10px;}*/
+.auctionRight{width: 790px;}
 .periods,.sale,.remaining{font-size: 16px;font-weight: bold;float: left;}
 .sale span{font-size: 14px;display: block;}
-.periods{padding-left: 14px;}
+.periods{padding-left: 14px;width: 53%;text-align: center;white-space: nowrap; overflow: hidden; padding-left: 3%; text-overflow: ellipsis;}
 .periods,.remaining{line-height: 118px;}
-.sale{padding: 35px 96px 0 60px;text-align: center;}
+.sale{padding: 35px 0 0;text-align: center;width: 28%;}
+.remaining{width: 15%;text-align: center;}
 .pledge{width: 200px;border-top: 3px solid #4b4b4b;background:#eee;padding:18px 15px;}
 .pleTop{border-left: 4px solid #025d2a;font-size: 20px;font-weight: bold;height: 56px;line-height: 24px;padding-left: 6px;}
 .pleTop div{font-size: 12px;font-weight: normal;display: block;line-height: 15px;}
@@ -114,9 +115,8 @@
     .bedoveList li,.recommend li{width: 49%;margin:0 1% 10px 0;box-sizing: border-box;}
     .recommend ul{width: 100%;margin-left: 0;}
     
-    .periods{padding-left: 5px;margin-top: 5px;font-size: 14px;height: 20px;line-height: 20px;font-weight: normal;overflow: hidden;}
-    .remaining{line-height: 20px;height: 20px;overflow: hidden;font-weight: normal;padding:0px 0 0 5px;text-align: left;font-size: 14px;clear:both;}
-    .sale{margin-bottom: 3px;font-weight: normal;padding:0px 0 0 5px;clear:both;text-align: left;height: 20px;overflow: hidden;font-size: 14px;}
+    .periods{padding-left: 2%;margin-top: 5px;font-size: 14px;height: 20px;line-height: 20px;font-weight: normal;overflow: hidden;width: 98%;text-align: left;}
+    .remaining{line-height: 20px;height: 20px;overflow: hidden;font-weight: normal;padding:0 0 0 2%;text-align: left;font-size: 14px;clear:both;width: 98%;}
+    .sale{margin-bottom: 3px;font-weight: normal;padding:0 0 0 2%;clear:both;text-align: left;height: 20px;overflow: hidden;font-size: 14px;width: 98%;}
     .sale span{display:inline;margin-left: 4px;}
-    
 }

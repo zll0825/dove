@@ -44,7 +44,7 @@
                     <li id="index"><a href="{{url('/')}}">首页</a></li>
                     <li id="auction"><a href="{{url('/auction')}}">在线拍卖</a></li>
                     <li id="sale"><a href="{{url('/sale')}}">定价展销</a></li>
-                    <li id="show"><a href="{{url('/show')}}">长城铭哥</a></li>
+                    <li id="show"><a href="{{url('/show')}}">长城铭鸽</a></li>
                     <li id="news"><a href="{{url('/news')}}">赛鸽资讯</a></li>
                     <li id="home"><a href="{{url('/home')}}">鸽友之家</a></li>
                 </ul>
@@ -80,13 +80,13 @@
                 <span class="fleft"><i class="iconfont">&#xe6e1;</i><b>联系人：</b>邵先生</span>
                 <span class="fright"><i class="iconfont">&#xe608;</i><b>Email：</b>greatwallccgy@126.com</span>
                 <span class="fleft"><i class="iconfont">&#xe651;</i><b>电话：</b>010-89256988&nbsp;&nbsp;13611691900</span>
-                <span class="fright"><i class="iconfont">&#xe6b8;</i><b>网址：</b>http://ccgy.ag188.com</span>
+                <span class="fright"><i class="iconfont">&#xe6b8;</i><b>网址：</b>http://www.ccgy999.com</span>
                 <span class="fleft"><i class="iconfont">&#xe731;</i><b>传真：</b>010-89256988</span>
                 <span class="fright"><i class="iconfont">&#xe652;</i><b>地址：</b>北京市大兴区庞各庄镇常各庄村南1000米 邮政编码：100041</span>
             </div>
         </div>
         <div class="lowest">
-            <p class="character">dove.zerdream.com<span>&nbsp;长城鸽业&nbsp;版权所有</span></p>
+            <p class="character">www.ccgy999.com<span>&nbsp;长城鸽业&nbsp;版权所有</span></p>
         </div>
     </div>
 
@@ -125,6 +125,7 @@
             home1.addClass("cur");
         } else if (Url.indexOf("help") >= 0) {
         } else if (Url.indexOf("ucenter") >= 0) {
+        } else if (Url.indexOf("notice") >= 0) {
         } else {
             index.addClass("cur");
             index1.addClass("cur");

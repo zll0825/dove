@@ -2,14 +2,14 @@
 
 @section('head')
 <link rel="stylesheet" type="text/css" href="{{asset('/css/news.css')}}" />
-<title>新闻中心</title>
+<title>公告通知</title>
 @endsection
 
 @section('content')
     <div class="internews section clearfix newsInfo">
         <div class="fl newsCenter">
             <div class="bigTitle">
-                <span>赛鸽资讯</span>
+                <span>公告通知</span>
                 <div class="shareBox">
                     <div class="jiathis_style">
                         <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank" id="share_asign">&nbsp;分享</a>
@@ -25,14 +25,14 @@
                 </div>
                 <dl class="piece prevEssay">
                     @if($pre)
-                        <dt>上一篇：</dt><dd><a href="{{url('/news/'.$pre->NewsID)}}">{{$pre->NewsTitle}}</a></dd>
+                        <dt>上一篇：</dt><dd><a href="{{url('/notice/'.$pre->NewsID)}}">{{$pre->NewsTitle}}</a></dd>
                     @else
                         <dt>上一篇：</dt><dd><a href="javascript:;">没有上一篇了</a></dd>
                     @endif
                 </dl>
                 <dl class="piece nextEssay">
                     @if($next)
-                        <dt>下一篇：</dt><dd><a href="{{url('/news/'.$next->NewsID)}}">{{$next->NewsTitle}}</a></dd>
+                        <dt>下一篇：</dt><dd><a href="{{url('/notice/'.$next->NewsID)}}">{{$next->NewsTitle}}</a></dd>
                     @else
                         <dt>下一篇：</dt><dd><a href="javascript:;">没有下一篇了</a></dd>
                     @endif

@@ -42,6 +42,15 @@ class NewsController extends Controller
         return view('news.homeinfo',compact('news','pre','next','newss','news'));
     }
 
+    public function noticeInfo($id){
+        $news = $this->getDetail($id);
+        $pre  = News::select('NewsID','NewsTitle')->where('NewsID','<',$id)->where('Flag', 1)->where('NewsLabel','tz')->orderBy('NewsID','desc')->first();
+        $next = News::select('NewsID','NewsTitle')->where('NewsID','>',$id)->where('Flag', 1)->where('NewsLabel','tz')->orderBy('NewsID','asc')->first();
+        $homes = News::where(['NewsLabel'=>'gyzj','Flag'=>1])->orderBy('NewsID', 'desc')->skip(1)->take(5)->get();
+        $home = News::where(['NewsLabel'=>'gyzj','Flag'=>1])->orderBy('NewsID', 'desc')->take(1)->first();
+        return view('news.notice',compact('news','pre','next','homes','home'));
+    }
+
     public function getDetail($id){
         $data = News::where(['NewsID'=>$id,'Flag'=>1])->first();
         return $data;

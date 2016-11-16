@@ -10,7 +10,7 @@
         <div class="fl newsCenter">
             <div class="bigTitle"><span>鸽友之家</span></div>
             <div class="listNews">
-                <ul>
+                <ul class="listNewsUl">
                     @if(!empty($homes))
                     @foreach($homes as $home)
                         <li>
@@ -24,20 +24,20 @@
                             </a>
                         </li>
                     @endforeach
-                    @eles
+                    @else
                         <li>
                             暂无新闻
                         </li>
                     @endif
                 </ul>
                 <div class="pages">
-                    <div class="oh"><div id="Pagination"></div><span class="page-sum">共<strong class="allPage">15</strong>页</span></div>
+                    {!!$homes->render()!!}
                 </div>
             </div>
         </div>
         <div class="fr about">
             <div class="headline">
-                <h2>鸽子新闻</h2>
+                <h2>赛鸽资讯</h2>
                 <span>THE DOVE NEWS</span>
             </div>
             <div class="press">
@@ -53,7 +53,7 @@
                     @foreach($newss as $news)
                         <li><a href="{{url('/news/'.$news->NewsID)}}">{{$news->NewsTitle}}</a></li>
                     @endforeach
-                    @eles
+                    @else
                         <li>
                             暂无新闻
                         </li>
@@ -69,7 +69,6 @@
 @section('js')
 <script type="text/javascript">
     $(function(){
-        $("#Pagination").pagination("15");
 
         var lunboSwiper = new Swiper('.aside .swiper-container',{
             pagination: '.swiper-pagination',

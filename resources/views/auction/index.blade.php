@@ -46,7 +46,7 @@
                         <p class="password"><label for="" class="red">密<em>码</em>：</label><input type="password" id="password"/></p>
                         <div class="prompt2"></div>
                         <div class="doveLogin">
-                            <button class="login">登录</button>
+                            <button class="login" id="denglu">登录</button>
                             <button class="register" id="zhuce">注册</button>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                         <ul>
                             @foreach($auctions as $auction)
                             <li>
-                                <a href="{{url('/auction/'.$auction->AuctionID)}}" class="aucLink">
+                                <a href="{{url('/auction/intro/'.$auction->ThemeID)}}" class="aucLink">
                                     <span class="auctionImg"><img src="/img/zhanwei.png" /></span>
                                     <div class="auctionRight fl clearfix">
                                         <span class="periods">{{$auction->ThemeName}}</span>

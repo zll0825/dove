@@ -57,7 +57,7 @@
                     @foreach($newss as $news)
                         <li><a href="{{url('/news/'.$news->NewsID)}}">{{$news->NewsTitle}}</a></li>
                     @endforeach
-                    @eles
+                    @else
                         <li>
                             暂无新闻
                         </li>

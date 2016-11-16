@@ -16,16 +16,38 @@ use DB;
 class DoveController extends Controller
 {
     public function indexSale(){
-        $doves = Dove::where('SaleType', 0)->orderBy('updated_at', 'desc')->paginate(2);
+        $doves = Dove::where('SaleType', 0)->orderBy('updated_at', 'desc')->paginate(1);
         $latestsales = $this->getSaleOrder();
         return view('doves.indexsale', compact('doves','latestsales'));
+    }
+
+    public function getLatest($type){
+        $data = Dove::where('SaleType', $type)->orderBy('updated_at', 'desc')->take(8)->get();
+        return $data;
+    }
+
+    public function getTotal($type){
+        $data = Dove::where('SaleType', $type)->orderBy('ViewCount', 'desc')->take(8)->get();
+        return $data;
+    }
+
+    public function getRandom($type){
+        $data = Dove::where('SaleType', $type)->orderBy('ViewCount', 'desc')->lists('DoveID')->toArray();
+        $data = array_values(array_unique($data));
+        shuffle($data);
+        $data = array_slice($data, 0, 8);
+        $data = Dove::whereIn('DoveID', $data)->get();
+        return $data;
     }
 
     public function infoSale($id){
         Dove::where('DoveID',$id)->increment('ViewCount');
         $dove = $this->_getDoveInfo($id);
         $doveid = $id;
-        return view('doves.infosale',compact('dove','doveid'));
+        $latests = $this->getLatest(0);
+        $totals = $this->getTotal(0);
+        $recommends = $this->getRandom(0);
+        return view('doves.infosale',compact('dove','doveid','latests','totals','recommends'));
     }
 
     public function indexShow(){
@@ -37,7 +59,10 @@ class DoveController extends Controller
     public function infoShow($id){
         Dove::where('DoveID',$id)->increment('ViewCount');
         $dove = $this->_getDoveInfo($id);
-        return view('doves.infoshow',compact('dove'));
+        $latests = $this->getLatest(2);
+        $totals = $this->getTotal(2);
+        $recommends = $this->getRandom(2);
+        return view('doves.infoshow',compact('dove','latests','totals','recommends'));
     }
 
     public function addCart(Request $request){
@@ -86,22 +111,6 @@ class DoveController extends Controller
             $res = Order::insert($data);
             if($res){
                 return ['status_code'=>'200', 'msg'=>'购买成功，请付款'];
-            } else {
-                return ['status_code'=>'409', 'msg'=>'提交失败！'];
-            }
-        }
-    }
-
-    public function uploadPay(Request $request){
-        $user = User::where('userid',$request->userid)->first();
-        $dove = Dove::where('DoveID',$request->doveid)->first();
-        $order = Order::where(['UserID'=>$user->userid, 'DoveID'=>$request->doveid])->first();
-        if(!$order){
-            return ['status_code'=>'404', 'msg'=>'您还没买!'];
-        } else {
-            $res = $order->update(['PayFlag'=>2]);
-            if($res){
-                return ['status_code'=>'200', 'msg'=>'付款凭证上传成功'];
             } else {
                 return ['status_code'=>'409', 'msg'=>'提交失败！'];
             }

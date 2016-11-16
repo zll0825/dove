@@ -10,28 +10,28 @@
         <div class="fl newsCenter">
             <div class="bigTitle"><span>赛鸽资讯</span></div>
             <div class="listNews">
-                <ul>
+                <ul class="listNewsUl">
                     @if(!empty($newss))
-                    @foreach($newss as $news)
-                    <li>
-                        <a href="{{url('/news/'.$news->NewsID)}}">
-                            <span class="newsImg fl"><img src="{{$news->NewsLabel}}" /></span>
-                            <div class="newsCon fl">
-                                <h3>{{$news->NewsTitle}}</h3>
-                                <span class="publishTime">发表于：{{$news->PublicTime}}</span>
-                                <p class="summary">{{$news->Brief}}</p>
-                            </div>
-                        </a>
-                    </li>
-                    @endforeach
-                    @eles
-                    <li>
-                        暂无新闻
-                    </li>
+                        @foreach($newss as $news)
+                        <li>
+                            <a href="{{url('/news/'.$news->NewsID)}}">
+                                <span class="newsImg fl"><img src="{{$news->NewsLabel}}" /></span>
+                                <div class="newsCon fl">
+                                    <h3>{{$news->NewsTitle}}</h3>
+                                    <span class="publishTime">发表于：{{$news->PublicTime}}</span>
+                                    <p class="summary">{{$news->Brief}}</p>
+                                </div>
+                            </a>
+                        </li>
+                        @endforeach
+                    @else
+                        <li>
+                            暂无新闻
+                        </li>
                     @endif
                 </ul>
                 <div class="pages">
-                    <div class="oh"><div id="Pagination"></div><span class="page-sum">共<strong class="allPage">15</strong>页</span></div>
+                    {!!$newss->render()!!}
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
                     @foreach($homes as $hom)
                     <li><a href="{{url('/news/'.$hom->NewsID)}}">{{$hom->NewsTitle}}</a></li>
                     @endforeach
-                    @eles
+                    @else
                         <li>
                             暂无新闻
                         </li>
