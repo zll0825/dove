@@ -18,7 +18,7 @@ abstract class Controller extends BaseController
 
     //获取资讯
     protected  function _getContent($label,$number){
-        $data = News::where('NewsLabel', $label)->take($number)->get();
+        $data = News::where(['NewsLabel' => $label, 'Flag' =>1])->take($number)->get();
         return $data;
     }
 

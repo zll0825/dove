@@ -135,6 +135,11 @@ $('#pub').click(function(){
         return false;
     }
 
+    if(username == ''){
+        layer.alert('请填写正确的用户名！')
+        return false;
+    }
+
     if(smscode == ''){
         layer.alert('请填写正确的验证码！')
         return false;

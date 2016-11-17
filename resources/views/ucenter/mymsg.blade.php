@@ -30,7 +30,7 @@
 				@foreach($messages as $message)
 				<li>
 					<div class="present">
-						<span class="td_check"><input type="checkbox" class="msgbox"></span>
+						<span class="td_check"><input type="checkbox" class="msgbox" value="{{$message->TextID}}"></span>
 						<span class="td_email
 						@if($message->Status == 1)
 							read
@@ -39,7 +39,7 @@
 						<span class="td_title" TextID="{{$message->TextID}}">{{$message->Title}}</span>
 						<span class="td_time">{{$message->created_at}}</span>
 					</div>
-					<div class="system_details">{{$message->Text}}</div>
+					<div class="system_details">{!!$message->Text!!}</div>
 				</li>
 				@endforeach
 			</ul>

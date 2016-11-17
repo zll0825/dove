@@ -12,6 +12,6 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        'ucenter/upload','ucenter/chusername','ucenter/chpassword','ucenter/chuserpicture'
+        'ucenter/upload','ucenter/chusername','ucenter/chpassword','ucenter/chuserpicture','readmsg','delmsg'
     ];
 }

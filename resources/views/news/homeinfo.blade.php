@@ -45,6 +45,7 @@
                 <span>THE DOVE NEWS</span>
             </div>
             <div class="press">
+            @if($news)
                 <a href="{{url('/news/'.$news->NewsID)}}" class="picNews">
                     <span class="littleImg fl"><img src="{{$news->NewsLogo}}" /></span>
                     <div class="fl littleNews">
@@ -52,6 +53,11 @@
                         <p class="summary">{{$news->NewsBrief}}</p>
                     </div>
                 </a>
+            @else
+            <li>
+                暂无新闻
+            </li>
+            @endif
                 <ul class="titleList">
                     @if(!empty($newss))
                     @foreach($newss as $news)

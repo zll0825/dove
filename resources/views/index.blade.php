@@ -44,7 +44,7 @@
                             @foreach($auctions as $auction)
                             <li>
                                 <a href="{{url('/auction/intro/'.$auction->ThemeID)}}" class="aucLink">
-                                    <span class="auctionImg"><img src="/img/zhanwei.png" /></span>
+                                    <span class="auctionImg"><img src="{{$auction->ThemePicture}}" /></span>
                                     <div class="auctionRight fl clearfix">
                                         <span class="periods">{{$auction->ThemeName}}</span>
                                         <div class="sale">{{$auction->EndTime}}结拍<span>出价：<strong class="red">{{$auction->OfferCount}}</strong> 次</span></div>
@@ -84,15 +84,15 @@
     <div class="gray ptb25">
         <div class="section selling clearfix">
             <div class="fl sellList">
-                <h5 class="benefit">优惠鸽最新推荐<a href="javascript:;" class="more">更多>></a></h5>
+                <h5 class="benefit">优惠鸽最新推荐<a href="{{url('/sale')}}" class="more">更多>></a></h5>
                 <ul class="bedoveList">
                     @foreach($sales as $sale)
                     <li>
-                        <a href="{{url('/sale/'.$sale->DoveID)}}" class="pink"><img src="/img/zhanwei.png" /></a>
+                        <a href="{{url('/sale/'.$sale->DoveID)}}" class="pink"><img src="{{$sale->DovePicture}}" /></a>
                         <a href="{{url('/sale/'.$sale->DoveID)}}" class="name mt8">{{$sale->DoveName}}</a>
                         <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：{{$sale->ViewCount}}</span>
-                        <span class="primecost">原价：<s>{{$sale->OriginPrice}}</s>元</span>
-                        <span class="price">优惠价：<em class="red">{{$sale->DovePrice}}</em>元</span>
+                        <span class="primecost">原价：<s>{{$sale->OriginPrice/100}}</s>元</span>
+                        <span class="price">优惠价：<em class="red">{{$sale->DovePrice/100}}</em>元</span>
                         <a href="{{url('/sale/'.$sale->DoveID)}}" class="buy mt6">在线购买</a>
                     </li>
                     @endforeach
@@ -129,8 +129,8 @@
                     @foreach($recommends as $recommend)
                     <li>
                         <a href="{{url('/show/'.$recommend->DoveID)}}" class="recImg">
-                            <span class="pink"><img src="/img/zhanwei.png" height="134" width="200" /></span>
-                            <p class="recName" href="javascript:;">{{$recommend->DoveName}}</p>
+                            <span class="pink"><img src="{{$recommend->DovePicture}}" height="134" width="200" /></span>
+                            <p class="recName" href="{{url('/show/'.$recommend->DoveID)}}">{{$recommend->DoveName}}</p>
                             <p class="recHot">人气：{{$recommend->ViewCount}}</p>
                         </a>
                     </li>

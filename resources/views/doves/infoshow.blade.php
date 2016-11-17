@@ -9,7 +9,7 @@
     <div class="section clearfix">
         <div class="fr product">
             <div class="line"></div>
-            <h2 class="proTitle"><span>特价两周&nbsp;&nbsp;,{{$dove->DoveName}}</span></h2>
+            <h2 class="proTitle"><span>{{$dove->DoveName}}</span></h2>
             <div class="proImg">
                 <img src="{{$dove->DovePicture}}" />
             </div>

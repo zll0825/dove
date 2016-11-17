@@ -17,7 +17,7 @@
                             <a href="{{url('/home/'.$home->NewsID)}}">
                                 <span class="newsImg fl"><img src="{{$home->NewsLabel}}" /></span>
                                 <div class="newsCon fl">
-                                    <h3>{{$news->NewsTitle}}</h3>
+                                    <h3>{{$home->NewsTitle}}</h3>
                                     <span class="publishTime">发表于：{{$home->PublishTime}}</span>
                                     <p class="summary">{{$home->Brief}}</p>
                                 </div>

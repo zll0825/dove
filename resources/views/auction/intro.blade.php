@@ -12,7 +12,7 @@
             <div class="line"></div>
             <h2 class="topicTitle"><span>拍卖专题:{{$theme->ThemeName}}</span></h2>
             <div class="instruction">
-                {{$theme->ThemeInfo}}
+                {!!$theme->ThemeInfo!!}
             </div>
             <div class="storeInfo">
                 <dl>

@@ -126,6 +126,7 @@ class UserController extends Controller
         $user->depositpicture = $request->depositpicture;
         $user->idcardpicture = $request->idcardpicture;
         $user->certifystate = 0;
+        $user->freezestate = 0;
         $res = $user->save();
         if($res){
             return ['status_code'=>'200', 'msg'=>'保证金提交成功！'];

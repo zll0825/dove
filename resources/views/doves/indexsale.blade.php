@@ -13,12 +13,12 @@
                 <ul class="bedoveList">
                     @foreach($doves as $dove)
                     <li>
-                        <a href="{{url('/sale/'.$dove->DoveID)}}" class="pink"><img src="/img/zhanwei.png" /></a>
+                        <a href="{{url('/sale/'.$dove->DoveID)}}" class="pink"><img src="{{$dove->DovePicture}}" /></a>
                         <a href="{{url('/sale/'.$dove->DoveID)}}" class="name mt8">{{$dove->DoveName}}</a>
                         <span class="origin">北京李记种赛鸽中心</span>
                         <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：{{$dove->ViewCount}}</span>
                         <span class="primecost">原价：<s>10000</s>元</span>
-                        <span class="price">优惠价：<em class="red">{{$dove->DovePrice}}</em>元</span>
+                        <span class="price">优惠价：<em class="red">{{$dove->DovePrice/100}}</em>元</span>
                         <a href="{{url('/sale/'.$dove->DoveID)}}" class="buy mt6">在线购买</a>
                     </li>
                     @endforeach

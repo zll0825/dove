@@ -127,7 +127,7 @@
                         url: "{{url('/offerprice')}}",
                         type: "POST",
                         dataType: "json",
-                        data: { 'userid' : "{{Request::user()->userid}}", "auctionid" : "{{$auction->AuctionID}}", "offer" : offer, "_token" : "{{csrf_token()}}"},
+                        data: { 'userid' : "{{Request::user()->userid}}", "auctionid" : "{{$auction->AuctionID}}", "offer" : offer*100, "_token" : "{{csrf_token()}}"},
                         error: function(){
                             layer.alert('异常，请刷新重试！');
                         },

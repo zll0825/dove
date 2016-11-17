@@ -9,7 +9,7 @@
     <div class="section clearfix">
         <div class="fr product">
             <div class="line"></div>
-            <h2 class="proTitle"><span>特价两周&nbsp;&nbsp;{{$dove->DoveName}}</span></h2>
+            <h2 class="proTitle"><span>{{$dove->DoveName}}</span></h2>
             <div class="proImg">
                 <img src="{{$dove->DovePicture}}" />
             </div>
@@ -26,8 +26,8 @@
                     <dd><b>人<em>气</em>：</b><strong class="red f20">{{$dove->ViewCount}}</strong>次</dd>
                     <dt><b>数<em>量</em>：</b><strong class="green f20">1</strong></dt>
                     <dd><b>血<em>统</em>：</b>{{$dove->DoveBlood}}</dd>
-                    <dt><b>价<em>格</em>：</b>￥<strong class="red f24">{{$dove->OriginPrice}}</strong></dt>
-                    <dd><b>会员价：</b>￥<strong class="red f24">{{$dove->DovePrice}}</strong></dd>
+                    <dt><b>价<em>格</em>：</b>￥<strong class="red f24">{{$dove->OriginPrice/100}}</strong></dt>
+                    <dd><b>会员价：</b>￥<strong class="red f24">{{$dove->DovePrice/100}}</strong></dd>
                 </dl>
                 <div class="btnBox">
                     <a href="javascript:;" class="btnCar" id="addcart"><span><i class="iconfont">&#xe689;</i>加入购物车</span></a>
@@ -49,8 +49,8 @@
                             <a href="{{url('/slae/'.$recommend->DoveID)}}" class="pink"><img src="{{$recommend->DovePicture}}" /></a>
                             <a href="{{url('/slae/'.$recommend->DoveID)}}" class="name mt8">{{$recommend->DoveName}}</a>
                             <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：{{$recommend->ViewCount}}</span>
-                            <span class="primecost">原价：<s>{{$recommend->OriginPrice}}</s>元</span>
-                            <span class="price">优惠价：<em class="red">{{$recommend->DovePrice}}</em>元</span>
+                            <span class="primecost">原价：<s>{{$recommend->OriginPrice/100}}</s>元</span>
+                            <span class="price">优惠价：<em class="red">{{$recommend->DovePrice/100}}</em>元</span>
                             <a href="{{url('/slae/'.$recommend->DoveID)}}" class="buy mt6">在线购买</a>
                         </li>
                         @endforeach

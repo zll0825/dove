@@ -44,6 +44,7 @@
                 <h2>鸽友之家</h2>
                 <span>THE DOVE NEWS</span>
             </div>
+            @if($home)
             <a href="{{url('/home/'.$home->NewsID)}}" class="picNews">
                 <span class="littleImg fl"><img src="{{$home->NewsLogo}}" /></span>
                 <div class="fl littleNews">
@@ -51,6 +52,11 @@
                     <p class="summary">{{$home->NewsBrief}}</p>
                 </div>
             </a>
+            @else
+            <li>
+                暂无新闻
+            </li>
+            @endif
             <ul class="titleList">
                 @if(!empty($homes))
                 @foreach($homes as $hom)

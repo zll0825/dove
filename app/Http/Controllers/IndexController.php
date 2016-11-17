@@ -44,7 +44,7 @@ class IndexController extends Controller
     }
 
     public function getSale(){
-        $data = Dove::where(['SaleType'=>1])->orderBy('DoveID','desc')->take(8)->get();
+        $data = Dove::where(['SaleType'=>0])->orderBy('DoveID','desc')->take(8)->get();
         return $data;
     }
 

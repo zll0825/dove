@@ -27,19 +27,19 @@
                             <ul class="bidUl">
                                 @foreach($orders as $order)
                                 <li doveid="{{$order->DoveID}}" auctionid="{{$order->AuctionID}}">
-                                    <a href="javascript:;" class="bidImg"><img src="/img/zhanwei.png" /></a>
+                                    <a href="javascript:;" class="bidImg"><img src="{{$order->DovePicture}}" /></a>
                                     <a href="javascript:;" class="information fl">
                                     	<span class="s1"><strong>{{$order->DoveName}}</strong></span>
                                     	<span class="s2"><em>{{$order->DoveIndex}}</em></span>
                                     	<span class="red s3"><i class="iconfont">&#xe63b;</i>人气：{{$order->ViewCount}}</span>
                                     	<div class="cost fl">
-                                    		<span class="s4">原价：<s>{{$order->OriginPrice}}</s>元</span>
-                                    		<strong>优惠价：<span class="red">{{$order->DovePrice}}</span>元</strong>
+                                    		<span class="s4">原价：<s>{{$order->OriginPrice/100}}</s>元</span>
+                                    		<strong>优惠价：<span class="red">{{$order->DovePrice/100}}</span>元</strong>
                                     	</div>
                                     </a>
                                     <div class="payfor fl">
                                         @if($order->PayFlag == 0)
-                                            <a href="javascript:;" class="nopay">立即购买</a>
+                                            <a href="javascript:;" class="nopay buynow">立即购买</a>
                                             <span class="payInfo">已加入购物车</span>
                                         @elseif($order->PayFlag == 1)
                                             <a href="javascript:;" class="nopay upCer">上传付款凭证<input class="uploadpay" type="file" name="files[]" data-url="{{url('/ucenter/upload')}}" multiple accept="image/png, image/gif, image/jpg, image/jpeg"></a>
@@ -165,6 +165,32 @@
                     layer.msg('确认收货失败，请刷新重试！');
                 }
             }
+        });
+    })
+
+    $('.buynow').click(function(){
+        var doveid = $(this).parents('li').attr('doveid');
+        layer.confirm('确定购买吗？', {icon: 3, title:'提示'}, function(index){
+            $.ajax({
+                url: "{{url('/purchase')}}",
+                type: "POST",
+                dataType: "json",
+                data: { 'userid' : "{{Request::user()->userid}}", "doveid" : doveid, "_token" : "{{csrf_token()}}"},
+                error: function(){
+                    layer.alert('异常，请刷新重试！');
+                },
+                success: function(json){
+                    if(json.status_code == "200"){
+                        layer.alert('购买成功，请及时付款，并且上传付款凭证！');
+                        window.location.reload();
+                    }else if(json.status_code == "409"){
+                        layer.alert('购买失败，请稍候重试！');
+                    }else if(json.status_code == "404"){
+                        layer.alert('您已经购买过了，请到个人中心查看！');
+                    }
+                }
+            })
+            layer.close(index);
         });
     })
 

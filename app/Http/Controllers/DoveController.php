@@ -16,7 +16,7 @@ use DB;
 class DoveController extends Controller
 {
     public function indexSale(){
-        $doves = Dove::where('SaleType', 0)->orderBy('updated_at', 'desc')->paginate(1);
+        $doves = Dove::where('SaleType', 0)->orderBy('updated_at', 'desc')->paginate(8);
         $latestsales = $this->getSaleOrder();
         return view('doves.indexsale', compact('doves','latestsales'));
     }
@@ -51,7 +51,7 @@ class DoveController extends Controller
     }
 
     public function indexShow(){
-        $doves = Dove::where('SaleType', 2)->orderBy('updated_at', 'desc')->paginate(2);
+        $doves = Dove::where('SaleType', 2)->orderBy('updated_at', 'desc')->paginate(8);
         $latestsales = $this->getSaleOrder();
         return view('doves.indexshow', compact('doves','latestsales'));
     }
@@ -77,6 +77,7 @@ class DoveController extends Controller
             $data['DoveID'] = $request->doveid;
             $data['OrderType'] = 0;
             $data['OrderPrice'] = $dove->DovePrice;
+            $data['created_at'] = date('Y-m-d H:i:s', time());
             $res = Order::insert($data);
             if($res){
                 return ['status_code'=>'200', 'msg'=>'加入购物车成功'];
@@ -108,6 +109,7 @@ class DoveController extends Controller
             $data['OrderType'] = 0;
             $data['OrderPrice'] = $dove->DovePrice;
             $data['PayFlag'] = 1;
+            $data['created_at'] = date('Y-m-d H:i:s', time());
             $res = Order::insert($data);
             if($res){
                 return ['status_code'=>'200', 'msg'=>'购买成功，请付款'];
