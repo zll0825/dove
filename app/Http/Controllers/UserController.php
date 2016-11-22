@@ -20,15 +20,17 @@ class UserController extends Controller
 
     public function myauction(Request $request){
         $user = $request->user();
-        $auctions = Buy::join('T_D_AUCTION','T_D_AUCTION.AuctionID','=','T_U_BUY.AuctionID')->join('T_D_DOVEINFO','T_D_DOVEINFO.DoveID','=','T_D_AUCTION.DoveID')->where('UserID', $user->userid)->orderBy('T_U_BUY.created_at','desc')->get();
+        $auctions = Buy::join('T_D_AUCTION','T_D_AUCTION.AuctionID','=','T_U_BUY.AuctionID')->select('*', 'T_U_BUY.Status as BStatus')->join('T_D_DOVEINFO','T_D_DOVEINFO.DoveID','=','T_D_AUCTION.DoveID')->where('UserID', $user->userid)->orderBy('T_U_BUY.created_at','desc')->get();
         //dd($auctions);
         return view('ucenter.myauction',compact('auctions'));
     }
 
     public function myorder(Request $request){
         $user = $request->user();
-        $orders = Order::join('T_D_DOVEINFO','T_D_DOVEINFO.DoveID','=','T_U_Order.DoveID')->where('UserID', $user->userid)->orderBy('T_U_Order.created_at','desc')->get();
-        return view('ucenter.myorder',compact('orders'));
+        $orders = Order::join('T_D_DOVEINFO','T_D_DOVEINFO.DoveID','=','T_U_Order.DoveID')->where(['UserID'=>$user->userid,'AuctionID'=>0])->orderBy('T_U_Order.created_at','desc')->get();
+        $auctions = Order::join('T_D_AUCTION','T_D_AUCTION.AuctionID','=','T_U_Order.AuctionID')->join('T_D_DOVEINFO','T_D_DOVEINFO.DoveID','=','T_D_AUCTION.DoveID')->where('UserID', $user->userid)->orderBy('T_U_Order.created_at','desc')->get();
+        // dd($auctions);
+        return view('ucenter.myorder',compact('orders','auctions'));
     }
 
     public function mymsg(Request $request){

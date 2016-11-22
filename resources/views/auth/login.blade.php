@@ -29,6 +29,7 @@
             <div class="prompt1"></div>
             <div class="secret"><input type="password" class="pwdInp" placeholder="请输入密码" /><span class="rectang"><i class="iconfont">&#xe628;</i></span></div>
             <div class="prompt2"></div>
+            <div class="forget" style="margin-bottom:20px;text-align:right"><a href="javascript:;">忘记密码</a></div>
             <button class="btnLog" id="pub">登&nbsp;&nbsp;录</button>
         </div>
     </div>
@@ -79,6 +80,18 @@
                 title: null,
                 area: ['300px','435px'],
                 content: '{{url('/register')}}',
+            }); 
+            parent.layer.close(index);
+        })
+
+        $('.forget').click(function(){
+            var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+            parent.layer.open({
+                type: 2,
+                closeBtn: 1,
+                title: null,
+                area: ['300px','435px'],
+                content: '{{url('/forget')}}',
             }); 
             parent.layer.close(index);
         })

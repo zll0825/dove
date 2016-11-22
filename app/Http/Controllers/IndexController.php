@@ -31,7 +31,9 @@ class IndexController extends Controller
             $v->HighPrice = $this->getHighPrice($v->AuctionID);
         }
         $latestsales = $this->getSaleOrder();
-        return view('index',compact('notices','homes','infomations','auctions','sales','recommends','latestauctions','latestsales'));
+        $weekarray=array("日","一","二","三","四","五","六");
+        $week =  "星期".$weekarray[date("w")];
+        return view('index',compact('notices','homes','infomations','auctions','sales','recommends','latestauctions','latestsales','week'));
     }
 
     public function help(){
@@ -49,7 +51,7 @@ class IndexController extends Controller
     }
 
     public function getAuction(){
-        $data = Theme::where('EndFlag', '0')->orderBy('ThemeID','desc')->get();
+        $data = Theme::where('EndFlag', '0')->orderBy('ThemeID','desc')->take(6)->get();
         // $data = Auction::join('T_D_THEMEAUCTION', 'T_D_AUCTION.AuctionID', '=', 'T_D_THEMEAUCTION.AuctionID')
         //     ->join('T_D_DOVEINFO', 'T_D_DOVEINFO.DoveID', '=', 'T_D_AUCTION.DoveID')
         //     ->join('T_D_THEME', 'T_D_THEME.ThemeID', '=', 'T_D_THEMEAUCTION.ThemeID')

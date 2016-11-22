@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Auction;
 use App\Theme;
 use App\Buy;
+use App\Dove;
 use Illuminate\Http\Request;
 use DB;
 
@@ -16,7 +17,7 @@ class AuctionController extends Controller
     public function index(){
         $notices = $this->_getContent('tz',6);
         $themes = Theme::where('EndFlag', '0')->orderBy('ThemeID','desc')->lists('ThemeID');
-        $auctions = Auction::join('T_D_THEMEAUCTION','T_D_AUCTION.AuctionID','=','T_D_THEMEAUCTION.AuctionID')->join('T_D_DOVEINFO','T_D_DOVEINFO.DoveID','=','T_D_AUCTION.DoveID')->join('T_D_THEME','T_D_THEME.ThemeID','=','T_D_THEMEAUCTION.ThemeID')->whereIn('T_D_THEMEAUCTION.ThemeID',$themes)->where('T_D_AUCTION.Status',0)->orderBy('T_D_AUCTION.AuctionID','desc')->get();
+        $auctions = Auction::join('T_D_THEMEAUCTION','T_D_AUCTION.AuctionID','=','T_D_THEMEAUCTION.AuctionID')->join('T_D_DOVEINFO','T_D_DOVEINFO.DoveID','=','T_D_AUCTION.DoveID')->join('T_D_THEME','T_D_THEME.ThemeID','=','T_D_THEMEAUCTION.ThemeID')->whereIn('T_D_THEMEAUCTION.ThemeID',$themes)->where('T_D_AUCTION.Status',0)->orderBy('T_D_AUCTION.AuctionID','desc')->take(8)->get();
         foreach ($auctions as $v){
             $v->OfferCount = $this->getBuyCount($v->AuctionID);
             $v->EndDays = round((strtotime($v->EndTime)-time())/3600/24);
@@ -53,6 +54,7 @@ class AuctionController extends Controller
 
     public function info($id){
         $auction = $this->getAuctionInfo($id)[0];
+        Dove::where('DoveID',$auction->DoveID)->increment('ViewCount');
         $auction->EndDays = round((strtotime($auction->EndTime)-time())/3600/24);
         $auction->OfferCount = $this->getBuyCount($auction->AuctionID);
 

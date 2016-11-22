@@ -143,6 +143,8 @@
                         layer.alert('加入购物车失败，请稍候重试！');
                     }else if(json.status_code == "404"){
                         layer.alert('您已经购买过了，请到个人中心查看！');
+                    }else if(json.status_code == "401"){
+                        layer.alert('请交纳保证金，并前往个人中心上传凭证！');
                     }
                 }
             })
@@ -167,6 +169,8 @@
                         layer.alert('购买失败，请稍候重试！');
                     }else if(json.status_code == "404"){
                         layer.alert('您已经购买过了，请到个人中心查看！');
+                    }else if(json.status_code == "401"){
+                        layer.alert('请交纳保证金，并前往个人中心上传凭证！');
                     }
                 }
             })
@@ -179,7 +183,7 @@
                 type: 2,
                 closeBtn: 1,
                 title: null,
-                area: ['300px','332px'],
+                area: ['310px','362px'],
                 content: "{{url('/login')}}",
             });
         })

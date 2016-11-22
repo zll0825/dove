@@ -33,7 +33,7 @@
 					<div class="phoneNumber"><strong>手机号：</strong>{{Request::user()->phonenumber}}</div>
                     <div class="userName"><strong>用户名：</strong><input type="text" class="inpName" value="{{Request::user()->username}}" readonly="readonly" /><a href="javascript:;" class="green change1">修改</a><a href="javascript:;" class="red nameChan">确定</a></div>
                     <div class="prompt"></div>
-                    <div class="userPwd getCode"><strong>验证码：</strong><input type="text" class="codetest" /><span class="get" id="getSmsCode">获取验证码</span></div>
+                    <div class="userPwd getCode"><strong>验证码：</strong><input type="text" class="codetest" /><input type="button" class="get" value="获取验证码" id="getSmsCode"/></div>
                     <div class="prompt"></div>
                     <div class="userPwd originPwd"><strong>密<em>码</em>：</strong><input type="password" value="******" readonly="readonly" class="inpPwd" /><a href="javascript:;" class="green change2">修改</a><a href="javascript:;" class="red pwdChan">确定</a></div>
                     <div class="prompt"></div>
@@ -166,10 +166,13 @@ $(function () {
             $('.nameChan').show();
         });
         $('.nameChan').click(function() {
+            var _this = this;
             if($('.inpName').val() == ''){
                 $(this).parent().next('.prompt').html('请输入用户名');
+                return false;
             }else if($('.inpName').val().length > 16){
                 $(this).parent().next('.prompt').html('用户名不能超过16个字哦~');
+                return false;
             }else{
                 var username = $('.inpName').val();
                 $.ajax({
@@ -182,9 +185,9 @@ $(function () {
                         if(json.status_code == '419'){
                             layer.alert('此昵称已被其他用户抢注，请修改');
                         } else if(json.status_code == '200'){
-                            $(this).parent().next('.prompt').html('');
+                            $(_this).parent().next('.prompt').html('');
                             $('.inpName').attr('readonly', 'readonly').css('border', 'none');
-                            $(this).hide();
+                            $(_this).hide();
                             $('.inpName').width(textWidth($('.inpName').val()));
                             $('.change1').show();
                         } else if(json.status_code == '420'){
@@ -199,16 +202,16 @@ $(function () {
             var o = document.getElementById("getSmsCode");
             if (wait == 0) {
                 o.removeAttribute("disabled");
-                o.value="获取验证码";
+                o.value = "获取验证码";
                 wait = 60;
             } else {
                 o.setAttribute("disabled", true);
-                o.value= wait + "秒";
+                o.value = wait + "秒";
                 wait--;
                 setTimeout(function() {
-                            time(o)
-                        },
-                        1000)
+                    time(o)
+                },
+                1000)
             }
         }
         $('#getSmsCode').click(function(){
@@ -277,8 +280,11 @@ $(function () {
             $('.pwdChan').show();
         });
         $('.pwdChan').click(function() {
+            var _this = this;
             if($('.inpPwd').val() == ''){
                 $(this).parent().next('.prompt').html('密码不能为空哦~');
+            }else if($('.inpPwd').val().length > 16 || $('.inpPwd').val().length < 6){
+                $(this).parent().next('.prompt').html('密码长度为6-16位！');
             }else{
                 $.ajax({
                     url : "{{url('/ucenter/chpassword')}}",
@@ -289,9 +295,9 @@ $(function () {
                         var json = eval(msg);
                         if(json.status_code == '200'){
                             layer.alert('密码修改成功！');
-                            $(this).parent().next('.prompt').html('');
+                            $(_this).parent().next('.prompt').html('');
                             $('.inpPwd').attr('readonly', 'readonly').css('border', 'none');
-                            $(this).hide();
+                            $(_this).hide();
                             $('.getCode').hide();
                             $('.change2').show();
                         } else if(json.status_code == "404"){

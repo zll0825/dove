@@ -58,7 +58,7 @@
             </li>
             @endif
             <ul class="titleList">
-                @if(!empty($homes))
+                @if($homes)
                 @foreach($homes as $hom)
                     <li><a href="{{url('/news/'.$hom->NewsID)}}">{{$hom->NewsTitle}}</a></li>
                 @endforeach

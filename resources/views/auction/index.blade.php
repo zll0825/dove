@@ -77,9 +77,13 @@
                                 <a href="{{url('/auction/intro/'.$auction->ThemeID)}}" class="aucLink">
                                     <span class="auctionImg"><img src="/img/zhanwei.png" /></span>
                                     <div class="auctionRight fl clearfix">
-                                        <span class="periods">{{$auction->ThemeName}}</span>
+                                        <span class="periods">{{$auction->DoveName}}</span>
                                         <div class="sale">{{$auction->EndTime}}结拍<span>出价：<strong class="red">{{$auction->OfferCount}}</strong> 次</span></div>
+                                        @if($auction->EndDays>0)
                                         <span class="remaining">剩&nbsp;<strong class="red">{{$auction->EndDays}}</strong>&nbsp;天</span>
+                                        @else
+                                        <span class="remaining">已结束</span>
+                                        @endif
                                     </div>
                                 </a>
                             </li>
@@ -122,10 +126,14 @@
                                             <span class="w1"><img src="/img/zhanwei.png" /></span>
                                             <span class="w2">{{$latest->DoveNumber}}</span>
                                             <span class="w3"><em>{{$latest->DoveName}}</em></span>
-                                            <span class="w4 red f18">{{$latest->StartPrice}}</span>
-                                            <span class="w5 red f18">{{$latest->HighPrice}}</span>
+                                            <span class="w4 red f18">{{$latest->StartPrice/100}}</span>
+                                            <span class="w5 red f18">{{$latest->HighPrice/100}}</span>
                                             <span class="w6">共 {{$latest->OfferCount}} 次出价<em class="noWei">浏览：{{$latest->ViewCount}}次</em></span>
+                                            @if($auction->EndDays>0)
                                             <span class="w7">剩 <em class="f18">{{$latest->EndDays}}</em> 天</span>
+                                            @else
+                                            <span class="w7">已结束</span>
+                                            @endif
                                         </a>
                                     </li>
                                     @endforeach

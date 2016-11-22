@@ -37,7 +37,7 @@
                 <div class="pleBottom">
                     <ul>
                         @foreach($latestsales as $latestsale)
-                            <li><a href="{{url('/sale/'.$latestsale->DoveID)}}"><span class="dove">{{$latestsale->DoveName}}</span><span class="bid">已被（{{substr_replace('*',$latestsales->username,1)}}）得标</span></a></li>
+                            <li><a href="{{url('/sale/'.$latestsale->DoveID)}}"><span class="dove">{{$latestsale->DoveName}}</span><span class="bid">已被（{{substr_replace('*',$latestsale->username,1)}}）得标</span></a></li>
                         @endforeach
                     </ul>
                 </div>

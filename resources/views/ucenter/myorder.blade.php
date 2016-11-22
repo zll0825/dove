@@ -27,8 +27,8 @@
                             <ul class="bidUl">
                                 @foreach($orders as $order)
                                 <li doveid="{{$order->DoveID}}" auctionid="{{$order->AuctionID}}">
-                                    <a href="javascript:;" class="bidImg"><img src="{{$order->DovePicture}}" /></a>
-                                    <a href="javascript:;" class="information fl">
+                                    <a href="{{url('/sale/'.$order->DoveID)}}" class="bidImg"><img src="{{$order->DovePicture}}" /></a>
+                                    <a href="{{url('/sale/'.$order->DoveID)}}" class="information fl">
                                     	<span class="s1"><strong>{{$order->DoveName}}</strong></span>
                                     	<span class="s2"><em>{{$order->DoveIndex}}</em></span>
                                     	<span class="red s3"><i class="iconfont">&#xe63b;</i>人气：{{$order->ViewCount}}</span>
@@ -42,19 +42,59 @@
                                             <a href="javascript:;" class="nopay buynow">立即购买</a>
                                             <span class="payInfo">已加入购物车</span>
                                         @elseif($order->PayFlag == 1)
-                                            <a href="javascript:;" class="nopay upCer">上传付款凭证<input class="uploadpay" type="file" name="files[]" data-url="{{url('/ucenter/upload')}}" multiple accept="image/png, image/gif, image/jpg, image/jpeg"></a>
+                                            <a href="javascript:;" class="nopay upCer"><span>上传付款凭证</span><input class="uploadpay" type="file" name="files[]" data-url="{{url('/ucenter/upload')}}" multiple accept="image/png, image/gif, image/jpg, image/jpeg"></a>
                                         <span class="payInfo">已购买，未上传付款凭证</span>
                                         @elseif($order->PayFlag == 2)
                                             <span class="paying">确认付款中…</span>
                                         @elseif($order->PayFlag == 3)
                                             <a href="javascript:;" class="nopay payed">已付款，等待发货</a>
                                         @elseif($order->PayFlag == 4)
-                                            <a href="javascript:;" class="nopay upCer">上传付款凭证<input class="uploadpay" type="file" name="files[]" data-url="{{url('/ucenter/upload')}}" multiple accept="image/png, image/gif, image/jpg, image/jpeg"></a>
-                                            <span class="payInfo">审核不通过，请重新上传付款凭证</span>
+                                            <a href="javascript:;" class="nopay upCer"><span>上传付款凭证</span><input class="uploadpay" type="file" name="files[]" data-url="{{url('/ucenter/upload')}}" multiple accept="image/png, image/gif, image/jpg, image/jpeg"></a>
+                                            <span class="payInfo">审核不通过，请重新上传</span>
                                         @elseif($order->PayFlag == 5)
                                             <a href="javascript:;" class="nopay sure">确认收货</a>
                                             <span class="payInfo had">已发货</span>
                                         @elseif($order->PayFlag == 6)
+                                            <a href="javascript:;" class="nopay payed">已收货</a>
+                                        @endif
+                                    </div>
+                                </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <div class="buyTitle">竞拍订单</div>
+                        <div class="bidList">
+                            <ul class="bidUl">
+                                @foreach($auctions as $auction)
+                                <li doveid="{{$auction->DoveID}}" auctionid="{{$auction->AuctionID}}">
+                                    <a href="{{url('/auction/'.$auction->AuctionID)}}" class="bidImg"><img src="{{$auction->DovePicture}}" /></a>
+                                    <a href="{{url('/auction/'.$auction->AuctionID)}}" class="information fl">
+                                        <span class="s1"><strong>{{$auction->DoveName}}</strong></span>
+                                        <span class="s2"><em>{{$auction->DoveIndex}}</em></span>
+                                        <span class="red s3"><i class="iconfont">&#xe63b;</i>人气：{{$auction->ViewCount}}</span>
+                                        <div class="cost fl">
+                                            <span class="s4">起拍价：<s>{{$auction->StartPrice/100}}</s>元</span>
+                                            <strong>得标价：<span class="red">{{$auction->EndPrice/100}}</span>元</strong>
+                                        </div>
+                                    </a>
+                                    <div class="payfor fl">
+                                        @if($auction->PayFlag == 0)
+                                            <a href="javascript:;" class="nopay buynow">立即购买</a>
+                                            <span class="payInfo">已加入购物车</span>
+                                        @elseif($auction->PayFlag == 1)
+                                            <a href="javascript:;" class="nopay upCer"><span>上传付款凭证</span><input class="uploadpay" type="file" name="files[]" data-url="{{url('/ucenter/upload')}}" multiple accept="image/png, image/gif, image/jpg, image/jpeg"></a>
+                                        <span class="payInfo">已中标，未上传付款凭证</span>
+                                        @elseif($auction->PayFlag == 2)
+                                            <span class="paying">确认付款中…</span>
+                                        @elseif($auction->PayFlag == 3)
+                                            <a href="javascript:;" class="nopay payed">已付款，等待发货</a>
+                                        @elseif($auction->PayFlag == 4)
+                                            <a href="javascript:;" class="nopay upCer"><span>上传付款凭证</span><input class="uploadpay" type="file" name="files[]" data-url="{{url('/ucenter/upload')}}" multiple accept="image/png, image/gif, image/jpg, image/jpeg"></a>
+                                            <span class="payInfo">审核不通过，请重新上传</span>
+                                        @elseif($auction->PayFlag == 5)
+                                            <a href="javascript:;" class="nopay sure">确认收货</a>
+                                            <span class="payInfo had">已发货</span>
+                                        @elseif($auction->PayFlag == 6)
                                             <a href="javascript:;" class="nopay payed">已收货</a>
                                         @endif
                                     </div>

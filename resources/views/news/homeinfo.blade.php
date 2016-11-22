@@ -18,10 +18,10 @@
             </div>
             <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
             <div class="newsArtical">
-                <h2 class="articalTitle">{{$news->NewsTitle}}</h2>
-                <div class="articalTime">{{$news->PublishTime}}<span>来源:{{$news->NewsAuthor}}</span></div>
+                <h2 class="articalTitle">{{$home->NewsTitle}}</h2>
+                <div class="articalTime">{{$home->PublishTime}}<span>来源:{{$home->NewsAuthor}}</span></div>
                 <div class="paragraph">
-                    {!! $news->NewsContent!!}
+                    {!! $home->NewsContent!!}
                 </div>
                 <dl class="piece prevEssay">
                     @if($pre)
@@ -59,7 +59,7 @@
             </li>
             @endif
                 <ul class="titleList">
-                    @if(!empty($newss))
+                    @if($newss)
                     @foreach($newss as $news)
                         <li><a href="{{url('/news/'.$news->NewsID)}}">{{$news->NewsTitle}}</a></li>
                     @endforeach

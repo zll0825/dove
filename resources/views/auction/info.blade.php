@@ -6,6 +6,7 @@
 @endsection('head')
 
 @section('content')
+            <div id="blood" style="display:none" ><img src="{{$auction->DoveBloodPicture}}"></div>
     <div class="section">
         <div class="goods">
             <h2 class="goodsTitle"><span>商品信息</span></h2>
@@ -15,9 +16,9 @@
                     <dd>数量：<strong>1羽</strong></dd>
                     <dt>开拍时间：<strong>{{$auction->StartTime}}</strong></dt>
                     <dd>结拍时间：<strong class="red f24">{{$auction->EndTime}}</strong></dd>
-                    <dt>当前时间：<strong class="red f24">{{date('Y-m-d H:i:s', time())}}</strong></dt>
-                    <dd>血统书：查看大图</dd>
-                    <dt class="addPrice">加价幅度：<strong>{{$auction->AddPrice}}元</strong></dt>
+                    <dt>起拍价：<strong class="red f24" id="startprice">{{$auction->StartPrice/100}}元</strong></dt>
+                    <dd>血统书：<span id="check" style="cursor:pointer;border:1px solid #802D2D;border-radius:3px;padding:0 3px;background: #c53e38;color: white;font-weight: bold;">查看大图</span></dd>
+                    <dt class="addPrice">加价幅度：<strong>{{$auction->AddPrice/100}}元</strong></dt>
                     <dd class="moreDet"><span>详细介绍：</span>{!!$auction->DoveIntro!!}</dd>
                 </dl>
             </div>
@@ -40,7 +41,7 @@
                             <li>
                                 <a href="javascript:;">
                                     <span class="wd1">{{$process->username}}</span>
-                                    <span class="wd2">¥ <em class="red">{{$process->Offer}}</em>元</span>
+                                    <span class="wd2">¥ <em class="red">{{$process->Offer/100}}</em>元</span>
                                     <span class="wd3">{{$process->created_at}}</span>
                                     <span class="wd4">@if($process->Status == 0)出局@elseif($process->Status == 1)领先@endif</span>
                                 </a>
@@ -107,6 +108,18 @@
 
 
     })
+
+    $('#check').click(function(){
+        layer.open({
+          type: 1,
+          title: false,
+          closeBtn: 1,
+          area: '516px',
+          skin: 'layui-layer-nobg', //没有背景色
+          shadeClose: true,
+          content: $('#blood')
+        });
+    })
     @if(Request::user())
 
     $('#iwillauction').click(function(){
@@ -114,12 +127,15 @@
             type: 1,
             class: 'offerprice',
 //            area: ['500px'], //宽高
-            content: "<div class='inps'><div>请输入价格：<input type='number' id='offer'/></div><div>加价幅度：<span id='addprice'>{{$auction->AddPrice}}</span></div><div>当前最高出价：<span id='highprice'>{{$highprice}}</span></div></div>",
+            content: "<div class='inps'><div>请输入价格：<input type='number' id='offer'/></div><div>加价幅度：<span id='addprice'>{{$auction->AddPrice/100}}</span></div><div>当前最高出价：<span id='highprice'>{{$highprice/100}}</span></div></div>",
             btn: ['确定','取消'], btn1:function(){
                 var offer = $('#offer').val() ? parseInt($('#offer').val()) : '';
                 var addprice = parseInt($('#addprice').html());
                 var highprice = parseInt($('#highprice').html());
-                if(offer == '' || offer <= (addprice+highprice)){
+                if(highprice == 0){
+                    highprice = parseInt($('startprice').html());
+                }
+                if(offer == '' || offer < (addprice+highprice)){
                     layer.msg('请正确出价，至少等于当前最高价加上最少加价幅度！');
                     return false;
                 }else {
@@ -140,6 +156,12 @@
                                 });
                             }else if(json.status_code == "409"){
                                 layer.alert('出价失败，请稍候重试！');
+                            }else if(json.status_code == "401"){
+                                layer.alert('请交纳保证金，并前往个人中心上传凭证！');
+                            }else if(json.status_code == "408"){
+                                layer.alert('抱歉，这只鸽子已经被别人拍下了！');
+                            }else if(json.status_code == "410"){
+                                layer.alert('请正确出价，不小于起拍价');
                             }
                         }
                     })
@@ -154,7 +176,7 @@
                 type: 2,
                 closeBtn: 1,
                 title: null,
-                area: ['300px','332px'],
+                area: ['310px','362px'],
                 content: "{{url('/login')}}",
             });
         })

@@ -17,6 +17,9 @@ Route::get('/auth/logout', 'Auth\AuthController@getLogout');
 // 注册路由...
 Route::get('/register', 'Auth\AuthController@getRegister');
 Route::post('/auth/register', 'Auth\AuthController@postRegister');
+// 忘记密码
+Route::get('/forget', 'Auth\AuthController@getForget');
+Route::post('/auth/forget', 'Auth\AuthController@postForget');
 
 // 首页
 Route::get('/', 'IndexController@index');

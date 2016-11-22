@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>注册</title>
+    <title></title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta http-equiv="content-type" content="text/html;charset=utf-8">
@@ -11,60 +11,64 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="format-detection" content="telephone=no"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/base.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('/iconfont/iconfont.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/public.css')}}" />
-    <link rel="stylesheet" type="text/css" href="{{asset('/css/logreg.css')}}" />
-    <script type="text/javascript" src="{{asset('/js/jquery.min.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <link rel="stylesheet" type="text/css" href="iconfont/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="css/public.css" />
+    <link rel="stylesheet" type="text/css" href="css/logreg.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/swiper-3.4.0.jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.pagination.js"></script>
     <script type="text/javascript" src="{{asset('/org/layer/layer.js')}}"></script>
+    <script type="text/javascript" src="js/public.js"></script>
+    
 </head>
 <body>
     <div class="canvas"><canvas id="myCanvas"></canvas></div>
     <div class="loginBox">
         <div class="logTitle">
-            <h2>注册<a href="javascript:;" class="noAccount" id="lognow"><i class="iconfont">&#xe601;</i>&nbsp;立即登录</a></h2>
+            <h2>忘记密码</h2>
         </div>
         <div class="logCon">
             <div class="users"><input type="text" class="userInp" placeholder="请输入手机号" /><span class="rectang"><i class="iconfont">&#xe60b;</i></span></div>
             <div class="prompt1"></div>
-            <div class="test"><input type="text" class="verifyInp" placeholder="请输入验证码" /><span class="rectang"><i class="iconfont">&#xe640;</i></span><input type="button" class="getVer" value="获取验证码" id="btn"/></div>
+            <div class="test"><input type="text" class="verifyInp" placeholder="请输入验证码" /><span class="rectang"><i class="iconfont">&#xe640;</i></span><input type="button" class="getVer" value="获取验证码" id="btn" /></div>
             <div class="prompt3"></div>
-            <div class="usersname"><input type="text" class="nameInp" placeholder="请输入用户名" /><span class="rectang"><i class="iconfont">&#xe609;</i></span></div>
+            <div class="secret"><input type="password" class="pwdInp" placeholder="请设置新密码" /><span class="rectang"><i class="iconfont">&#xe628;</i></span></div>
             <div class="prompt4"></div>
-            <div class="secret"><input type="password" class="pwdInp" placeholder="请输入密码" /><span class="rectang"><i class="iconfont">&#xe628;</i></span></div>
+            <div class="secret"><input type="password" class="pwdInp" placeholder="请再输入密码" id="repwd" /><span class="rectang"><i class="iconfont">&#xe628;</i></span></div>
             <div class="prompt2"></div>
-            <button class="btnReg" id="pub">注&nbsp;&nbsp;册</button>
+            <button class="btnLog" id="login">登&nbsp;&nbsp;录</button>
         </div>
     </div>
     <script type="text/javascript">
-//        $(function(){
-//            $('.userInp').blur(function() {
-//                var phonetext = $(this).val();
-//                if(!(/^1[3|4|5|7|8]\d{9}$/.test(phonetext))||$(this).val==''){
-//                    $('.prompt1').html('手机号或用户名不能为空或者输入错误！');
-//                }else{
-//                    $('.prompt1').html('');
-//                }
-//            });
-//
-//            $('.nameInp').blur(function() {
-//                var nametext = $(this).val();
-//                if($(this).val()==''){
-//                    $('.prompt4').html('用户名不能为空！');
-//                }else{
-//                    $('.prompt4').html('');
-//                }
-//            });
-//
-//            $('.pwdInp').blur(function() {
-//                var pwdtext = $(this).val();
-//                if(!(/^[a-zA-Z0-9_-]{6,18}$/).test(pwdtext)){
-//                    $('.prompt2').html('密码只能输入6-18位的数字或者字母!');
-//                }else{
-//                    $('.prompt2').html('');
-//                }
-//            });
-//        })
+        // $(function(){
+        //     $('.userInp').blur(function() {
+        //         var phonetext = $(this).val();
+        //         if(!(/^1[3|4|5|7|8]\d{9}$/.test(phonetext))||$(this).val==''){
+        //             $('.prompt1').html('手机号或用户名不能为空或者输入错误！');
+        //         }else{
+        //             $('.prompt1').html('');
+        //         }
+        //     });
+
+        //     $('.nameInp').blur(function() {
+        //         var nametext = $(this).val();
+        //         if($(this).val()==''){
+        //             $('.prompt4').html('用户名不能为空！');
+        //         }else{
+        //             $('.prompt4').html('');
+        //         }
+        //     });
+
+        //     $('.pwdInp').blur(function() {
+        //         var pwdtext = $(this).val();
+        //         if(!(/^[a-zA-Z0-9_-]{6,18}$/).test(pwdtext)){
+        //             $('.prompt2').html('密码只能输入6-18位的数字或者字母!');
+        //         }else{
+        //             $('.prompt2').html('');
+        //         }
+        //     });
+        // })
 
         var wait=60;  
         function time() {
@@ -96,11 +100,11 @@ $('.getVer').click(function(){
     $.ajax({
         url:"{{url('/smscode')}}",
         type:"POST",
-        data:"phonenumber=" + phonenumber + "&action=register&_token={{csrf_token()}}",
+        data:"phonenumber=" + phonenumber + "&action=login&_token={{csrf_token()}}",
         dataType:"json",
         success:function(msg){
-            if(msg.status_code == 405){
-                layer.alert('号码已经注册！');
+            if(msg.status_code == 406){
+                layer.alert('号码未注册！');
             }
             if(msg.status_code == '503'){
                 layer.alert('发送验证码失败，请稍候重试');
@@ -114,10 +118,10 @@ $('.getVer').click(function(){
     });
 });
 
-$('#pub').click(function(){
+$('#login').click(function(){
     var phonenumber = $(".userInp").val();
     var password = $(".pwdInp").val();
-    var username = $(".nameInp").val();
+    var repwd = $("#repwd").val();
     var smscode = $(".verifyInp").val();
 
     if( phonenumber == '' || phonenumber.length != 11){
@@ -140,8 +144,8 @@ $('#pub').click(function(){
         return false;
     }
 
-    if(username == ''){
-        layer.alert('请填写正确的用户名！')
+    if( password != repwd){
+        layer.alert('两次密码不一样！')
         return false;
     }
 
@@ -150,43 +154,41 @@ $('#pub').click(function(){
         return false;
     }
 
-    $(this).val('注册中...');
+    $(this).val('登录中...');
 
     $.ajax({
-        url:"{{url('/auth/register')}}",
+        url:"{{url('/auth/forget')}}",
         type:"POST",
-        data:"phonenumber=" + phonenumber + "&username=" + username + "&password=" + password + "&smscode=" + smscode + "&_token={{csrf_token()}}" ,
+        data:"phonenumber=" + phonenumber + "&password=" + password + "&smscode=" + smscode + "&_token={{csrf_token()}}" ,
         dataType:'json',
         error:function(e){
-            layer.alert('注册异常，请刷新重试！');
+            layer.alert('登录异常，请刷新重试！');
         },
         success:function(msg){
             // console.log(msg);
             if(msg.status_code == '402'){
                 layer.alert('验证码不正确，请稍后输入');
-                $('#register').val('注册');
+                $('#login').val('注册');
                 return false;
             } else if(msg.status_code == '200'){
-                var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
-                parent.window.location.reload();
-                parent.layer.close(index);
+                $.ajax({
+                    url:"{{url('/auth/login')}}",
+                    type:"POST",
+                    data:"phonenumber=" + phonenumber + "&password=" + password  + "&_token={{csrf_token()}}",
+                    dataType:'json',
+                    success:function(msg){
+                        if(msg.status_code == "200"){
+                            var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+                            parent.window.location.reload();
+                            parent.layer.close(index);
+                        }
+                    }
+                });
             }
 
         }
     });
-});
-
-        $('#lognow').click(function(){
-            var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
-            parent.layer.open({
-                type: 2,
-                closeBtn: 1,
-                title: null,
-                area: ['310px','362px'],
-                content: "{{url('/login')}}",
-            }); 
-            parent.layer.close(index);
-        })
+});  
 
         var canvasPage3 = document.getElementById("myCanvas");
         var log = document.querySelector('.canvas').offsetWidth;

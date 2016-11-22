@@ -13,13 +13,12 @@
                 <ul class="bedoveList">
                     @foreach($doves as $dove)
                         <li>
-                            <a href="javascript:;" class="pink"><img src="{{$dove->DovePicture}}" /></a>
-                            <a href="javascript:;" class="name mt8">{{$dove->DoveName}}</a>
-                            <span class="origin">北京李记种赛鸽中心</span>
-                            <span class="hot red"><i class="iconfont">&#xe63b;</i>人气：{{$dove->ViewCount}}</span>
-                            <span class="primecost">原价：<s>10000</s>元</span>
-                            <span class="price">优惠价：<em class="red">{{$dove->DovePrice/100}}</em>元</span>
-                            <a href="{{url('/show/'.$dove->DoveID)}}" class="buy mt6">在线购买</a>
+                            <a href="{{url('/show/'.$dove->DoveID)}}" class="recImg">
+                            <span class="pink"><img src="{{$dove->DovePicture}}" height="134" width="200" /></span>
+                            <p class="recName" href="javascript:;">{{$dove->DoveName}}</p>
+                            <p class="recOrigin">博翔阁</p>
+                            <p class="recHot">人气：{{$dove->ViewCount}}</p>
+                            </a>
                         </li>
                     @endforeach
                 </ul>
@@ -37,7 +36,7 @@
                 <div class="pleBottom">
                     <ul>
                         @foreach($latestsales as $latestsale)
-                            <li><a href="{{url('/sale/'.$latestsale->DoveID)}}"><span class="dove">{{$latestsale->DoveName}}</span><span class="bid">已被（{{substr_replace('*',$latestsales->username,1)}}）得标</span></a></li>
+                            <li><a href="{{url('/sale/'.$latestsale->DoveID)}}"><span class="dove">{{$latestsale->DoveName}}</span><span class="bid">已被（{{substr_replace('*',$latestsale->username,1)}}）得标</span></a></li>
                         @endforeach
                     </ul>
                 </div>

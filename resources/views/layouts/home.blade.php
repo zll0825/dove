@@ -153,7 +153,7 @@
                 type: 2,
                 closeBtn: 1,
                 title: null,
-                area: ['300px','332px'],
+                area: ['310px','362px'],
                 content: "{{url('/login')}}",
             });   
         });

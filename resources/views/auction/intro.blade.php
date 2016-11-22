@@ -17,7 +17,7 @@
             <div class="storeInfo">
                 <dl>
                     <dt>商家名称：</dt>
-                    <dd class="bdr">{{$theme->ThemeHost}} <a href="javascript:;" class="red">(查看信用评价)</a></dd>
+                    <dd class="bdr">{{$theme->ThemeHost}} <a href="javascript:;" class="red"></a></dd>
                     <dt>所在地：</dt>
                     <dd>{{$theme->HostLocation}}</dd>
                     <dt>联系电话：</dt>
@@ -66,13 +66,17 @@
                                     @foreach($auctions as $auction)
                                     <li>
                                         <a href="{{url('/auction/'.$auction->AuctionID)}}">
-                                            <span class="w1"><img src="/img/zhanwei.png" /></span>
+                                            <span class="w1"><img src="{{$auction->DovePicture}}" /></span>
                                             <span class="w2">{{$auction->DoveNumber}}</span>
                                             <span class="w3"><em>{{$auction->DoveName}}</em></span>
-                                            <span class="w4 red f18">{{$auction->StartPrice}}</span>
-                                            <span class="w5 red f18">{{$auction->HighPrice}}</span>
+                                            <span class="w4 red f18">{{$auction->StartPrice/100}}</span>
+                                            <span class="w5 red f18">{{$auction->HighPrice/100}}</span>
                                             <span class="w6">共 {{$auction->OfferCount}} 次出价<em class="noWei">浏览：{{$auction->ViewCount}}次</em></span>
+                                            @if($auction->EndDays>=0)
                                             <span class="w7">剩 <em class="f18">{{$auction->EndDays}}</em> 天</span>
+                                            @else
+                                            <span class="w7">已结束</span>
+                                            @endif
                                         </a>
                                     </li>
                                     @endforeach

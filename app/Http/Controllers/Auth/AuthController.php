@@ -8,6 +8,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -69,5 +70,32 @@ class AuthController extends Controller
             //'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function getForget(){
+        return view('auth.forget');
+    }
+
+    public function postForget(Request $request){
+        // 手机验证码验证
+        if (Cache::has($request->phonenumber)) {
+           $smscode = Cache::get($request->phonenumber);
+        
+           if ($smscode != $request->smscode) {
+               return ['status_code' => '402', 'msg' => 'phonenumber smscode error'];
+           }
+        } else {
+           return ['status_code' => '402', 'msg' => 'phonenumber smscode error'];
+        }
+
+        $user = User::where('phonenumber', $request->phonenumber)->first();
+        $user->password = bcrypt($request->password);
+        $res = $user->save();
+
+        if ($res) {
+            return ['status_code' => '200', 'msg' => 'Password Change Success'];
+        } else {
+            return ['status_code' => '504', 'msg' => 'Password Change Error'];
+        }
     }
 }

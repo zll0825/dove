@@ -11,7 +11,7 @@
             <div class="bigTitle"><span>鸽友之家</span></div>
             <div class="listNews">
                 <ul class="listNewsUl">
-                    @if(!empty($homes))
+                    @if($homes)
                     @foreach($homes as $home)
                         <li>
                             <a href="{{url('/home/'.$home->NewsID)}}">
@@ -41,6 +41,7 @@
                 <span>THE DOVE NEWS</span>
             </div>
             <div class="press">
+                @if($news)
                 <a href="{{url('/news/'.$news->NewsID)}}" class="picNews">
                     <span class="littleImg fl"><img src="{{$news->NewsLogo}}" /></span>
                     <div class="fl littleNews">
@@ -48,8 +49,10 @@
                         <p class="summary">{{$news->NewsBrief}}</p>
                     </div>
                 </a>
+                @else
+                @endif
                 <ul class="titleList">
-                    @if(!empty($newss))
+                    @if($newss)
                     @foreach($newss as $news)
                         <li><a href="{{url('/news/'.$news->NewsID)}}">{{$news->NewsTitle}}</a></li>
                     @endforeach

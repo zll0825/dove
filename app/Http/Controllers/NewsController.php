@@ -14,6 +14,9 @@ class NewsController extends Controller
         $homes = News::where(['NewsLabel'=>'gyzj','Flag'=>1])->orderBy('NewsID', 'desc')->skip(1)->take(5)->get();
         $home = News::where(['NewsLabel'=>'gyzj','Flag'=>1])->orderBy('NewsID', 'desc')->take(1)->first();
         $newss = News::where(['NewsLabel'=>'sgzx','Flag'=>1])->orderBy('NewsID', 'desc')->paginate(6);
+        $this->turnNull($homes);
+        $this->turnNull($home);
+        $this->turnNull($newss);
         return view('news.index',compact('homes','home','newss'));
     }
 
@@ -23,6 +26,11 @@ class NewsController extends Controller
         $next = News::select('NewsID','NewsTitle')->where('NewsID','>',$id)->where('Flag', 1)->where('NewsLabel','sgzx')->orderBy('NewsID','asc')->first();
         $homes = News::where(['NewsLabel'=>'gyzj','Flag'=>1])->orderBy('NewsID', 'desc')->skip(1)->take(5)->get();
         $home = News::where(['NewsLabel'=>'gyzj','Flag'=>1])->orderBy('NewsID', 'desc')->take(1)->first();
+        $this->turnNull($news);
+        $this->turnNull($pre);
+        $this->turnNull($next);
+        $this->turnNull($homes);
+        $this->turnNull($home);
         return view('news.info',compact('news','pre','next','homes','home'));
     }
 
@@ -30,16 +38,23 @@ class NewsController extends Controller
         $homes = News::where(['NewsLabel'=>'gyzj','Flag'=>1])->orderBy('NewsID', 'desc')->paginate(6);
         $newss = News::where(['NewsLabel'=>'sgzx','Flag'=>1])->orderBy('NewsID', 'desc')->skip(1)->take(5)->get();
         $news = News::where(['NewsLabel'=>'sgzx','Flag'=>1])->orderBy('NewsID', 'desc')->take(1)->first();
+        $this->turnNull($homes);
+        $this->turnNull($newss);
+        $this->turnNull($news);
         return view('news.home',compact('homes','newss','news'));
     }
 
     public function homeInfo($id){
-        $news = $this->getDetail($id);
+        $home = $this->getDetail($id);
         $pre  = News::select('NewsID','NewsTitle')->where('NewsID','<',$id)->where('Flag', 1)->where('NewsLabel','gyzj')->orderBy('NewsID','desc')->first();
         $next = News::select('NewsID','NewsTitle')->where('NewsID','>',$id)->where('Flag', 1)->where('NewsLabel','gyzj')->orderBy('NewsID','asc')->first();
         $newss = News::where(['NewsLabel'=>'sgzx','Flag'=>1])->orderBy('NewsID', 'desc')->skip(1)->take(5)->get();
         $news = News::where(['NewsLabel'=>'sgzx','Flag'=>1])->orderBy('NewsID', 'desc')->take(1)->first();
-        return view('news.homeinfo',compact('news','pre','next','newss','news'));
+        $this->turnNull($news);
+        $this->turnNull($pre);
+        $this->turnNull($next);
+        $this->turnNull($newss);
+        return view('news.homeinfo',compact('home','pre','next','newss','news'));
     }
 
     public function noticeInfo($id){
@@ -48,11 +63,32 @@ class NewsController extends Controller
         $next = News::select('NewsID','NewsTitle')->where('NewsID','>',$id)->where('Flag', 1)->where('NewsLabel','tz')->orderBy('NewsID','asc')->first();
         $homes = News::where(['NewsLabel'=>'gyzj','Flag'=>1])->orderBy('NewsID', 'desc')->skip(1)->take(5)->get();
         $home = News::where(['NewsLabel'=>'gyzj','Flag'=>1])->orderBy('NewsID', 'desc')->take(1)->first();
+        $this->turnNull($pre);
+        $this->turnNull($next);
+        $this->turnNull($homes);
+        $this->turnNull($home);
         return view('news.notice',compact('news','pre','next','homes','home'));
     }
 
     public function getDetail($id){
         $data = News::where(['NewsID'=>$id,'Flag'=>1])->first();
         return $data;
+    }
+
+    public function turnNull($arr){
+        if($arr == null){
+            return '';
+        }
+        if(count((array)$arr)){
+            return '';
+        }
+        if(is_array($arr)){
+            foreach ($arr as $v) {
+                if(count((array)$v)){
+                    return '';
+                }
+            }
+        }
+        return $arr;
     }
 }

@@ -31,15 +31,15 @@
                                     <a href="javascript:;" class="commer">
                                     	<span class="w2">商品名称：<strong>{{$auction->DoveName}}</strong></span>
                                         <span class="w3">编号：<strong>{{$auction->DoveNumber}}</strong></span>
-                                        <span class="w4">起拍价：<strong>{{$auction->StartPrice}}</strong>元</span>
+                                        <span class="w4">起拍价：<strong>{{$auction->StartPrice/100}}</strong>元</span>
                                     </a>
                                     <a href="javascript:;" class="prices">
-                                    	<span class="w5">当前价：<strong class="f18">{{$auction->EndPrice}}</strong>元</span>
-                                        <span class="w6">我的出价：<strong class="red f18">{{$auction->Offer}}</strong>元</span>
+                                    	<span class="w5">当前价：<strong class="f18">{{$auction->EndPrice/100}}</strong>元</span>
+                                        <span class="w6">我的出价：<strong class="red f18">{{$auction->Offer/100}}</strong>元</span>
                                         <span class="w7">结拍日期：{{$auction->EndTime}}</span>
                                     </a>
                                     <div class="state">
-                                        @if($auction->Status == 1)
+                                        @if($auction->BStatus == 1)
                                         <span class="bidState">状态：领先</span>
                                         @else
                                     	<a href="{{url('/auction/'.$auction->AuctionID)}}" class="goon">继续出价</a>

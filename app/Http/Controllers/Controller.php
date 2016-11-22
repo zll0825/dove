@@ -18,7 +18,7 @@ abstract class Controller extends BaseController
 
     //获取资讯
     protected  function _getContent($label,$number){
-        $data = News::where(['NewsLabel' => $label, 'Flag' =>1])->take($number)->get();
+        $data = News::where(['NewsLabel' => $label, 'Flag' =>1])->orderBy('NewsID','desc')->take($number)->get();
         return $data;
     }
 
@@ -39,7 +39,7 @@ abstract class Controller extends BaseController
     }
 
     protected function getAuctionProcess($id){
-        $data = Buy::join('users','users.userid','=','T_U_BUY.UserID')->where('AuctionID',$id)->orderBy('BuyID','desc')->get();
+        $data = Buy::join('users','users.userid','=','T_U_BUY.UserID')->select('*', 'T_U_BUY.created_at as created_at')->where('AuctionID',$id)->orderBy('BuyID','desc')->get();
         return $data;
     }
 
@@ -59,6 +59,8 @@ abstract class Controller extends BaseController
         $data = Order::join('users','T_U_ORDER.UserID','=','users.userid')
             ->join('T_D_DOVEINFO', 'T_D_DOVEINFO.DoveID', '=', 'T_U_ORDER.DoveID')
             ->where(['PayFlag'=>3,'OrderType'=>0])
+            ->orWhere(['PayFlag'=>5,'OrderType'=>0])
+            ->orWhere(['PayFlag'=>6,'OrderType'=>0])
             ->orderBy('OrderID','desc')
             ->take(8)
             ->get();
@@ -72,6 +74,8 @@ abstract class Controller extends BaseController
             ->join('T_D_THEME', 'T_D_THEME.ThemeID', '=', 'T_D_THEMEAUCTION.ThemeID')
             ->join('T_D_DOVEINFO', 'T_D_DOVEINFO.DoveID', '=', 'T_D_AUCTION.DoveID')
             ->where(['PayFlag'=>3,'OrderType'=>1])
+            ->orWhere(['PayFlag'=>5,'OrderType'=>1])
+            ->orWhere(['PayFlag'=>6,'OrderType'=>1])
             ->orderBy('OrderID','desc')
             ->take(8)
             ->get();

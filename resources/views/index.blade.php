@@ -11,7 +11,7 @@
 		<div class="fl aside">
 			<div class="asideTop">
 				<div class="notice fl">
-					<h2 class="noteTitle"><i class="iconfont">&#xe617;</i>公告<span class="calendar">2016年10月20日</span><span>星期四</span></h2>
+					<h2 class="noteTitle"><i class="iconfont">&#xe617;</i>公告<span class="calendar">{{date('Y年m月d日',time())}}</span><span>{{$week}}</span></h2>
 					<div class="notelist">
 						<ul>
                             @foreach($notices as $notice)
@@ -38,7 +38,7 @@
 				<div class="isTitle"></div>
 				<h3 class="under">正在拍卖<span>Is The Auction</span></h3>
                 <div class="auctionCon">
-                    <h4 class="auctionH4"><a href="javascript:;">点击进入拍卖列表</a></h4>
+                    <h4 class="auctionH4"><a href="{{url('/auction')}}">点击进入拍卖列表</a></h4>
                     <div class="auctionList">
                         <ul>
                             @foreach($auctions as $auction)
@@ -47,8 +47,12 @@
                                     <span class="auctionImg"><img src="{{$auction->ThemePicture}}" /></span>
                                     <div class="auctionRight fl clearfix">
                                         <span class="periods">{{$auction->ThemeName}}</span>
-                                        <div class="sale">{{$auction->EndTime}}结拍<span>出价：<strong class="red">{{$auction->OfferCount}}</strong> 次</span></div>
+                                        <!-- <div class="sale">{{$auction->EndTime}}结拍<span>出价：<strong class="red">{{$auction->OfferCount}}</strong> 次</span></div> -->
+                                        @if($auction->EndDays>=0)
                                         <span class="remaining">剩&nbsp;<strong class="red">{{$auction->EndDays}}</strong>&nbsp;天</span>
+                                        @else
+                                        <span class="remaining">已结束</span>
+                                        @endif
                                     </div>
                                 </a>
                             </li>
@@ -108,7 +112,7 @@
                 <div class="pleBottom">
                     <ul>
                         @foreach($latestsales as $latestsale)
-                        <li><a href="{{url('/sale/'.$latestsale->DoveID)}}"><span class="dove">{{$latestsale->DoveName}}</span><span class="bid">已被（{{substr_replace('*',$latestsales->username,1)}}）得标</span></a></li>
+                        <li><a href="{{url('/sale/'.$latestsale->DoveID)}}"><span class="dove">{{$latestsale->DoveName}}</span><span class="bid">已被（{{substr_replace('*',$latestsale->username,1)}}）购买</span></a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -123,7 +127,7 @@
     </div>
     <div class="gray wall">
         <div class="section">
-            <h5 class="benefit">推荐铭鸽<a href="javascript:;" class="more">更多>></a></h5>
+            <h5 class="benefit">推荐铭鸽<a href="{{url('/show')}}" class="more">更多>></a></h5>
             <div class="recommend">
                 <ul>
                     @foreach($recommends as $recommend)
@@ -143,7 +147,7 @@
     <!-- news / start -->
     <div class="section clearfix information">
         <div class="fl doveInfo">
-            <div class="infoTitle"><span class="litTitle">赛鸽资讯</span><a href="javascript:;" class="more">更多>></a></div>
+            <div class="infoTitle"><span class="litTitle">赛鸽资讯</span><a href="{{url('/news')}}" class="more">更多>></a></div>
             <ul>
                 @foreach($infomations as $infomation)
                 <li><a href="{{url('/news/'.$infomation->NewsID)}}">{{$infomation->NewsTitle}}</a><span class="time">{{$infomation->PublishTime}}</span></li>
@@ -151,10 +155,10 @@
             </ul>
         </div>
         <div class="fr score">
-            <div class="infoTitle"><span class="litTitle">鸽友之家</span><a href="javascript:;" class="more">更多>></a></div>
+            <div class="infoTitle"><span class="litTitle">鸽友之家</span><a href="{{url('/home')}}" class="more">更多>></a></div>
             <ul>
                 @foreach($homes as $home)
-                    <li><a href="{{url('/home/'.$home->NewsID)}}">{{$home->NewsTitle}}</a><span class="time">{{$home->PublishTime}}</span></li>
+                    <li><a href="{{url('/home/'.$home->NewsID)}}">{{$home->NewsTitle}}</a><span class="person" style="font-size:12px;">{{$home->PublishTime}}</span></li>
                 @endforeach
             </ul>
         </div>

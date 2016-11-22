@@ -25,6 +25,7 @@
 /**/
 .shareBox{position: absolute;right: 20px;top: 9px;}
 .jiathis_style a{font-size: 12px;font-weight: normal;color:#fff;}
+.jiathis_style  img{width: auto!important;}
 .ckepopBottom img{width:auto;}
 .newsArtical{border: 1px solid #ccc;padding:35px 20px;}
 .articalTitle{font-size: 18px;text-align: center;}

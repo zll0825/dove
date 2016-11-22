@@ -11,14 +11,14 @@
             <div class="bigTitle"><span>赛鸽资讯</span></div>
             <div class="listNews">
                 <ul class="listNewsUl">
-                    @if(!empty($newss))
+                    @if($newss)
                         @foreach($newss as $news)
                         <li>
                             <a href="{{url('/news/'.$news->NewsID)}}">
                                 <span class="newsImg fl"><img src="{{$news->NewsLabel}}" /></span>
                                 <div class="newsCon fl">
                                     <h3>{{$news->NewsTitle}}</h3>
-                                    <span class="publishTime">发表于：{{$news->PublicTime}}</span>
+                                    <span class="publishTime">发表于：{{$news->PublishTime}}</span>
                                     <p class="summary">{{$news->Brief}}</p>
                                 </div>
                             </a>
@@ -41,6 +41,7 @@
                 <span>THE DOVE NEWS</span>
             </div>
             <div class="press">
+                @if($home)
                 <a href="{{url('/home/'.$home->NewsID)}}" class="picNews">
                     <span class="littleImg fl"><img src="{{$home->NewsLogo}}" /></span>
                     <div class="fl littleNews">
@@ -48,8 +49,10 @@
                         <p class="summary">{{$home->NewsBrief}}</p>
                     </div>
                 </a>
+                @else
+                @endif
                 <ul class="titleList">
-                    @if(!empty($homes))
+                    @if($homes)
                     @foreach($homes as $hom)
                     <li><a href="{{url('/news/'.$hom->NewsID)}}">{{$hom->NewsTitle}}</a></li>
                     @endforeach
