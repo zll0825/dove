@@ -89,8 +89,8 @@ abstract class Controller extends BaseController
         date_default_timezone_set('Asia/Shanghai');
 
         $c = new \TopClient;
-        $c->appkey = '23517133';//需要加引号
-        $c->secretKey = '38b702a10ac294017640f8a0acd238e3';
+        $c->appkey = '';//需要加引号
+        $c->secretKey = '';
         $c->format = 'xml';
         $req = new \AlibabaAliqinFcSmsNumSendRequest;
         $req->setExtend("");//暂时不填
